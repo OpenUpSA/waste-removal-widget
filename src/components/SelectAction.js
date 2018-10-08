@@ -36,7 +36,6 @@ class SelectAction extends Component {
 
     return (
       <React.Fragment>
-
           <Typography className={classes.text}>
             Then select an action:
           </Typography>
@@ -60,12 +59,6 @@ class SelectAction extends Component {
               View my local refuse by-laws
             </Button>
           </div>
-
-        <CardActions className={classes.cardActions}>
-          <Button variant="contained" className={classes.buttonRight}>
-            Did you find this tool useful?
-          </Button>
-        </CardActions>
       </React.Fragment>
     );
   }
