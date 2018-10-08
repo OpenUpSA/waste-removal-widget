@@ -9,10 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const styles = {
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 40,
-  },
   text: {
     color:'white'
   },
@@ -40,7 +36,7 @@ class SelectAction extends Component {
 
     return (
       <React.Fragment>
-        <CardContent className={classes.cardContent}>
+
           <Typography className={classes.text}>
             Then select an action:
           </Typography>
@@ -64,7 +60,7 @@ class SelectAction extends Component {
               View my local refuse by-laws
             </Button>
           </div>
-        </CardContent>
+
         <CardActions className={classes.cardActions}>
           <Button variant="contained" className={classes.buttonRight}>
             Did you find this tool useful?

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import SelectAction from './components/SelectAction';
+import FormAddress from './components/FormAddress';
+import FeedbackButton from './components/FeedbackButton';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from "@material-ui/core/CardContent/CardContent";
 
 const styles = {
   card: {
@@ -27,7 +30,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center'
-  }
+  },
+
+  cardContent: {
+    backgroundColor: '#00696B',
+    padding: 40,
+  },
 };
 
 class App extends Component {
@@ -46,7 +54,11 @@ class App extends Component {
           title='Waste removal assistant'
           subheader='Cape Agulhas Municipality'
           />
-          <SelectAction />
+        <CardContent className={classes.cardContent}>
+          {/*<SelectAction />*/}
+          <FormAddress/>
+        </CardContent>
+        <FeedbackButton/>
       </Card>
     );
   }
