@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -8,10 +9,10 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-const styles = {
+const styles = theme => ({
   cardContent: {
     backgroundColor: '#00696B',
-    padding: 40,
+    padding: 24,
   },
   text: {
     color:'white'
@@ -19,20 +20,35 @@ const styles = {
   button: {
     backgroundColor:  'white',
     textTransform: 'none',
-    marginRight: 16,
-    marginTop: 16
+    marginTop: 16,
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 0,
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginRight: 16,
+      width: 'auto',
+    }
   },
   cardActions: {
     backgroundColor: '#00696B',
-    justifyContent: 'flex-end',
-    paddingBottom: 40,
-    paddingRight: 40
+    [theme.breakpoints.down('sm')]: {
+      padding: 24,
+      justifyContent: 'center',
+    },
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'flex-end',
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: 40,
+    },
   },
   buttonRight: {
-    backgroundColor:  'white',
+    backgroundColor:  'rgba(0, 0, 0, 0.3)',
+    color: 'white',
     textTransform: 'none'
   }
-};
+});
 
 class SelectAction extends Component {
   render() {
@@ -45,29 +61,29 @@ class SelectAction extends Component {
             Then select an action:
           </Typography>
           <div>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" size="large" className={classes.button}>
               Report a stolen wheelie bin
             </Button>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" size="large" className={classes.button}>
               Report a damaged wheelie bin
             </Button>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained"  size="large" className={classes.button}>
               Report uncollected refuse
             </Button>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" size="large" className={classes.button}>
               View my refuse collection schedule
             </Button>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" size="large" className={classes.button}>
               Find my nearest dumping site
             </Button>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws
             </Button>
           </div>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button variant="contained" className={classes.buttonRight}>
-            Did you find this tool useful?
+          <Button variant="contained" size="large" className={classes.buttonRight}>
+            Provide feedback on this tool
           </Button>
         </CardActions>
       </React.Fragment>
