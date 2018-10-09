@@ -9,7 +9,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from "@material-ui/core/CardContent/CardContent";
 
-const styles = {
+const styles = theme => ({
   card: {
     maxWidth: 1140,
   },
@@ -27,16 +27,13 @@ const styles = {
   },
 
   content:{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 40,
-  },
-};
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }
+  }
+});
 
 class App extends Component {
   render() {
