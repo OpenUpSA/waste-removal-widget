@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 

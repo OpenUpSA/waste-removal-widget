@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Icon from '@material-ui/core/Icon';
+import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -33,7 +33,9 @@ const styles = theme => ({
   },
 
   form: {
-    maxWidth: 466
+    maxWidth: 466,
+    display: 'flex',
+    flexDirection: 'column'
   },
 
   formControl: {
@@ -52,7 +54,7 @@ const styles = theme => ({
   },
 
   textField: {
-    flexGrow: 1,
+    width: '100%',
     height: 48,
     backgroundColor: 'white',
     borderRadius: 4,
@@ -66,7 +68,8 @@ const styles = theme => ({
     textTransform: 'none',
     height: 48,
     width: 118,
-    marginTop: 8
+    marginTop: 8,
+    alignSelf: 'flex-end',
   },
 
   textFieldButtonDisabled: {
@@ -94,14 +97,13 @@ class FormAddress extends Component {
         <div className={classes.container}>
           {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <Icon>arrow_back</Icon>
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
             Enter your address:
           </Typography>
         </div>
         <form autoComplete="off" className={classes.form}>
-          <div>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel
                 ref={ref => {
@@ -135,8 +137,6 @@ class FormAddress extends Component {
                 <MenuItem value={'Napier'}>Napier</MenuItem>
               </Select>
             </FormControl>
-          </div>
-          <div className={classes.textFieldOuter}>
             <TextField
               id="outlined-bare"
               className={classes.textField}
@@ -144,10 +144,9 @@ class FormAddress extends Component {
               margin="normal"
               variant="outlined"
             />
-            <Button variant="contained" disabled className={classes.textFieldButton}>
+            <Button variant="contained" className={classes.textFieldButton}>
               Create form
             </Button>
-          </div>
         </form>
       </React.Fragment>
     );
