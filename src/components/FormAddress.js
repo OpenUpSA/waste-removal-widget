@@ -40,6 +40,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 250,
     width: '100%',
+    height: 48,
     backgroundColor: 'white',
     borderRadius: 4,
     marginLeft: 0,
@@ -60,11 +61,18 @@ const styles = theme => ({
   },
 
   textFieldButton : {
+    backgroundColor: '#46A440',
+    color: 'white',
     textTransform: 'none',
     height: 48,
     width: 118,
     marginTop: 8
-  }
+  },
+
+  textFieldButtonDisabled: {
+    backgroundColor: 'red',
+    color: 'white',
+  },
 
 });
 
@@ -108,9 +116,9 @@ class FormAddress extends Component {
                 onChange={this.handleChange}
                 input={
                   <OutlinedInput
-                    labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
-                    name="area"
-                    id="outlined-area"
+                  labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+                  name="area"
+                  id="outlined-area"
                   />
                 }
               >
