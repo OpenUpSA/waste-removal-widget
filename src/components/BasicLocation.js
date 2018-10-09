@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Icon from '@material-ui/core/Icon';
+import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,7 +11,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   container: {
@@ -47,8 +46,10 @@ const styles = theme => ({
   },
 
   selectOuter:{
-    display: 'flex',
-    alignItems: 'center',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      alignItems: 'center',
+    }
   },
 
   textFieldButton : {
@@ -56,7 +57,10 @@ const styles = theme => ({
     color: 'white',
     textTransform: 'none',
     height: 48,
-    width: 118,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 118,
+    }
   },
 
   textFieldButtonDisabled: {
@@ -84,7 +88,7 @@ class BasicLocation extends Component {
         <div className={classes.container}>
           {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <Icon>arrow_back</Icon>
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
             Select your area:
@@ -125,7 +129,7 @@ class BasicLocation extends Component {
                 <MenuItem value={'Napier'}>Napier</MenuItem>
               </Select>
             </FormControl>
-            <Button variant="contained" disabled className={classes.textFieldButton}>
+            <Button variant="contained" className={classes.textFieldButton}>
               Confirm
             </Button>
           </div>
