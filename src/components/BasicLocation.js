@@ -129,7 +129,7 @@ class BasicLocation extends Component {
                 <MenuItem value={'Napier'}>Napier</MenuItem>
               </Select>
             </FormControl>
-            <Button variant="contained" className={classes.textFieldButton}>
+            <Button variant="contained" disabled className={classes.textFieldButton}>
               Confirm
             </Button>
           </div>
