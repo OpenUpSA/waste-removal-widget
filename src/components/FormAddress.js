@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Icon from '@material-ui/core/Icon';
+import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -94,7 +94,7 @@ class FormAddress extends Component {
         <div className={classes.container}>
           {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <Icon>arrow_back</Icon>
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
             Enter your address:
