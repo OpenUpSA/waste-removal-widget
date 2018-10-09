@@ -44,30 +44,6 @@ const styles = theme => ({
     borderRadius: 4,
     marginLeft: 0,
   },
-
-  selectOuter:{
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-      alignItems: 'center',
-    }
-  },
-
-  textFieldButton : {
-    backgroundColor: '#46A440',
-    color: 'white',
-    textTransform: 'none',
-    height: 48,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 118,
-    }
-  },
-
-  textFieldButtonDisabled: {
-    backgroundColor: 'red',
-    color: 'white',
-  },
-
 });
 
 class BasicLocation extends Component {
@@ -95,44 +71,39 @@ class BasicLocation extends Component {
           </Typography>
         </div>
         <form autoComplete="off" className={classes.form}>
-          <div className={classes.selectOuter}>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel
-                ref={ref => {
-                  this.labelRef = ReactDOM.findDOMNode(ref);
-                }}
-                htmlFor="outlined-area"
-              >
-                Select your area from the list
-              </InputLabel>
-              <Select
-                value={this.state.area}
-                onChange={this.handleChange}
-                input={
-                  <OutlinedInput
-                    labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
-                    name="area"
-                    id="outlined-area"
-                  />
-                }
-              >
-                <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
-                <MenuItem value={'Struisbaai'}>Struisbaai</MenuItem>
-                <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
-                <MenuItem value={'Waenhuiskrans (Arniston)'}>Waenhuiskrans (Arniston)</MenuItem>
-                <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
-                <MenuItem value={'Struisbaai Noord'}>Struisbaai Noord</MenuItem>
-                <MenuItem value={'Suiderstrand'}>Suiderstrand</MenuItem>
-                <MenuItem value={'Zwelitsha'}>Zwelitsha</MenuItem>
-                <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
-                <MenuItem value={'Protem'}>Protem</MenuItem>
-                <MenuItem value={'Napier'}>Napier</MenuItem>
-              </Select>
-            </FormControl>
-            <Button variant="contained" disabled className={classes.textFieldButton}>
-              Confirm
-            </Button>
-          </div>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel
+              ref={ref => {
+                this.labelRef = ReactDOM.findDOMNode(ref);
+              }}
+              htmlFor="outlined-area"
+            >
+              Select your area from the list
+            </InputLabel>
+            <Select
+              value={this.state.area}
+              onChange={this.handleChange}
+              input={
+                <OutlinedInput
+                  labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+                  name="area"
+                  id="outlined-area"
+                />
+              }
+            >
+              <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
+              <MenuItem value={'Struisbaai'}>Struisbaai</MenuItem>
+              <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
+              <MenuItem value={'Waenhuiskrans (Arniston)'}>Waenhuiskrans (Arniston)</MenuItem>
+              <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
+              <MenuItem value={'Struisbaai Noord'}>Struisbaai Noord</MenuItem>
+              <MenuItem value={'Suiderstrand'}>Suiderstrand</MenuItem>
+              <MenuItem value={'Zwelitsha'}>Zwelitsha</MenuItem>
+              <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
+              <MenuItem value={'Protem'}>Protem</MenuItem>
+              <MenuItem value={'Napier'}>Napier</MenuItem>
+            </Select>
+          </FormControl>
         </form>
       </React.Fragment>
     );
