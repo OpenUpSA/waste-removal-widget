@@ -34,7 +34,7 @@ class SelectAction extends Component {
     return (
       <CardActions className={classes.cardActions}>
         <Button variant="contained" className={classes.buttonRight}>
-          Did you find this tool useful?
+          Provide feedback on this tool
         </Button>
       </CardActions>
     );

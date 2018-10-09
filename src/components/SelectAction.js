@@ -9,10 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 24,
-  },
   text: {
     color:'white'
   },

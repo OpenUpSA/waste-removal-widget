@@ -18,6 +18,11 @@ const styles = theme => ({
     backgroundColor: '#004B4F',
   },
 
+  cardContent: {
+    backgroundColor: '#00696B',
+    padding: 24,
+  },
+
   title: {
     color:'white',
   },
@@ -52,8 +57,8 @@ class App extends Component {
           subheader='Cape Agulhas Municipality'
           />
         <CardContent className={classes.cardContent}>
-          {/*<SelectAction />*/}
-          <FormAddress/>
+          <SelectAction />
+          {/*<FormAddress/>*/}
         </CardContent>
         <FeedbackButton/>
       </Card>
