@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SelectAction from './components/SelectAction';
 import FormAddress from './components/FormAddress';
+import BasicLocation from './components/BasicLocation';
 import FeedbackButton from './components/FeedbackButton';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -58,7 +59,8 @@ class App extends Component {
           />
         <CardContent className={classes.cardContent}>
           {/*<SelectAction />*/}
-          <FormAddress/>
+          {/*<FormAddress/>*/}
+          <BasicLocation/>
         </CardContent>
         <FeedbackButton/>
       </Card>
