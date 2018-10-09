@@ -57,8 +57,8 @@ class App extends Component {
           subheader='Cape Agulhas Municipality'
           />
         <CardContent className={classes.cardContent}>
-          <SelectAction />
-          {/*<FormAddress/>*/}
+          {/*<SelectAction />*/}
+          <FormAddress/>
         </CardContent>
         <FeedbackButton/>
       </Card>
