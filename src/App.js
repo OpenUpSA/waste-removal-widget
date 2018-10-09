@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import SelectAction from './components/SelectAction';
+import FormAddress from './components/FormAddress';
+import FeedbackButton from './components/FeedbackButton';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from "@material-ui/core/CardContent/CardContent";
 
 const styles = theme => ({
   card: {
@@ -13,6 +16,11 @@ const styles = theme => ({
 
   cardHeader: {
     backgroundColor: '#004B4F',
+  },
+
+  cardContent: {
+    backgroundColor: '#00696B',
+    padding: 24,
   },
 
   title: {
@@ -48,7 +56,11 @@ class App extends Component {
           title='Waste removal assistant'
           subheader='Cape Agulhas Municipality'
           />
-          <SelectAction />
+        <CardContent className={classes.cardContent}>
+          {/*<SelectAction />*/}
+          <FormAddress/>
+        </CardContent>
+        <FeedbackButton/>
       </Card>
     );
   }

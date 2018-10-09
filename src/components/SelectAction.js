@@ -2,17 +2,10 @@ import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 24,
-  },
   text: {
     color:'white'
   },
@@ -56,7 +49,6 @@ class SelectAction extends Component {
 
     return (
       <React.Fragment>
-        <CardContent className={classes.cardContent}>
           <Typography className={classes.text}>
             Then select an action:
           </Typography>
@@ -80,12 +72,6 @@ class SelectAction extends Component {
               View my local refuse by-laws
             </Button>
           </div>
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Button variant="contained" size="large" className={classes.buttonRight}>
-            Provide feedback on this tool
-          </Button>
-        </CardActions>
       </React.Fragment>
     );
   }
