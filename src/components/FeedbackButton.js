@@ -10,11 +10,12 @@ const styles = theme => ({
     display: 'flex',
     flexFlow: 'column',
     backgroundColor: '#00696B',
-    padding: 24,
+    padding: '18px 24px 25px 24px',
     justifyContent: 'center',
     [theme.breakpoints.up('sm')]: {
       flexFlow: 'row',
       justifyContent: 'space-between',
+      padding: '36px 48px 53px 48px',
     },
   },
   buttonRight: {
