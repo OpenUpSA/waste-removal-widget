@@ -19,6 +19,10 @@ const styles = theme => ({
 
   cardHeader: {
     backgroundColor: '#004B4F',
+    padding: '12px 24px 16px 24px',
+    [theme.breakpoints.up('sm')]: {
+      padding: '24px 48px 33px 48px',
+    }
   },
 
   cardContent: {
@@ -28,17 +32,27 @@ const styles = theme => ({
 
   title: {
     color:'white',
+    fontWeight: 'bold',
+    fontSize: '2rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '2.6rem',
+    }
   },
 
   subheader: {
-    color: 'rgba(255, 255, 255, 0.5)'
+    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: '1rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.5rem',
+    }
   },
 
   content:{
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      flexWrap: 'wrap'
     }
   }
 });
@@ -60,11 +74,11 @@ class App extends Component {
           subheader='Cape Agulhas Municipality'
           />
         <CardContent className={classes.cardContent}>
-          {/*<SelectAction />*/}
+          <SelectAction />
           {/*<FormAddress/>*/}
           {/*<BasicLocation/>*/}
           {/*<WasteSchedule/>*/}
-          <DumpingSites />
+          {/*<DumpingSites />*/}
         </CardContent>
         <FeedbackButton/>
       </Card>
