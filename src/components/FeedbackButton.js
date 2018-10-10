@@ -7,13 +7,14 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   cardActions: {
+    display: 'flex',
+    flexFlow: 'column',
     backgroundColor: '#00696B',
     padding: 24,
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
+    justifyContent: 'center',
     [theme.breakpoints.up('sm')]: {
-      justifyContent: 'flex-end',
+      flexFlow: 'row',
+      justifyContent: 'space-between',
     },
   },
   buttonRight: {
@@ -24,6 +25,15 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
     }
+  },
+  buttonDownload: {
+    textTransform: 'none',
+    width: '100%',
+    marginBottom: 16,
+    [theme.breakpoints.up('sm')]: {
+      width: 'auto',
+      marginBottom: 0,
+    }
   }
 });
 
@@ -33,6 +43,10 @@ class SelectAction extends Component {
 
     return (
       <CardActions className={classes.cardActions}>
+        {/*Should only be visible on collection schedule screen*/}
+        <Button variant='contained' className={classes.buttonDownload}>
+          Download this collection schedule
+        </Button>
         <Button variant="contained" className={classes.buttonRight}>
           Provide feedback on this tool
         </Button>
