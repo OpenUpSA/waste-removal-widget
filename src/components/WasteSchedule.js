@@ -46,6 +46,9 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]:{
       marginRight: 16,
       width: 336,
+      '&:last-child': {
+        marginRight: 0,
+      }
     }
   },
 
@@ -63,6 +66,7 @@ const styles = theme => ({
   },
 
   title: {
+    fontSize: 16,
     color: 'white',
     textAlign: 'center'
   },

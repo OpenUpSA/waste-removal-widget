@@ -3,6 +3,7 @@ import SelectAction from './components/SelectAction';
 import FormAddress from './components/FormAddress';
 import BasicLocation from './components/BasicLocation';
 import WasteSchedule from './components/WasteSchedule';
+import DumpingSites from './components/DumpingSites';
 import FeedbackButton from './components/FeedbackButton';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -62,7 +63,8 @@ class App extends Component {
           {/*<SelectAction />*/}
           {/*<FormAddress/>*/}
           {/*<BasicLocation/>*/}
-          <WasteSchedule/>
+          {/*<WasteSchedule/>*/}
+          <DumpingSites />
         </CardContent>
         <FeedbackButton/>
       </Card>
