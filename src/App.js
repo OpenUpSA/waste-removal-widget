@@ -25,11 +25,6 @@ const styles = theme => ({
     }
   },
 
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 24,
-  },
-
   title: {
     color:'white',
     fontWeight: 'bold',
@@ -54,7 +49,15 @@ const styles = theme => ({
       alignItems: 'center',
       flexWrap: 'wrap'
     }
-  }
+  },
+
+  cardContent: {
+    backgroundColor: '#00696B',
+    padding: '20px 24px 18px 24px',
+    [theme.breakpoints.up('sm')]: {
+      padding: '43px 48px 36px 48px',
+    }
+  },
 });
 
 class App extends Component {
