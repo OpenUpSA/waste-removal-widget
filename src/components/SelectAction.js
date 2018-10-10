@@ -7,7 +7,8 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   text: {
-    color:'white'
+    color:'white',
+    fontSize: '1.7rem',
   },
   button: {
     backgroundColor:  'white',
@@ -15,6 +16,7 @@ const styles = theme => ({
     marginTop: 16,
     width: '100%',
     padding: 16,
+    fontWeight: 600,
     [theme.breakpoints.down('sm')]: {
       marginRight: 0,
     },
@@ -32,7 +34,7 @@ class SelectAction extends Component {
     return (
       <React.Fragment>
           <Typography className={classes.text}>
-            Then select an action:
+            Select an action:
           </Typography>
           <div>
             <Button variant="contained" size="large" className={classes.button}>

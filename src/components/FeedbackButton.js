@@ -24,6 +24,7 @@ const styles = theme => ({
     textTransform: 'none',
     width: '100%',
     padding: 16,
+    fontWeight: 600,
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
     }
@@ -33,6 +34,7 @@ const styles = theme => ({
     width: '100%',
     marginBottom: 16,
     padding: 16,
+    fontWeight: 600,
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
       marginBottom: 0,
