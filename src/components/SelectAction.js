@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,6 +26,10 @@ const styles = theme => ({
       width: 'auto',
     }
   },
+  link: {
+    textDecoration: 'none',
+    color: 'black'
+  }
 });
 
 class SelectAction extends Component {
@@ -38,19 +43,29 @@ class SelectAction extends Component {
           </Typography>
           <div>
             <Button variant="contained" size="large" className={classes.button}>
-              Report a stolen wheelie bin
+              <Link to='/report' className={classes.link}>
+                Report a stolen wheelie bin
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              Report a damaged wheelie bin
+              <Link to='/report' className={classes.link}>
+                Report a damaged wheelie bin
+              </Link>
             </Button>
             <Button variant="contained"  size="large" className={classes.button}>
-              Report uncollected refuse
+              <Link to='/report' className={classes.link}>
+                Report uncollected refuse
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              View my refuse collection schedule
+              <Link to='/view' className={classes.link}>
+                View my refuse collection schedule
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              Find my nearest dumping site
+              <Link to='/view' className={classes.link}>
+                Find my nearest dumping site
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws
