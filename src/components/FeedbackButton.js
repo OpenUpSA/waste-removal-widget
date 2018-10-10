@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,8 +26,10 @@ const styles = theme => ({
     width: '100%',
     padding: 16,
     fontWeight: 600,
+    margin: '0 0 0 auto',
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
+      justifySelf: 'flex-end'
     }
   },
   buttonDownload: {
@@ -49,9 +52,15 @@ class SelectAction extends Component {
     return (
       <CardActions className={classes.cardActions}>
         {/*Should only be visible on collection schedule screen*/}
-        <Button variant='contained' className={classes.buttonDownload}>
-          Download this collection schedule
-        </Button>
+        <Router>
+          <Route exact path='/view/schedule'
+                  render={()=>
+                    <Button variant='contained' className={classes.buttonDownload}>
+                      Download this collection schedule
+                    </Button>
+                  }>
+          </Route>
+        </Router>
         <Button variant="contained" className={classes.buttonRight}>
           Provide feedback on this tool
         </Button>
