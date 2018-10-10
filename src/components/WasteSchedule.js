@@ -66,6 +66,7 @@ const styles = theme => ({
   },
 
   title: {
+    fontSize: 16,
     color: 'white',
     textAlign: 'center'
   },
