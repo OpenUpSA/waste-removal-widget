@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import SelectAction from './components/SelectAction';
 import FormAddress from './components/FormAddress';
 import BasicLocation from './components/BasicLocation';
@@ -77,11 +79,15 @@ class App extends Component {
           subheader={`${municipality} Municipality`}
           />
         <CardContent className={classes.cardContent}>
-          <SelectAction />
-          {/*<FormAddress/>*/}
-          {/*<BasicLocation/>*/}
-          {/*<WasteSchedule/>*/}
-          {/*<DumpingSites />*/}
+            <Router>
+              <div>
+                <Route exact path='/' component={SelectAction} />
+                <Route exact path='/report' component={FormAddress} />
+                <Route exact path='/view' component={BasicLocation} />
+                <Route path='/view/schedule' component={WasteSchedule} />
+                <Route path='/view/sites' component={DumpingSites} />
+              </div>
+            </Router>
         </CardContent>
         <FeedbackButton/>
       </Card>
