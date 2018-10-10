@@ -45,7 +45,7 @@ const styles = theme => ({
 
 class App extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, municipality } = this.props;
 
     return (
       <Card className={classes.card}>
@@ -57,7 +57,7 @@ class App extends Component {
             content: classes.content,
           }}
           title='Waste removal assistant'
-          subheader='Cape Agulhas Municipality'
+          subheader={`${municipality} Municipality`}
           />
         <CardContent className={classes.cardContent}>
           {/*<SelectAction />*/}
