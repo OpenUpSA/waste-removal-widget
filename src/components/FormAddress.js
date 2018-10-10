@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -14,9 +15,20 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
+
+  root: {
+    '&$disabled': {
+      backgroundColor: '#CACACA',
+      color: 'rgba(0, 0, 0, 0.38)'
+    },
+  },
+
+  disabled: {},
+
   container: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 16,
   },
 
   button: {
@@ -24,12 +36,17 @@ const styles = theme => ({
     width: 46,
     height: 46,
     backgroundColor: '#46A440',
-    color: 'white',
     marginRight: 16,
   },
 
-  text: {
+  link: {
+    textDecoration: 'none',
     color: 'white'
+  },
+
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
   },
 
   form: {
@@ -97,7 +114,9 @@ class FormAddress extends Component {
         <div className={classes.container}>
           {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <ArrowBack />
+            <Link to='/' className={classes.link}>
+              <ArrowBack />
+            </Link>
           </Button>
           <Typography className={classes.text}>
             Enter your address:
@@ -144,7 +163,14 @@ class FormAddress extends Component {
               margin="normal"
               variant="outlined"
             />
-            <Button variant="contained" className={classes.textFieldButton}>
+            <Button variant="contained"
+                    classes={{
+                      root: classes.root,
+                      disabled: classes.disabled
+                    }}
+                    className={classes.textFieldButton}
+                    disabled
+            >
               Create form
             </Button>
         </form>
