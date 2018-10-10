@@ -36,19 +36,23 @@ const styles = theme => ({
     flexDirection: 'column',
     [theme.breakpoints.up('sm')]: {
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      flexWrap: 'wrap'
     }
   },
 
   card: {
     marginTop: 16,
-    maxWidth: 336,
-    width: '100%'
+    width: 'auto',
+    [theme.breakpoints.up('sm')]:{
+      marginRight: 16,
+      width: 336,
+    }
   },
 
   cardHeader: {
     backgroundColor: '#004B4F',
-    height: 50
+    height: 50,
+    padding: 0
   },
 
   cardHeaderButton: {
@@ -61,6 +65,10 @@ const styles = theme => ({
   title: {
     color: 'white',
     textAlign: 'center'
+  },
+
+  action: {
+    margin: 0
   },
 
   cardContentText: {
@@ -101,7 +109,8 @@ class WasteSchedule extends Component {
             <Card className={classes.card}>
               <CardHeader className={classes.cardHeader}
                           classes={{
-                            title: classes.title
+                            title: classes.title,
+                            action: classes.action,
                           }}
                           action={
                             <Button className={classes.cardHeaderButton}>
@@ -127,52 +136,54 @@ class WasteSchedule extends Component {
             <Card className={classes.card}>
               <CardHeader className={classes.cardHeader}
                           classes={{
-                            title: classes.title
+                            title: classes.title,
+                            action: classes.action,
                           }}
                           action={
                             <Button className={classes.cardHeaderButton}>
                               <InfoOutlinedIcon />
                             </Button>
                           }
-                          title='Household refuse'
+                          title='Business refuse'
               >
               </CardHeader>
               <CardContent>
                 <Typography className={classes.cardContentText}>
                   {/*Content to be loaded dynamically*/}
-                  Mondays
+                  Wednesdays & Fridays
                 </Typography>
               </CardContent>
               <CardActions className={classes.cardActions}>
                 <Typography className={classes.cardActionsText}>
                   {/*Date to be loaded dynamically*/}
-                  Next collection: 28 Nov 2018
+                  Next collection: 30 Nov 2018
                 </Typography>
               </CardActions>
             </Card>
             <Card className={classes.card}>
               <CardHeader className={classes.cardHeader}
                           classes={{
-                            title: classes.title
+                            title: classes.title,
+                            action: classes.action,
                           }}
                           action={
                             <Button className={classes.cardHeaderButton}>
                               <InfoOutlinedIcon />
                             </Button>
                           }
-                          title='Household refuse'
+                          title='Recycling'
               >
               </CardHeader>
               <CardContent>
                 <Typography className={classes.cardContentText}>
                   {/*Content to be loaded dynamically*/}
-                  Mondays
+                  Thursdays
                 </Typography>
               </CardContent>
               <CardActions className={classes.cardActions}>
                 <Typography className={classes.cardActionsText}>
                   {/*Date to be loaded dynamically*/}
-                  Next collection: 28 Nov 2018
+                  Next collection: 31 Nov 2018
                 </Typography>
               </CardActions>
             </Card>
