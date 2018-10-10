@@ -14,6 +14,7 @@ const styles = theme => ({
     textTransform: 'none',
     marginTop: 16,
     width: '100%',
+    padding: 16,
     [theme.breakpoints.down('sm')]: {
       marginRight: 0,
     },
@@ -22,25 +23,6 @@ const styles = theme => ({
       width: 'auto',
     }
   },
-  cardActions: {
-    backgroundColor: '#00696B',
-    padding: 24,
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'flex-end',
-    },
-  },
-  buttonRight: {
-    backgroundColor:  'rgba(0, 0, 0, 0.3)',
-    color: 'white',
-    textTransform: 'none',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 'auto',
-    }
-  }
 });
 
 class SelectAction extends Component {
