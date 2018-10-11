@@ -113,12 +113,22 @@ class BasicLocation extends Component {
           </React.Fragment>
         )
       } else {
-        return(
-          <Redirect to={{
+        if (this.props.location.pathname === '/view/schedule') {
+          return(
+            <Redirect to={{
             pathname: `/view/schedule/${this.state.area}`,
             state: { area: this.state.area }
           }}  />
-        )
+          )
+        }
+        if (this.props.location.pathname === '/view/sites') {
+          return(
+            <Redirect to={{
+              pathname: `/view/sites/${this.state.area}`,
+              state: { area: this.state.area }
+            }}  />
+          )
+        }
       }
   }
 }

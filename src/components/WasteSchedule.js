@@ -28,8 +28,14 @@ const styles = theme => ({
     marginRight: 16,
   },
 
-  text: {
+  link: {
+    textDecoration: 'none',
     color: 'white'
+  },
+
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
   },
 
   cardContainer: {
@@ -108,7 +114,7 @@ class WasteSchedule extends Component {
             </Link>
           </Button>
           <Typography className={classes.text}>
-            {area} Waste collection schedule
+            { area } Waste collection schedule
           </Typography>
         </div>
         <div className={classes.cardContainer}>

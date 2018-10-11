@@ -28,8 +28,14 @@ const styles = theme => ({
     marginRight: 16,
   },
 
-  text: {
+  link: {
+    textDecoration: 'none',
     color: 'white'
+  },
+
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
   },
 
   cardContainer: {
@@ -97,6 +103,7 @@ class DumpingSites extends Component {
 
   render(){
     const { classes } = this.props;
+    const area = this.props.location.state.area;
 
     return (
       <React.Fragment>
@@ -107,8 +114,7 @@ class DumpingSites extends Component {
             </Link>
           </Button>
           <Typography className={classes.text}>
-            {/*Bredasdorp to be replaced with selected town/area name*/}
-            Bredasdorp nearest dumping sites
+            { area } nearest dumping sites
           </Typography>
         </div>
         <div className={classes.cardContainer}>
