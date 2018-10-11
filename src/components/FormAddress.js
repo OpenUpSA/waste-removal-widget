@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
@@ -8,7 +7,6 @@ import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -84,9 +82,13 @@ const styles = theme => ({
     color: 'white',
     textTransform: 'none',
     height: 48,
-    width: 118,
+    width: '100%',
     marginTop: 8,
     alignSelf: 'flex-end',
+
+    [theme.breakpoints.up('sm')]: {
+      width: 118,
+    }
   },
 
   root: {
