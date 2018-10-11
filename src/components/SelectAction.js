@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -7,13 +8,16 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   text: {
-    color:'white'
+    color:'white',
+    fontSize: '1.7rem',
   },
   button: {
     backgroundColor:  'white',
     textTransform: 'none',
     marginTop: 16,
     width: '100%',
+    padding: 16,
+    fontWeight: 600,
     [theme.breakpoints.down('sm')]: {
       marginRight: 0,
     },
@@ -22,24 +26,9 @@ const styles = theme => ({
       width: 'auto',
     }
   },
-  cardActions: {
-    backgroundColor: '#00696B',
-    padding: 24,
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'flex-end',
-    },
-  },
-  buttonRight: {
-    backgroundColor:  'rgba(0, 0, 0, 0.3)',
-    color: 'white',
-    textTransform: 'none',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 'auto',
-    }
+  link: {
+    textDecoration: 'none',
+    color: 'black'
   }
 });
 
@@ -50,23 +39,33 @@ class SelectAction extends Component {
     return (
       <React.Fragment>
           <Typography className={classes.text}>
-            Then select an action:
+            Select an action:
           </Typography>
           <div>
             <Button variant="contained" size="large" className={classes.button}>
-              Report a stolen wheelie bin
+              <Link to='/report' className={classes.link}>
+                Report a stolen wheelie bin
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              Report a damaged wheelie bin
+              <Link to='/report' className={classes.link}>
+                Report a damaged wheelie bin
+              </Link>
             </Button>
             <Button variant="contained"  size="large" className={classes.button}>
-              Report uncollected refuse
+              <Link to='/report' className={classes.link}>
+                Report uncollected refuse
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              View my refuse collection schedule
+              <Link to='/view' className={classes.link}>
+                View my refuse collection schedule
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              Find my nearest dumping site
+              <Link to='/view' className={classes.link}>
+                Find my nearest dumping site
+              </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws

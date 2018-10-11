@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import SelectAction from './components/SelectAction';
 import FormAddress from './components/FormAddress';
 import BasicLocation from './components/BasicLocation';
@@ -19,28 +21,45 @@ const styles = theme => ({
 
   cardHeader: {
     backgroundColor: '#004B4F',
-  },
-
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: 24,
+    padding: '12px 24px 16px 24px',
+    [theme.breakpoints.up('sm')]: {
+      padding: '24px 48px 33px 48px',
+    }
   },
 
   title: {
     color:'white',
+    fontWeight: 'bold',
+    fontSize: '2rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '2.6rem',
+    }
   },
 
   subheader: {
-    color: 'rgba(255, 255, 255, 0.5)'
+    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: '1rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.5rem',
+    }
   },
 
   content:{
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      flexWrap: 'wrap'
     }
-  }
+  },
+
+  cardContent: {
+    backgroundColor: '#00696B',
+    padding: '20px 24px 18px 24px',
+    [theme.breakpoints.up('sm')]: {
+      padding: '43px 48px 36px 48px',
+    }
+  },
 });
 
 class App extends Component {
@@ -60,11 +79,15 @@ class App extends Component {
           subheader={`${municipality} Municipality`}
           />
         <CardContent className={classes.cardContent}>
-          {/*<SelectAction />*/}
-          {/*<FormAddress/>*/}
-          {/*<BasicLocation/>*/}
-          {/*<WasteSchedule/>*/}
-          <DumpingSites />
+            <Router>
+              <div>
+                <Route exact path='/' component={SelectAction} />
+                <Route exact path='/report' component={FormAddress} />
+                <Route exact path='/view' component={BasicLocation} />
+                <Route path='/view/schedule' component={WasteSchedule} />
+                <Route path='/view/sites' component={DumpingSites} />
+              </div>
+            </Router>
         </CardContent>
         <FeedbackButton/>
       </Card>
