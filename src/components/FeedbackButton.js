@@ -54,11 +54,11 @@ class SelectAction extends Component {
         {/*Should only be visible on collection schedule screen*/}
         <Router>
           <Route exact path='/view/schedule'
-                  render={()=>
-                    <Button variant='contained' className={classes.buttonDownload}>
-                      Download this collection schedule
-                    </Button>
-                  }>
+                 render={()=>
+                   <Button variant='contained' className={classes.buttonDownload}>
+                    Download this collection schedule
+                   </Button>
+                 }>
           </Route>
         </Router>
         <Button variant="contained" className={classes.buttonRight}>
