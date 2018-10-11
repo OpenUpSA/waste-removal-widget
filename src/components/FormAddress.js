@@ -9,21 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
-
-  root: {
-    '&$disabled': {
-      backgroundColor: '#CACACA',
-      color: 'rgba(0, 0, 0, 0.38)'
-    },
-  },
-
-  disabled: {},
 
   container: {
     display: 'flex',
@@ -56,18 +48,12 @@ const styles = theme => ({
   },
 
   formControl: {
-    margin: theme.spacing.unit,
+    margin: 0,
     minWidth: 250,
     width: '100%',
     height: 48,
     backgroundColor: 'white',
     borderRadius: 4,
-    marginLeft: 0,
-  },
-
-  textFieldOuter:{
-    display: 'flex',
-    alignItems: 'center',
   },
 
   textField: {
@@ -76,7 +62,13 @@ const styles = theme => ({
     backgroundColor: 'white',
     borderRadius: 4,
     padding: 0,
-    marginRight: 8,
+    margin: '8px 8px 4px 0px'
+  },
+
+  helperText: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    marginTop: 0,
+    marginLeft: 15,
   },
 
   textFieldButton : {
@@ -89,16 +81,20 @@ const styles = theme => ({
     alignSelf: 'flex-end',
   },
 
-  textFieldButtonDisabled: {
-    backgroundColor: 'red',
-    color: 'white',
+  root: {
+    '&$disabled': {
+      backgroundColor: '#CACACA',
+      color: 'rgba(0, 0, 0, 0.38)'
+    },
   },
+
+  disabled: {},
 
 });
 
 class FormAddress extends Component {
   state = {
-    area: '',
+    area: ' ',
     name: 'hai',
   };
 
@@ -112,7 +108,6 @@ class FormAddress extends Component {
     return (
       <React.Fragment>
         <div className={classes.container}>
-          {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
             <Link to='/' className={classes.link}>
               <ArrowBack />
@@ -123,56 +118,53 @@ class FormAddress extends Component {
           </Typography>
         </div>
         <form autoComplete="off" className={classes.form}>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel
-                ref={ref => {
-                  this.labelRef = ReactDOM.findDOMNode(ref);
-                }}
-                htmlFor="outlined-area"
-              >
-                Select your area from the list
-              </InputLabel>
-              <Select
-                value={this.state.area}
-                onChange={this.handleChange}
-                input={
-                  <OutlinedInput
-                  labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
-                  name="area"
-                  id="outlined-area"
-                  />
-                }
-              >
-                <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
-                <MenuItem value={'Struisbaai'}>Struisbaai</MenuItem>
-                <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
-                <MenuItem value={'Waenhuiskrans (Arniston)'}>Waenhuiskrans (Arniston)</MenuItem>
-                <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
-                <MenuItem value={'Struisbaai Noord'}>Struisbaai Noord</MenuItem>
-                <MenuItem value={'Suiderstrand'}>Suiderstrand</MenuItem>
-                <MenuItem value={'Zwelitsha'}>Zwelitsha</MenuItem>
-                <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
-                <MenuItem value={'Protem'}>Protem</MenuItem>
-                <MenuItem value={'Napier'}>Napier</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              id="outlined-bare"
-              className={classes.textField}
-              placeholder="Enter your street address"
-              margin="normal"
-              variant="outlined"
-            />
-            <Button variant="contained"
-                    classes={{
-                      root: classes.root,
-                      disabled: classes.disabled
-                    }}
-                    className={classes.textFieldButton}
-                    disabled
+          <FormControl variant="outlined" className={classes.formControl}>
+            <Select
+              className={classes.select}
+              value={this.state.area}
+              onChange={this.handleChange}
+              input={
+                <OutlinedInput
+                labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+                name="area"
+                id="outlined-area"
+                />
+              }
             >
-              Create form
-            </Button>
+              <MenuItem value=" ">Select your area from the list</MenuItem>
+              <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
+              <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
+              <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
+              <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
+              <MenuItem value={'Napier'}>Napier</MenuItem>
+              <MenuItem value={'Protem'}>Protem</MenuItem>
+              <MenuItem value={'Struisbaai'}>Struisbaai</MenuItem>
+              <MenuItem value={'Struisbaai Noord'}>Struisbaai Noord</MenuItem>
+              <MenuItem value={'Suiderstrand'}>Suiderstrand</MenuItem>
+              <MenuItem value={'Waenhuiskrans (Arniston)'}>Waenhuiskrans (Arniston)</MenuItem>
+              <MenuItem value={'Zwelitsha'}>Zwelitsha</MenuItem>
+            </Select>
+          </FormControl>
+          <TextField
+            id="outlined-bare"
+            className={classes.textField}
+            placeholder="Enter your street address"
+            margin="normal"
+            variant="outlined"
+          />
+          <FormHelperText className={classes.helperText}>
+            Your address will remain strictly confidential
+          </FormHelperText>
+          <Button variant="contained"
+                  classes={{
+                    root: classes.root,
+                    disabled: classes.disabled
+                  }}
+                  className={classes.textFieldButton}
+                  disabled
+          >
+            Create form
+          </Button>
         </form>
       </React.Fragment>
     );

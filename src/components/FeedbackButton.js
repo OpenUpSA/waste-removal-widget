@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -51,7 +51,6 @@ class SelectAction extends Component {
 
     return (
       <CardActions className={classes.cardActions}>
-        {/*Should only be visible on collection schedule screen*/}
         <Router>
           <Route exact path='/view/schedule'
                  render={()=>
