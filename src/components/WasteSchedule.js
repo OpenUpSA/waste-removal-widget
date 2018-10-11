@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -94,107 +95,108 @@ const styles = theme => ({
 
 class WasteSchedule extends Component {
 
-    render(){
-      const { classes } = this.props;
+  render(){
+    const { classes } = this.props;
+    const area = this.props.location.state.area;
 
-      return (
-        <React.Fragment>
-          <div className={classes.container}>
-            {/*Back button - return to home screen*/}
-            <Button variant="contained" className={classes.button}>
+    return (
+      <React.Fragment>
+        <div className={classes.container}>
+          <Button variant="contained" className={classes.button}>
+            <Link to='/' className={classes.link}>
               <ArrowBack />
-            </Button>
-            <Typography className={classes.text}>
-              {/*L'Agulhas to be replaced with selected town/area name*/}
-              L'Agulhas Waste collection schedule
-            </Typography>
-          </div>
-          <div className={classes.cardContainer}>
-            <Card className={classes.card}>
-              <CardHeader className={classes.cardHeader}
-                          classes={{
-                            title: classes.title,
-                            action: classes.action,
-                          }}
-                          action={
-                            <Button className={classes.cardHeaderButton}>
-                              <InfoOutlinedIcon />
-                            </Button>
-                          }
-                          title='Household refuse'
-              >
-              </CardHeader>
-              <CardContent>
-                <Typography className={classes.cardContentText}>
-                  {/*Content to be loaded dynamically*/}
-                  Mondays
-                </Typography>
-              </CardContent>
-              <CardActions className={classes.cardActions}>
-                <Typography className={classes.cardActionsText}>
-                  {/*Date to be loaded dynamically*/}
-                  Next collection: 28 Nov 2018
-                </Typography>
-              </CardActions>
-            </Card>
-            <Card className={classes.card}>
-              <CardHeader className={classes.cardHeader}
-                          classes={{
-                            title: classes.title,
-                            action: classes.action,
-                          }}
-                          action={
-                            <Button className={classes.cardHeaderButton}>
-                              <InfoOutlinedIcon />
-                            </Button>
-                          }
-                          title='Business refuse'
-              >
-              </CardHeader>
-              <CardContent>
-                <Typography className={classes.cardContentText}>
-                  {/*Content to be loaded dynamically*/}
-                  Wednesdays & Fridays
-                </Typography>
-              </CardContent>
-              <CardActions className={classes.cardActions}>
-                <Typography className={classes.cardActionsText}>
-                  {/*Date to be loaded dynamically*/}
-                  Next collection: 30 Nov 2018
-                </Typography>
-              </CardActions>
-            </Card>
-            <Card className={classes.card}>
-              <CardHeader className={classes.cardHeader}
-                          classes={{
-                            title: classes.title,
-                            action: classes.action,
-                          }}
-                          action={
-                            <Button className={classes.cardHeaderButton}>
-                              <InfoOutlinedIcon />
-                            </Button>
-                          }
-                          title='Recycling'
-              >
-              </CardHeader>
-              <CardContent>
-                <Typography className={classes.cardContentText}>
-                  {/*Content to be loaded dynamically*/}
-                  Thursdays
-                </Typography>
-              </CardContent>
-              <CardActions className={classes.cardActions}>
-                <Typography className={classes.cardActionsText}>
-                  {/*Date to be loaded dynamically*/}
-                  Next collection: 31 Nov 2018
-                </Typography>
-              </CardActions>
-            </Card>
-          </div>
-        </React.Fragment>
-      )
-    };
+            </Link>
+          </Button>
+          <Typography className={classes.text}>
+            {area} Waste collection schedule
+          </Typography>
+        </div>
+        <div className={classes.cardContainer}>
+          <Card className={classes.card}>
+            <CardHeader className={classes.cardHeader}
+                        classes={{
+                          title: classes.title,
+                          action: classes.action,
+                        }}
+                        action={
+                          <Button className={classes.cardHeaderButton}>
+                            <InfoOutlinedIcon />
+                          </Button>
+                        }
+                        title='Household refuse'
+            >
+            </CardHeader>
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                {/*Content to be loaded dynamically*/}
+                Mondays
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                {/*Date to be loaded dynamically*/}
+                Next collection: 28 Nov 2018
+              </Typography>
+            </CardActions>
+          </Card>
+          <Card className={classes.card}>
+            <CardHeader className={classes.cardHeader}
+                        classes={{
+                          title: classes.title,
+                          action: classes.action,
+                        }}
+                        action={
+                          <Button className={classes.cardHeaderButton}>
+                            <InfoOutlinedIcon />
+                          </Button>
+                        }
+                        title='Business refuse'
+            >
+            </CardHeader>
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                {/*Content to be loaded dynamically*/}
+                Wednesdays & Fridays
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                {/*Date to be loaded dynamically*/}
+                Next collection: 30 Nov 2018
+              </Typography>
+            </CardActions>
+          </Card>
+          <Card className={classes.card}>
+            <CardHeader className={classes.cardHeader}
+                        classes={{
+                          title: classes.title,
+                          action: classes.action,
+                        }}
+                        action={
+                          <Button className={classes.cardHeaderButton}>
+                            <InfoOutlinedIcon />
+                          </Button>
+                        }
+                        title='Recycling'
+            >
+            </CardHeader>
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                {/*Content to be loaded dynamically*/}
+                Thursdays
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                {/*Date to be loaded dynamically*/}
+                Next collection: 31 Nov 2018
+              </Typography>
+            </CardActions>
+          </Card>
+        </div>
+      </React.Fragment>
+    )
+  };
 };
 
 export default withStyles(styles)(WasteSchedule);

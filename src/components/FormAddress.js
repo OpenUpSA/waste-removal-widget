@@ -144,7 +144,7 @@ class FormAddress extends Component {
             >
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
-              <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
+              <MenuItem value={'Bredasdorp (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
               <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
               <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
               <MenuItem value={'Napier'}>Napier</MenuItem>
@@ -157,7 +157,7 @@ class FormAddress extends Component {
             </Select>
           </FormControl>
           <TextField
-            id="outlined-bare"
+            id="outlined-address"
             className={classes.textField}
             placeholder="Enter your street address"
             margin="normal"

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -93,15 +94,17 @@ const styles = theme => ({
 
 class DumpingSites extends Component {
 
+
   render(){
     const { classes } = this.props;
 
     return (
       <React.Fragment>
         <div className={classes.container}>
-          {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <ArrowBack />
+            <Link to='/' className={classes.link}>
+              <ArrowBack />
+            </Link>
           </Button>
           <Typography className={classes.text}>
             {/*Bredasdorp to be replaced with selected town/area name*/}
