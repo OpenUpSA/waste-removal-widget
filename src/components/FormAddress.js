@@ -86,16 +86,21 @@ const styles = theme => ({
       backgroundColor: '#CACACA',
       color: 'rgba(0, 0, 0, 0.38)'
     },
+
+    '&$focused': {
+      borderColor: 'red'
+    }
   },
 
   disabled: {},
+  focused: {},
 
 });
 
 class FormAddress extends Component {
   state = {
-    area: ' ',
-    name: 'hai',
+    area: '',
+    address: '',
   };
 
   handleChange = event => {
@@ -123,6 +128,7 @@ class FormAddress extends Component {
               className={classes.select}
               value={this.state.area}
               onChange={this.handleChange}
+              displayEmpty
               input={
                 <OutlinedInput
                 labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
@@ -131,7 +137,7 @@ class FormAddress extends Component {
                 />
               }
             >
-              <MenuItem value=" ">Select your area from the list</MenuItem>
+              <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
               <MenuItem value={'Bredasdrop (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
               <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
@@ -148,9 +154,16 @@ class FormAddress extends Component {
           <TextField
             id="outlined-bare"
             className={classes.textField}
+            classes={{
+              root: classes.root,
+              focused: classes.focused
+            }}
             placeholder="Enter your street address"
             margin="normal"
             variant="outlined"
+            name="address"
+            value={this.state.value}
+            onChange={this.handleChange}
           />
           <FormHelperText className={classes.helperText}>
             Your address will remain strictly confidential
