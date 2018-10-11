@@ -54,6 +54,10 @@ const styles = theme => ({
     height: 48,
     backgroundColor: 'white',
     borderRadius: 4,
+
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)'
+    }
   },
 
   textField: {
@@ -62,7 +66,11 @@ const styles = theme => ({
     backgroundColor: 'white',
     borderRadius: 4,
     padding: 0,
-    margin: '8px 8px 4px 0px'
+    margin: '8px 8px 4px 0px',
+
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)'
+    }
   },
 
   helperText: {
@@ -86,14 +94,9 @@ const styles = theme => ({
       backgroundColor: '#CACACA',
       color: 'rgba(0, 0, 0, 0.38)'
     },
-
-    '&$focused': {
-      borderColor: 'red'
-    }
   },
 
   disabled: {},
-  focused: {},
 
 });
 
@@ -154,10 +157,6 @@ class FormAddress extends Component {
           <TextField
             id="outlined-bare"
             className={classes.textField}
-            classes={{
-              root: classes.root,
-              focused: classes.focused
-            }}
             placeholder="Enter your street address"
             margin="normal"
             variant="outlined"
@@ -174,7 +173,7 @@ class FormAddress extends Component {
                     disabled: classes.disabled
                   }}
                   className={classes.textFieldButton}
-                  disabled
+                  disabled={!this.state.area || !this.state.address}
           >
             Create form
           </Button>
