@@ -42,7 +42,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "eslint"
+      "pre-push": "npm test"
     }
   }
 }
