@@ -15,6 +15,25 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
 
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+
+  button: {
+    minWidth: 46,
+    width: 46,
+    height: 46,
+    backgroundColor: '#46A440',
+    marginRight: 16,
+  },
+
+  link: {
+    textDecoration: 'none',
+    color: 'white'
+  },
+
   text: {
     color: 'white',
     fontSize: '1.7rem',
@@ -25,7 +44,7 @@ const styles = theme => ({
     fontSize: '1.4rem',
   },
 
-  link: {
+  ref: {
     color: 'white',
     textDecoration: 'none',
     '&:hover': {
@@ -41,13 +60,20 @@ class ReportContact extends Component {
 
     return (
       <React.Fragment>
-        <Typography className={classes.text}>
-          Contact person
-        </Typography>
+        <div className={classes.container}>
+          <Button variant="contained" className={classes.button}>
+            <Link to='/' className={classes.link}>
+              <ArrowBack />
+            </Link>
+          </Button>
+          <Typography className={classes.text}>
+            Contact person:
+          </Typography>
+        </div>
         <Typography className={classes.textSmall}>
           Mr Walter Linnert<br />
-          <a href="mailto:walterl@capeaghulas.gov.za" className={classes.link}>walterl@capeaghulas.gov.za<br /></a>
-          <a href="tel: +272842556011" className={classes.link}>028 425 56011<br /></a>
+          <a href="mailto:walterl@capeaghulas.gov.za" className={classes.ref}>walterl@capeaghulas.gov.za<br /></a>
+          <a href="tel: +272842556011" className={classes.ref}>028 425 56011<br /></a>
           Dirkie Uys Street, Bredasdorp, 7280
         </Typography>
       </React.Fragment>
