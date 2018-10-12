@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SelectAction from './components/SelectAction';
 import FormAddress from './components/FormAddress';
@@ -80,13 +80,14 @@ class App extends Component {
           />
         <CardContent className={classes.cardContent}>
             <Router>
-              <div>
+              <Switch>
                 <Route exact path='/' component={SelectAction} />
                 <Route exact path='/report' component={FormAddress} />
-                <Route exact path='/view' component={BasicLocation} />
-                <Route path='/view/schedule' component={WasteSchedule} />
-                <Route path='/view/sites' component={DumpingSites} />
-              </div>
+                <Route exact path='/view/schedule' component={BasicLocation} />
+                <Route exact path='/view/sites' component={BasicLocation} />
+                <Route exact path='/view/schedule/:area' component={WasteSchedule} />
+                <Route exact path='/view/sites/:area' component={DumpingSites} />
+              </Switch>
             </Router>
         </CardContent>
         <FeedbackButton/>

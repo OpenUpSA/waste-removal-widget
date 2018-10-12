@@ -58,12 +58,12 @@ class SelectAction extends Component {
               </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/view' className={classes.link}>
+              <Link to='/view/schedule' className={classes.link}>
                 View my refuse collection schedule
               </Link>
             </Button>
             <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/view' className={classes.link}>
+              <Link to='/view/sites' className={classes.link}>
                 Find my nearest dumping site
               </Link>
             </Button>

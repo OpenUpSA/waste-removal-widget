@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -27,8 +28,14 @@ const styles = theme => ({
     marginRight: 16,
   },
 
-  text: {
+  link: {
+    textDecoration: 'none',
     color: 'white'
+  },
+
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
   },
 
   cardContainer: {
@@ -93,19 +100,21 @@ const styles = theme => ({
 
 class DumpingSites extends Component {
 
+
   render(){
     const { classes } = this.props;
+    const area = this.props.location.state.area;
 
     return (
       <React.Fragment>
         <div className={classes.container}>
-          {/*Back button - return to home screen*/}
           <Button variant="contained" className={classes.button}>
-            <ArrowBack />
+            <Link to='/' className={classes.link}>
+              <ArrowBack />
+            </Link>
           </Button>
           <Typography className={classes.text}>
-            {/*Bredasdorp to be replaced with selected town/area name*/}
-            Bredasdorp nearest dumping sites
+            { area } nearest dumping sites
           </Typography>
         </div>
         <div className={classes.cardContainer}>
