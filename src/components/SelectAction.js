@@ -42,16 +42,16 @@ class SelectAction extends Component {
             Select an action:
           </Typography>
           <div>
-            <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/report' className={classes.link}>
-                Report a stolen wheelie bin
-              </Link>
-            </Button>
-            <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/report' className={classes.link}>
-                Report a damaged wheelie bin
-              </Link>
-            </Button>
+            {/*<Button variant="contained" size="large" className={classes.button}>*/}
+              {/*<Link to='/report' className={classes.link}>*/}
+                {/*Report a stolen wheelie bin*/}
+              {/*</Link>*/}
+            {/*</Button>*/}
+            {/*<Button variant="contained" size="large" className={classes.button}>*/}
+              {/*<Link to='/report' className={classes.link}>*/}
+                {/*Report a damaged wheelie bin*/}
+              {/*</Link>*/}
+            {/*</Button>*/}
             <Button variant="contained"  size="large" className={classes.button}>
               <Link to='/report' className={classes.link}>
                 Report uncollected refuse
