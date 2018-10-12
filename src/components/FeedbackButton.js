@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -19,6 +19,16 @@ const styles = theme => ({
       padding: '36px 48px 53px 48px',
     },
   },
+
+  buttonLink: {
+    textDecoration: 'none',
+    margin: '0 0 0 auto',
+    [theme.breakpoints.up('sm')]: {
+      width: 'auto',
+      justifySelf: 'flex-end'
+    }
+  },
+
   buttonRight: {
     backgroundColor:  'rgba(0, 0, 0, 0.3)',
     color: 'white',
@@ -26,12 +36,9 @@ const styles = theme => ({
     width: '100%',
     padding: 16,
     fontWeight: 600,
-    margin: '0 0 0 auto',
-    [theme.breakpoints.up('sm')]: {
-      width: 'auto',
-      justifySelf: 'flex-end'
-    }
+
   },
+
   buttonDownload: {
     textTransform: 'none',
     width: '100%',
@@ -60,9 +67,11 @@ class SelectAction extends Component {
                  }>
           </Route>
         </Router>
-        <Button variant="contained" className={classes.buttonRight}>
-          Provide feedback on this tool
-        </Button>
+        <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" className={classes.buttonLink}>
+          <Button variant="contained" className={classes.buttonRight}>
+            Provide feedback on this tool
+          </Button>
+        </a>
       </CardActions>
     );
   }
