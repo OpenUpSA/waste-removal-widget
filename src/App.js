@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SelectAction from './components/SelectAction';
-import FormAddress from './components/FormAddress';
+import ReportContact from './components/ReportContact';
 import BasicLocation from './components/BasicLocation';
 import WasteSchedule from './components/WasteSchedule';
 import DumpingSites from './components/DumpingSites';
@@ -82,7 +82,7 @@ class App extends Component {
             <Router>
               <Switch>
                 <Route exact path='/' component={SelectAction} />
-                <Route exact path='/report' component={FormAddress} />
+                <Route exact path='/report' component={ReportContact} />
                 <Route exact path='/view/schedule' component={BasicLocation} />
                 <Route exact path='/view/sites' component={BasicLocation} />
                 <Route exact path='/view/schedule/:area' component={WasteSchedule} />

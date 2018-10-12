@@ -29,6 +29,9 @@ const styles = theme => ({
   link: {
     textDecoration: 'none',
     color: 'black'
+  },
+  bylaws: {
+    textDecoration: 'none'
   }
 });
 
@@ -42,16 +45,16 @@ class SelectAction extends Component {
             Select an action:
           </Typography>
           <div>
-            <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/report' className={classes.link}>
-                Report a stolen wheelie bin
-              </Link>
-            </Button>
-            <Button variant="contained" size="large" className={classes.button}>
-              <Link to='/report' className={classes.link}>
-                Report a damaged wheelie bin
-              </Link>
-            </Button>
+            {/*<Button variant="contained" size="large" className={classes.button}>*/}
+              {/*<Link to='/report' className={classes.link}>*/}
+                {/*Report a stolen wheelie bin*/}
+              {/*</Link>*/}
+            {/*</Button>*/}
+            {/*<Button variant="contained" size="large" className={classes.button}>*/}
+              {/*<Link to='/report' className={classes.link}>*/}
+                {/*Report a damaged wheelie bin*/}
+              {/*</Link>*/}
+            {/*</Button>*/}
             <Button variant="contained"  size="large" className={classes.button}>
               <Link to='/report' className={classes.link}>
                 Report uncollected refuse
@@ -67,9 +70,11 @@ class SelectAction extends Component {
                 Find my nearest dumping site
               </Link>
             </Button>
-            <Button variant="contained" size="large" className={classes.button}>
-              View my local refuse by-laws
-            </Button>
+            <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" className={classes.bylaws}>
+              <Button variant="contained" size="large" className={classes.button}>
+                View my local refuse by-laws
+              </Button>
+            </a>
           </div>
       </React.Fragment>
     );
@@ -77,5 +82,3 @@ class SelectAction extends Component {
 }
 
 export default withStyles(styles)(SelectAction);
-
-// TODO: loop through buttons and create; link to next screens
