@@ -16,11 +16,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "eslint src"
+    "test": "npm run build & npm run test:eslint src",
+    "test:scripts": "react-scripts test",
+    "test:lint": "eslint src",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "airbnb"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -29,7 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.3.0",
+    "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
@@ -38,7 +43,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test"
+      "pre-push": "eslint"
     }
   }
 }
