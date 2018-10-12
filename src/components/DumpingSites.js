@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -8,15 +8,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 
-import Button from "@material-ui/core/Button/Button";
-import {ArrowBack} from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography/Typography";
+import Button from '@material-ui/core/Button/Button';
+import { ArrowBack } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const styles = theme => ({
   container: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   button: {
@@ -30,7 +30,7 @@ const styles = theme => ({
 
   link: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
   },
 
   text: {
@@ -42,66 +42,64 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row'
-    }
+      flexDirection: 'row',
+    },
   },
 
   card: {
     marginTop: 16,
     width: 'auto',
-    [theme.breakpoints.up('sm')]:{
+    [theme.breakpoints.up('sm')]: {
       marginRight: 16,
       width: '50%',
       '&:last-child': {
         marginRight: 0,
-      }
-    }
+      },
+    },
   },
 
   cardHeader: {
     backgroundColor: '#004B4F',
     height: 50,
-    padding: 0
+    padding: 0,
   },
 
   cardHeaderButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.32)',
     borderRadius: '0 4px 0 0',
     width: 50,
-    height: 50
+    height: 50,
   },
 
   title: {
     fontSize: 16,
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 
   action: {
-    margin: 0
+    margin: 0,
   },
 
   cardContentText: {
-    color:'#004B4F',
-    textAlign: 'center'
+    color: '#004B4F',
+    textAlign: 'center',
   },
 
   cardActions: {
-    backgroundColor: 'rgba(0, 0, 0, 0.08)'
+    backgroundColor: 'rgba(0, 0, 0, 0.08)',
   },
 
   cardActionsText: {
-    color:'#004B4F',
+    color: '#004B4F',
     textAlign: 'center',
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 
 class DumpingSites extends Component {
-
-
-  render(){
+  render() {
     const { classes } = this.props;
     const area = this.props.location.state.area;
 
@@ -109,75 +107,77 @@ class DumpingSites extends Component {
       <React.Fragment>
         <div className={classes.container}>
           <Button variant="contained" className={classes.button}>
-            <Link to='/' className={classes.link}>
+            <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
           </Button>
           <Typography className={classes.text}>
-            { area } nearest dumping sites
+            { area }
+            {' '}
+nearest dumping sites
           </Typography>
         </div>
         <div className={classes.cardContainer}>
           <Card className={classes.card}>
-            {/*Title to be updated dynamically*/}
-            <CardHeader className={classes.cardHeader}
-                        classes={{
-                          title: classes.title,
-                          action: classes.action,
-                        }}
-                        action={
-                          <Button className={classes.cardHeaderButton}>
-                            <InfoOutlinedIcon />
-                          </Button>
-                        }
-                        title='Main Road, Struisbaai'
-            >
-            </CardHeader>
+            {/* Title to be updated dynamically */}
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <Button className={classes.cardHeaderButton}>
+                  <InfoOutlinedIcon />
+                </Button>
+)}
+              title="Main Road, Struisbaai"
+            />
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
+                {/* Content to be loaded dynamically */}
                 Struisbaai Dump
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
+                {/* Date to be loaded dynamically */}
                 Open today from 08h00 - 18h00
               </Typography>
             </CardActions>
           </Card>
           <Card className={classes.card}>
-            {/*Title to be updated dynamically*/}
-            <CardHeader className={classes.cardHeader}
-                        classes={{
-                          title: classes.title,
-                          action: classes.action,
-                        }}
-                        action={
-                          <Button className={classes.cardHeaderButton}>
-                            <InfoOutlinedIcon />
-                          </Button>
-                        }
-                        title='Limeworks Road, Bredasdorp'
-            >
-            </CardHeader>
+            {/* Title to be updated dynamically */}
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <Button className={classes.cardHeaderButton}>
+                  <InfoOutlinedIcon />
+                </Button>
+)}
+              title="Limeworks Road, Bredasdorp"
+            />
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
+                {/* Content to be loaded dynamically */}
                 Bredasdorp Waste Facility
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
+                {/* Date to be loaded dynamically */}
                 Closed today
               </Typography>
             </CardActions>
           </Card>
         </div>
       </React.Fragment>
-    )
-  };
-};
+    );
+  }
+}
 
 export default withStyles(styles)(DumpingSites);

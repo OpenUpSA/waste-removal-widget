@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,12 +25,12 @@ const styles = theme => ({
     margin: '0 0 0 auto',
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
-      justifySelf: 'flex-end'
-    }
+      justifySelf: 'flex-end',
+    },
   },
 
   buttonRight: {
-    backgroundColor:  'rgba(0, 0, 0, 0.3)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     color: 'white',
     textTransform: 'none',
     width: '100%',
@@ -48,8 +48,8 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
       marginBottom: 0,
-    }
-  }
+    },
+  },
 });
 
 class SelectAction extends Component {
@@ -58,15 +58,15 @@ class SelectAction extends Component {
 
     return (
       <CardActions className={classes.cardActions}>
-        {/*<Router>*/}
-          {/*<Route exact path='/view/schedule'*/}
-                 {/*render={()=>*/}
-                   {/*<Button variant='contained' className={classes.buttonDownload}>*/}
-                    {/*Download this collection schedule*/}
-                   {/*</Button>*/}
-                 {/*}>*/}
-          {/*</Route>*/}
-        {/*</Router>*/}
+        {/* <Router> */}
+        {/* <Route exact path='/view/schedule' */}
+        {/* render={()=> */}
+        {/* <Button variant='contained' className={classes.buttonDownload}> */}
+        {/* Download this collection schedule */}
+        {/* </Button> */}
+        {/* }> */}
+        {/* </Route> */}
+        {/* </Router> */}
         <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" className={classes.buttonLink}>
           <Button variant="contained" className={classes.buttonRight}>
             Provide feedback on this tool
