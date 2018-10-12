@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -31,7 +31,7 @@ const styles = theme => ({
 
   link: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
   },
 
   text: {
@@ -42,7 +42,7 @@ const styles = theme => ({
   form: {
     maxWidth: 466,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   formControl: {
@@ -54,8 +54,8 @@ const styles = theme => ({
     borderRadius: 4,
 
     '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)'
-    }
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
   },
 
   textField: {
@@ -67,8 +67,8 @@ const styles = theme => ({
     margin: '8px 8px 4px 0px',
 
     '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)'
-    }
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
   },
 
   helperText: {
@@ -77,7 +77,7 @@ const styles = theme => ({
     marginLeft: 15,
   },
 
-  textFieldButton : {
+  textFieldButton: {
     backgroundColor: '#46A440',
     color: 'white',
     textTransform: 'none',
@@ -88,13 +88,13 @@ const styles = theme => ({
 
     [theme.breakpoints.up('sm')]: {
       width: 118,
-    }
+    },
   },
 
   root: {
     '&$disabled': {
       backgroundColor: '#CACACA',
-      color: 'rgba(0, 0, 0, 0.38)'
+      color: 'rgba(0, 0, 0, 0.38)',
     },
   },
 
@@ -108,7 +108,7 @@ class FormAddress extends Component {
     address: '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -119,7 +119,7 @@ class FormAddress extends Component {
       <React.Fragment>
         <div className={classes.container}>
           <Button variant="contained" className={classes.button}>
-            <Link to='/' className={classes.link}>
+            <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
           </Button>
@@ -134,26 +134,26 @@ class FormAddress extends Component {
               value={this.state.area}
               onChange={this.handleChange}
               displayEmpty
-              input={
+              input={(
                 <OutlinedInput
-                labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
-                name="area"
-                id="outlined-area"
+                  labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+                  name="area"
+                  id="outlined-area"
                 />
-              }
+)}
             >
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
-              <MenuItem value={'Bredasdorp (Area 1)'}>Bredasdorp (Area 1)</MenuItem>
-              <MenuItem value={'Bredasdorp (Area 2)'}>Bredasdrop (Area 2)</MenuItem>
-              <MenuItem value={'Klipdale'}>Klipdale</MenuItem>
-              <MenuItem value={'L’Agulhas'}>L’Agulhas</MenuItem>
-              <MenuItem value={'Napier'}>Napier</MenuItem>
-              <MenuItem value={'Protem'}>Protem</MenuItem>
-              <MenuItem value={'Struisbaai'}>Struisbaai</MenuItem>
-              <MenuItem value={'Struisbaai Noord'}>Struisbaai Noord</MenuItem>
-              <MenuItem value={'Suiderstrand'}>Suiderstrand</MenuItem>
-              <MenuItem value={'Waenhuiskrans (Arniston)'}>Waenhuiskrans (Arniston)</MenuItem>
-              <MenuItem value={'Zwelitsha'}>Zwelitsha</MenuItem>
+              <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>
+              <MenuItem value="Bredasdorp (Area 2)">Bredasdrop (Area 2)</MenuItem>
+              <MenuItem value="Klipdale">Klipdale</MenuItem>
+              <MenuItem value="L’Agulhas">L’Agulhas</MenuItem>
+              <MenuItem value="Napier">Napier</MenuItem>
+              <MenuItem value="Protem">Protem</MenuItem>
+              <MenuItem value="Struisbaai">Struisbaai</MenuItem>
+              <MenuItem value="Struisbaai Noord">Struisbaai Noord</MenuItem>
+              <MenuItem value="Suiderstrand">Suiderstrand</MenuItem>
+              <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
+              <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
           </FormControl>
           <TextField
@@ -169,13 +169,14 @@ class FormAddress extends Component {
           <FormHelperText className={classes.helperText}>
             Your address will remain strictly confidential
           </FormHelperText>
-          <Button variant="contained"
-                  classes={{
-                    root: classes.root,
-                    disabled: classes.disabled
-                  }}
-                  className={classes.textFieldButton}
-                  disabled={!this.state.area || !this.state.address}
+          <Button
+            variant="contained"
+            classes={{
+              root: classes.root,
+              disabled: classes.disabled,
+            }}
+            className={classes.textFieldButton}
+            disabled={!this.state.area || !this.state.address}
           >
             Create form
           </Button>

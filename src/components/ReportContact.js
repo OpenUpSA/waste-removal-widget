@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,7 +25,7 @@ const styles = theme => ({
 
   link: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
   },
 
   text: {
@@ -42,9 +42,9 @@ const styles = theme => ({
     color: 'white',
     textDecoration: 'none',
     '&:hover': {
-      color: '#CACACA'
-    }
-  }
+      color: '#CACACA',
+    },
+  },
 
 });
 
@@ -56,7 +56,7 @@ class ReportContact extends Component {
       <React.Fragment>
         <div className={classes.container}>
           <Button variant="contained" className={classes.button}>
-            <Link to='/' className={classes.link}>
+            <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
           </Button>
@@ -65,9 +65,16 @@ class ReportContact extends Component {
           </Typography>
         </div>
         <Typography className={classes.textSmall}>
-          Mr Walter Linnert<br />
-          <a href="mailto:walterl@capeaghulas.gov.za" className={classes.ref}>walterl@capeaghulas.gov.za<br /></a>
-          <a href="tel: +272842556011" className={classes.ref}>028 425 56011<br /></a>
+          Mr Walter Linnert
+          <br />
+          <a href="mailto:walterl@capeaghulas.gov.za" className={classes.ref}>
+walterl@capeaghulas.gov.za
+            <br />
+          </a>
+          <a href="tel: +272842556011" className={classes.ref}>
+028 425 56011
+            <br />
+          </a>
           Dirkie Uys Street, Bredasdorp, 7280
         </Typography>
       </React.Fragment>
