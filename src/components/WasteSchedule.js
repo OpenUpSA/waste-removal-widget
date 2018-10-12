@@ -105,6 +105,34 @@ class WasteSchedule extends Component {
     const { classes } = this.props;
     const area = this.props.location.state.area;
 
+    // Get dates for collections
+    const Monday = new Date();
+    Monday.setDate(Monday.getDate() + (1 + 7 - Monday.getDay()) % 7);
+
+    const Tuesday = new Date();
+    Tuesday.setDate(Tuesday.getDate() + (2 + 7 - Tuesday.getDay()) % 7);
+
+    const Wednesday = new Date();
+    Wednesday.setDate(Wednesday.getDate() + (3 + 7 - Wednesday.getDay()) % 7);
+
+    const Thursday = new Date();
+    Thursday.setDate(Thursday.getDate() + (4 + 7 - Thursday.getDay()) % 7);
+
+    // Set day of week per area - Household refuse and Recycling
+    let householdDay;
+
+    if ( area === `Bredasdorp (Area 1)` || `Struisbaai` || `L'Agulhas` || `Waenhuiskrans (Arniston)` ) {
+      householdDay = 'Monday';
+    }
+
+    if ( area === `Bredasdorp (Area 2)` || `Struisbaai Noord` || `Suiderstrand` ) {
+      householdDay = 'Tuesday';
+    }
+
+    if ( area === `Napier` ) {
+      householdDay = 'Thursday';
+    }
+
     return (
       <React.Fragment>
         <div className={classes.container}>
@@ -134,8 +162,7 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
-                Mondays
+                { householdDay }
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
@@ -162,7 +189,7 @@ class WasteSchedule extends Component {
             <CardContent>
               <Typography className={classes.cardContentText}>
                 {/*Content to be loaded dynamically*/}
-                Wednesdays & Fridays
+                Mondays & Wednesdays
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
@@ -188,8 +215,7 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
-                Thursdays
+                { householdDay }
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
