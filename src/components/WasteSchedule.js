@@ -69,13 +69,15 @@ const styles = theme => ({
     backgroundColor: 'rgba(255, 255, 255, 0.32)',
     borderRadius: '0 4px 0 0',
     width: 50,
+    minWidth: 50,
     height: 50
   },
 
   title: {
     fontSize: 16,
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginRight: '-50px',
   },
 
   action: {
@@ -104,6 +106,68 @@ class WasteSchedule extends Component {
   render(){
     const { classes } = this.props;
     const area = this.props.location.state.area;
+
+    // Get dates for collections
+    const Monday = new Date();
+    Monday.setDate(Monday.getDate() + (1 + 7 - Monday.getDay()) % 7);
+
+    const Tuesday = new Date();
+    Tuesday.setDate(Tuesday.getDate() + (2 + 7 - Tuesday.getDay()) % 7);
+
+    const Wednesday = new Date();
+    Wednesday.setDate(Wednesday.getDate() + (3 + 7 - Wednesday.getDay()) % 7);
+
+    const Thursday = new Date();
+    Thursday.setDate(Thursday.getDate() + (4 + 7 - Thursday.getDay()) % 7);
+
+    const Friday = new Date();
+    Friday.setDate(Friday.getDate() + (5 + 7 - Friday.getDay()) % 7);
+
+    // Set day of week per area - Household refuse and Recycling
+    let householdDay;
+
+    if ( area === `Bredasdorp (Area 1)` || `Struisbaai` || `L'Agulhas` || `Waenhuiskrans (Arniston)` ) {
+      householdDay = 'Monday';
+    }
+
+    if ( area === `Bredasdorp (Area 2)` || `Struisbaai Noord` || `Suiderstrand` ) {
+      householdDay = 'Tuesday';
+    }
+
+    if ( area === `Zwelitsha` || `Klipdale` || `Protem` ) {
+      householdDay = 'Wednesday';
+    }
+
+    if ( area === `Napier` ) {
+      householdDay = 'Thursday';
+    }
+
+    // Set date based on day of week
+    let collectionDate;
+    let businessDate;
+
+    if ( householdDay === 'Monday' ) {
+      collectionDate = Monday;
+    }
+
+    if ( householdDay === 'Tuesday' ) {
+      collectionDate = Tuesday;
+    }
+
+    if ( householdDay === 'Wednesday' ) {
+      collectionDate = Wednesday;
+    }
+
+    if ( householdDay === 'Thursday' ) {
+      collectionDate = Thursday;
+    }
+
+    // Set next Business collection date
+    if ( Monday < Wednesday ) {
+      businessDate = Monday;
+    } else if ( Monday > Wednesday ) {
+      businessDate = Wednesday;
+    }
 
     return (
       <React.Fragment>
@@ -134,14 +198,12 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
-                Mondays
+                { householdDay }
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 28 Nov 2018
+                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
@@ -161,14 +223,12 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
-                Wednesdays & Fridays
+                Mondays & Wednesdays
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 30 Nov 2018
+                Next collection: { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
@@ -188,14 +248,12 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
-                Thursdays
+                { householdDay }
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 31 Nov 2018
+                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
