@@ -69,13 +69,15 @@ const styles = theme => ({
     backgroundColor: 'rgba(255, 255, 255, 0.32)',
     borderRadius: '0 4px 0 0',
     width: 50,
+    minWidth: 50,
     height: 50
   },
 
   title: {
     fontSize: 16,
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginRight: '-50px',
   },
 
   action: {
@@ -130,6 +132,10 @@ class WasteSchedule extends Component {
 
     if ( area === `Bredasdorp (Area 2)` || `Struisbaai Noord` || `Suiderstrand` ) {
       householdDay = 'Tuesday';
+    }
+
+    if ( area === `Zwelitsha` || `Klipdale` || `Protem` ) {
+      householdDay = 'Wednesday';
     }
 
     if ( area === `Napier` ) {
@@ -197,7 +203,7 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { collectionDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
@@ -222,7 +228,7 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { businessDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection: { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
@@ -247,7 +253,7 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { collectionDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
