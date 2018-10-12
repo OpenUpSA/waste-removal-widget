@@ -118,6 +118,9 @@ class WasteSchedule extends Component {
     const Thursday = new Date();
     Thursday.setDate(Thursday.getDate() + (4 + 7 - Thursday.getDay()) % 7);
 
+    const Friday = new Date();
+    Friday.setDate(Friday.getDate() + (5 + 7 - Friday.getDay()) % 7);
+
     // Set day of week per area - Household refuse and Recycling
     let householdDay;
 
@@ -131,6 +134,25 @@ class WasteSchedule extends Component {
 
     if ( area === `Napier` ) {
       householdDay = 'Thursday';
+    }
+
+    // Set date based on day of week
+    let collectionDate;
+
+    if ( householdDay === 'Monday' ) {
+      collectionDate = Monday;
+    }
+
+    if ( householdDay === 'Tuesday' ) {
+      collectionDate = Tuesday;
+    }
+
+    if ( householdDay === 'Wednesday' ) {
+      collectionDate = Wednesday;
+    }
+
+    if ( householdDay === 'Thursday' ) {
+      collectionDate = Thursday;
     }
 
     return (
@@ -167,8 +189,7 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 28 Nov 2018
+                Next collection: { collectionDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
@@ -220,8 +241,7 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 31 Nov 2018
+                Next collection: { collectionDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
