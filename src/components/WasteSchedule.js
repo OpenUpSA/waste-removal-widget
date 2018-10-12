@@ -138,6 +138,7 @@ class WasteSchedule extends Component {
 
     // Set date based on day of week
     let collectionDate;
+    let businessDate;
 
     if ( householdDay === 'Monday' ) {
       collectionDate = Monday;
@@ -153,6 +154,13 @@ class WasteSchedule extends Component {
 
     if ( householdDay === 'Thursday' ) {
       collectionDate = Thursday;
+    }
+
+    // Set next Business collection date
+    if ( Monday < Wednesday ) {
+      businessDate = Monday;
+    } else if ( Monday > Wednesday ) {
+      businessDate = Wednesday;
     }
 
     return (
@@ -209,14 +217,12 @@ class WasteSchedule extends Component {
             </CardHeader>
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/*Content to be loaded dynamically*/}
                 Mondays & Wednesdays
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/*Date to be loaded dynamically*/}
-                Next collection: 30 Nov 2018
+                Next collection: { businessDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
