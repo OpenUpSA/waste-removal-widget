@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   text: {
@@ -35,50 +36,55 @@ const styles = theme => ({
   },
 });
 
-class SelectAction extends Component {
-  render() {
-    const { classes } = this.props;
+const SelectAction = (props) => {
+  const { classes } = props;
+  return (
+    <React.Fragment>
+      <Typography className={classes.text}>
+          Select an action:
+      </Typography>
+      <div>
+        {/* <Button variant="contained" size="large" className={classes.button}> */}
+        {/* <Link to='/report' className={classes.link}> */}
+        {/* Report a stolen wheelie bin */}
+        {/* </Link> */}
+        {/* </Button> */}
+        {/* <Button variant="contained" size="large" className={classes.button}> */}
+        {/* <Link to='/report' className={classes.link}> */}
+        {/* Report a damaged wheelie bin */}
+        {/* </Link> */}
+        {/* </Button> */}
+        <Button variant="contained" size="large" className={classes.button}>
+          <Link to="/report" className={classes.link}>
+              Report uncollected refuse
+          </Link>
+        </Button>
+        <Button variant="contained" size="large" className={classes.button}>
+          <Link to="/view/schedule" className={classes.link}>
+              View my refuse collection schedule
+          </Link>
+        </Button>
+        <Button variant="contained" size="large" className={classes.button}>
+          <Link to="/view/sites" className={classes.link}>
+              Find my nearest dumping site
+          </Link>
+        </Button>
+        <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" rel="noopener noreferrer" className={classes.bylaws}>
+          <Button variant="contained" size="large" className={classes.button}>
+              View my local refuse by-laws
+          </Button>
+        </a>
+      </div>
+    </React.Fragment>
+  );
+};
 
-    return (
-      <React.Fragment>
-        <Typography className={classes.text}>
-            Select an action:
-        </Typography>
-        <div>
-          {/* <Button variant="contained" size="large" className={classes.button}> */}
-          {/* <Link to='/report' className={classes.link}> */}
-          {/* Report a stolen wheelie bin */}
-          {/* </Link> */}
-          {/* </Button> */}
-          {/* <Button variant="contained" size="large" className={classes.button}> */}
-          {/* <Link to='/report' className={classes.link}> */}
-          {/* Report a damaged wheelie bin */}
-          {/* </Link> */}
-          {/* </Button> */}
-          <Button variant="contained" size="large" className={classes.button}>
-            <Link to="/report" className={classes.link}>
-                Report uncollected refuse
-            </Link>
-          </Button>
-          <Button variant="contained" size="large" className={classes.button}>
-            <Link to="/view/schedule" className={classes.link}>
-                View my refuse collection schedule
-            </Link>
-          </Button>
-          <Button variant="contained" size="large" className={classes.button}>
-            <Link to="/view/sites" className={classes.link}>
-                Find my nearest dumping site
-            </Link>
-          </Button>
-          <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" className={classes.bylaws}>
-            <Button variant="contained" size="large" className={classes.button}>
-                View my local refuse by-laws
-            </Button>
-          </a>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+SelectAction.defaultProps = {
+  classes: null,
+};
+
+SelectAction.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+};
 
 export default withStyles(styles)(SelectAction);
