@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
-const styles = theme => ({
+const styles = ({
   container: {
     display: 'flex',
     alignItems: 'center',

@@ -13,7 +13,7 @@ import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const styles = theme => ({
+const styles = ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -179,7 +179,7 @@ class WasteSchedule extends Component {
           <Typography className={classes.text}>
             { area }
             {' '}
-Waste collection schedule
+            Waste collection schedule
           </Typography>
         </div>
         <div className={classes.cardContainer}>
