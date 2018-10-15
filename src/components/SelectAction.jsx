@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -54,21 +53,15 @@ const SelectAction = (props) => {
         {/* Report a damaged wheelie bin */}
         {/* </Link> */}
         {/* </Button> */}
-        <Link to="/report" className={classes.link}>
-          <Button variant="contained" size="large" className={classes.button}>
-            Report uncollected refuse
-          </Button>
-        </Link>
-        <Link to="/view/schedule" className={classes.link}>
-          <Button variant="contained" size="large" className={classes.button}>
-              View my refuse collection schedule
-          </Button>
-        </Link>
-        <Link to="/view/schedule" className={classes.link}>
-          <Button variant="contained" size="large" className={classes.button}>
-            Find my nearest dumping site
-          </Button>
-        </Link>
+        <Button variant="contained" size="large" className={classes.button}>
+          Report uncollected refuse
+        </Button>
+        <Button variant="contained" size="large" className={classes.button}>
+            View my refuse collection schedule
+        </Button>
+        <Button variant="contained" size="large" className={classes.button}>
+          Find my nearest dumping site
+        </Button>
         <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" rel="noopener noreferrer" className={classes.bylaws}>
           <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws

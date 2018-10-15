@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -77,16 +76,11 @@ const App = (props) => {
         subheader={`${municipality} Municipality`}
       />
       <CardContent className={classes.cardContent}>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={SelectAction} />
-            <Route exact path="/report" component={ReportContact} />
-            <Route exact path="/view/schedule" component={BasicLocation} />
-            <Route exact path="/view/sites" component={BasicLocation} />
-            <Route exact path="/view/schedule/:area" component={WasteSchedule} />
-            <Route exact path="/view/sites/:area" component={DumpingSites} />
-          </Switch>
-        </Router>
+        <SelectAction />
+        <ReportContact />
+        <BasicLocation />
+        <WasteSchedule />
+        <DumpingSites />
       </CardContent>
       <FeedbackButton />
     </Card>

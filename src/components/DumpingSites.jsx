@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -106,9 +105,7 @@ const DumpingSites = (props) => {
     <React.Fragment>
       <div className={classes.container}>
         <Button variant="contained" className={classes.button}>
-          <Link to="/" className={classes.link}>
-            <ArrowBack />
-          </Link>
+          <ArrowBack />
         </Button>
         <Typography className={classes.text}>
           { area }
