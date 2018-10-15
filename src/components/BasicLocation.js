@@ -65,7 +65,7 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     if (this.state.area === '') {
       return (
@@ -93,7 +93,7 @@ class BasicLocation extends Component {
                     name="area"
                     id="outlined-area"
                   />
-)}
+                )}
               >
                 <MenuItem value="" disabled>Select your area from the list</MenuItem>
                 <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>

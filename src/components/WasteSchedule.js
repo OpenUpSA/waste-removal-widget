@@ -103,7 +103,7 @@ const styles = theme => ({
 
 class WasteSchedule extends Component {
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
     const area = this.props.location.state.area;
 
     // Get dates for collections
@@ -194,7 +194,7 @@ Waste collection schedule
                 <Button className={classes.cardHeaderButton}>
                   <InfoOutlinedIcon />
                 </Button>
-)}
+              )}
               title="Household refuse"
             />
             <CardContent>
@@ -221,7 +221,7 @@ Waste collection schedule
                 <Button className={classes.cardHeaderButton}>
                   <InfoOutlinedIcon />
                 </Button>
-)}
+              )}
               title="Business refuse"
             />
             <CardContent>
@@ -248,7 +248,7 @@ Waste collection schedule
                 <Button className={classes.cardHeaderButton}>
                   <InfoOutlinedIcon />
                 </Button>
-)}
+              )}
               title="Recycling"
             />
             <CardContent>
