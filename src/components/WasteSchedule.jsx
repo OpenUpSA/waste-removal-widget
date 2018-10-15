@@ -13,7 +13,7 @@ import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const styles = ({
+const styles = theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -103,8 +103,8 @@ const styles = ({
 
 class WasteSchedule extends Component {
   render() {
-    const {classes} = this.props;
-    const area = this.props.location.state.area;
+    const { classes } = this.props;
+    const { area } = this.props.location.state.area;
 
     // Get dates for collections
     const Monday = new Date();

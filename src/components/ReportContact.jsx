@@ -68,11 +68,11 @@ class ReportContact extends Component {
           Mr Walter Linnert
           <br />
           <a href="mailto:walterl@capeaghulas.gov.za" className={classes.ref}>
-walterl@capeaghulas.gov.za
+            walterl@capeaghulas.gov.za
             <br />
           </a>
           <a href="tel: +272842556011" className={classes.ref}>
-028 425 56011
+            028 425 56011
             <br />
           </a>
           Dirkie Uys Street, Bredasdorp, 7280

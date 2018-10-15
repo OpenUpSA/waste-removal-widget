@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,7 +12,6 @@ import BasicLocation from './components/BasicLocation';
 import WasteSchedule from './components/WasteSchedule';
 import DumpingSites from './components/DumpingSites';
 import FeedbackButton from './components/FeedbackButton';
-
 
 const styles = theme => ({
   card: {
@@ -61,38 +61,46 @@ const styles = theme => ({
   },
 });
 
-class App extends Component {
-  render() {
-    const { classes, municipality } = this.props;
+const App = (props) => {
+  const { classes, municipality } = props;
 
-    return (
-      <Card className={classes.card}>
-        <CardHeader
-          className={classes.cardHeader}
-          classes={{
-            title: classes.title,
-            subheader: classes.subheader,
-            content: classes.content,
-          }}
-          title="Waste removal assistant"
-          subheader={`${municipality} Municipality`}
-        />
-        <CardContent className={classes.cardContent}>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={SelectAction} />
-              <Route exact path="/report" component={ReportContact} />
-              <Route exact path="/view/schedule" component={BasicLocation} />
-              <Route exact path="/view/sites" component={BasicLocation} />
-              <Route exact path="/view/schedule/:area" component={WasteSchedule} />
-              <Route exact path="/view/sites/:area" component={DumpingSites} />
-            </Switch>
-          </Router>
-        </CardContent>
-        <FeedbackButton />
-      </Card>
-    );
-  }
-}
+  return (
+    <Card className={classes.card}>
+      <CardHeader
+        className={classes.cardHeader}
+        classes={{
+          title: classes.title,
+          subheader: classes.subheader,
+          content: classes.content,
+        }}
+        title="Waste removal assistant"
+        subheader={`${municipality} Municipality`}
+      />
+      <CardContent className={classes.cardContent}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={SelectAction} />
+            <Route exact path="/report" component={ReportContact} />
+            <Route exact path="/view/schedule" component={BasicLocation} />
+            <Route exact path="/view/sites" component={BasicLocation} />
+            <Route exact path="/view/schedule/:area" component={WasteSchedule} />
+            <Route exact path="/view/sites/:area" component={DumpingSites} />
+          </Switch>
+        </Router>
+      </CardContent>
+      <FeedbackButton />
+    </Card>
+  );
+};
+
+App.defaultProps = {
+  classes: null,
+  municipality: null,
+};
+
+App.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+  municipality: PropTypes.string,
+};
 
 export default withStyles(styles)(App);
