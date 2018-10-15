@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -8,15 +8,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 
-import Button from "@material-ui/core/Button/Button";
-import {ArrowBack} from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography/Typography";
+import Button from '@material-ui/core/Button/Button';
+import { ArrowBack } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const styles = theme => ({
   container: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   button: {
@@ -30,7 +30,7 @@ const styles = theme => ({
 
   link: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
   },
 
   text: {
@@ -43,26 +43,26 @@ const styles = theme => ({
     flexDirection: 'column',
     [theme.breakpoints.up('sm')]: {
       flexDirection: 'row',
-      flexWrap: 'wrap'
-    }
+      flexWrap: 'wrap',
+    },
   },
 
   card: {
     marginTop: 16,
     width: 'auto',
-    [theme.breakpoints.up('sm')]:{
+    [theme.breakpoints.up('sm')]: {
       marginRight: 16,
       width: 336,
       '&:last-child': {
         marginRight: 0,
-      }
-    }
+      },
+    },
   },
 
   cardHeader: {
     backgroundColor: '#004B4F',
     height: 50,
-    padding: 0
+    padding: 0,
   },
 
   cardHeaderButton: {
@@ -70,7 +70,7 @@ const styles = theme => ({
     borderRadius: '0 4px 0 0',
     width: 50,
     minWidth: 50,
-    height: 50
+    height: 50,
   },
 
   title: {
@@ -81,29 +81,28 @@ const styles = theme => ({
   },
 
   action: {
-    margin: 0
+    margin: 0,
   },
 
   cardContentText: {
-    color:'#004B4F',
-    textAlign: 'center'
+    color: '#004B4F',
+    textAlign: 'center',
   },
 
   cardActions: {
-    backgroundColor: 'rgba(0, 0, 0, 0.08)'
+    backgroundColor: 'rgba(0, 0, 0, 0.08)',
   },
 
   cardActionsText: {
-    color:'#004B4F',
+    color: '#004B4F',
     textAlign: 'center',
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 
 class WasteSchedule extends Component {
-
-  render(){
+  render() {
     const { classes } = this.props;
     const area = this.props.location.state.area;
 
@@ -126,19 +125,19 @@ class WasteSchedule extends Component {
     // Set day of week per area - Household refuse and Recycling
     let householdDay;
 
-    if ( area === `Bredasdorp (Area 1)` || `Struisbaai` || `L'Agulhas` || `Waenhuiskrans (Arniston)` ) {
+    if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
       householdDay = 'Monday';
     }
 
-    if ( area === `Bredasdorp (Area 2)` || `Struisbaai Noord` || `Suiderstrand` ) {
+    if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
       householdDay = 'Tuesday';
     }
 
-    if ( area === `Zwelitsha` || `Klipdale` || `Protem` ) {
+    if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
       householdDay = 'Wednesday';
     }
 
-    if ( area === `Napier` ) {
+    if (area === 'Napier') {
       householdDay = 'Thursday';
     }
 
@@ -146,26 +145,26 @@ class WasteSchedule extends Component {
     let collectionDate;
     let businessDate;
 
-    if ( householdDay === 'Monday' ) {
+    if (householdDay === 'Monday') {
       collectionDate = Monday;
     }
 
-    if ( householdDay === 'Tuesday' ) {
+    if (householdDay === 'Tuesday') {
       collectionDate = Tuesday;
     }
 
-    if ( householdDay === 'Wednesday' ) {
+    if (householdDay === 'Wednesday') {
       collectionDate = Wednesday;
     }
 
-    if ( householdDay === 'Thursday' ) {
+    if (householdDay === 'Thursday') {
       collectionDate = Thursday;
     }
 
     // Set next Business collection date
-    if ( Monday < Wednesday ) {
+    if (Monday < Wednesday) {
       businessDate = Monday;
-    } else if ( Monday > Wednesday ) {
+    } else if (Monday > Wednesday) {
       businessDate = Wednesday;
     }
 
@@ -173,29 +172,31 @@ class WasteSchedule extends Component {
       <React.Fragment>
         <div className={classes.container}>
           <Button variant="contained" className={classes.button}>
-            <Link to='/' className={classes.link}>
+            <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
           </Button>
           <Typography className={classes.text}>
-            { area } Waste collection schedule
+            { area }
+            {' '}
+Waste collection schedule
           </Typography>
         </div>
         <div className={classes.cardContainer}>
           <Card className={classes.card}>
-            <CardHeader className={classes.cardHeader}
-                        classes={{
-                          title: classes.title,
-                          action: classes.action,
-                        }}
-                        action={
-                          <Button className={classes.cardHeaderButton}>
-                            <InfoOutlinedIcon />
-                          </Button>
-                        }
-                        title='Household refuse'
-            >
-            </CardHeader>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <Button className={classes.cardHeaderButton}>
+                  <InfoOutlinedIcon />
+                </Button>
+)}
+              title="Household refuse"
+            />
             <CardContent>
               <Typography className={classes.cardContentText}>
                 { householdDay }
@@ -203,24 +204,26 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection:
+                {' '}
+                { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
           <Card className={classes.card}>
-            <CardHeader className={classes.cardHeader}
-                        classes={{
-                          title: classes.title,
-                          action: classes.action,
-                        }}
-                        action={
-                          <Button className={classes.cardHeaderButton}>
-                            <InfoOutlinedIcon />
-                          </Button>
-                        }
-                        title='Business refuse'
-            >
-            </CardHeader>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <Button className={classes.cardHeaderButton}>
+                  <InfoOutlinedIcon />
+                </Button>
+)}
+              title="Business refuse"
+            />
             <CardContent>
               <Typography className={classes.cardContentText}>
                 Mondays & Wednesdays
@@ -228,24 +231,26 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection:
+                {' '}
+                { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
           <Card className={classes.card}>
-            <CardHeader className={classes.cardHeader}
-                        classes={{
-                          title: classes.title,
-                          action: classes.action,
-                        }}
-                        action={
-                          <Button className={classes.cardHeaderButton}>
-                            <InfoOutlinedIcon />
-                          </Button>
-                        }
-                        title='Recycling'
-            >
-            </CardHeader>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <Button className={classes.cardHeaderButton}>
+                  <InfoOutlinedIcon />
+                </Button>
+)}
+              title="Recycling"
+            />
             <CardContent>
               <Typography className={classes.cardContentText}>
                 { householdDay }
@@ -253,14 +258,16 @@ class WasteSchedule extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                Next collection: { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+                Next collection:
+                {' '}
+                { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
               </Typography>
             </CardActions>
           </Card>
         </div>
       </React.Fragment>
-    )
-  };
-};
+    );
+  }
+}
 
 export default withStyles(styles)(WasteSchedule);
