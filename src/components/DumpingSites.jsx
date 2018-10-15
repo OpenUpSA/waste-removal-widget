@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button/Button';
 import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   container: {
@@ -98,86 +99,93 @@ const styles = theme => ({
 });
 
 
-class DumpingSites extends Component {
-  render() {
-    const { classes } = this.props;
-    const area = this.props.location.state.area;
+const DumpingSites = (props) => {
+  const { classes, area } = props;
+  // const area = this.props.location.state.area;
+  return (
+    <React.Fragment>
+      <div className={classes.container}>
+        <Button variant="contained" className={classes.button}>
+          <Link to="/" className={classes.link}>
+            <ArrowBack />
+          </Link>
+        </Button>
+        <Typography className={classes.text}>
+          { area }
+          {' '}
+          nearest dumping sites
+        </Typography>
+      </div>
+      <div className={classes.cardContainer}>
+        <Card className={classes.card}>
+          {/* Title to be updated dynamically */}
+          <CardHeader
+            className={classes.cardHeader}
+            classes={{
+              title: classes.title,
+              action: classes.action,
+            }}
+            action={(
+              <Button className={classes.cardHeaderButton}>
+                <InfoOutlinedIcon />
+              </Button>
+            )}
+            title="Main Road, Struisbaai"
+          />
+          <CardContent>
+            <Typography className={classes.cardContentText}>
+              {/* Content to be loaded dynamically */}
+              Struisbaai Dump
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Typography className={classes.cardActionsText}>
+              {/* Date to be loaded dynamically */}
+              Open today from 08h00 - 18h00
+            </Typography>
+          </CardActions>
+        </Card>
+        <Card className={classes.card}>
+          {/* Title to be updated dynamically */}
+          <CardHeader
+            className={classes.cardHeader}
+            classes={{
+              title: classes.title,
+              action: classes.action,
+            }}
+            action={(
+              <Button className={classes.cardHeaderButton}>
+                <InfoOutlinedIcon />
+              </Button>
+            )}
+            title="Limeworks Road, Bredasdorp"
+          />
+          <CardContent>
+            <Typography className={classes.cardContentText}>
+              {/* Content to be loaded dynamically */}
+              Bredasdorp Waste Facility
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Typography className={classes.cardActionsText}>
+              {/* Date to be loaded dynamically */}
+              Closed today
+            </Typography>
+          </CardActions>
+        </Card>
+      </div>
+    </React.Fragment>
+  );
+};
 
-    return (
-      <React.Fragment>
-        <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to="/" className={classes.link}>
-              <ArrowBack />
-            </Link>
-          </Button>
-          <Typography className={classes.text}>
-            { area }
-            {' '}
-nearest dumping sites
-          </Typography>
-        </div>
-        <div className={classes.cardContainer}>
-          <Card className={classes.card}>
-            {/* Title to be updated dynamically */}
-            <CardHeader
-              className={classes.cardHeader}
-              classes={{
-                title: classes.title,
-                action: classes.action,
-              }}
-              action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon />
-                </Button>
-)}
-              title="Main Road, Struisbaai"
-            />
-            <CardContent>
-              <Typography className={classes.cardContentText}>
-                {/* Content to be loaded dynamically */}
-                Struisbaai Dump
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
-                {/* Date to be loaded dynamically */}
-                Open today from 08h00 - 18h00
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={classes.card}>
-            {/* Title to be updated dynamically */}
-            <CardHeader
-              className={classes.cardHeader}
-              classes={{
-                title: classes.title,
-                action: classes.action,
-              }}
-              action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon />
-                </Button>
-)}
-              title="Limeworks Road, Bredasdorp"
-            />
-            <CardContent>
-              <Typography className={classes.cardContentText}>
-                {/* Content to be loaded dynamically */}
-                Bredasdorp Waste Facility
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
-                {/* Date to be loaded dynamically */}
-                Closed today
-              </Typography>
-            </CardActions>
-          </Card>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+DumpingSites.defaultProps = {
+  classes: null,
+  area: null,
+};
+
+DumpingSites.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+  area: PropTypes.string,
+};
 
 export default withStyles(styles)(DumpingSites);

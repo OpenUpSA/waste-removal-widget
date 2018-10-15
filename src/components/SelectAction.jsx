@@ -54,21 +54,21 @@ const SelectAction = (props) => {
         {/* Report a damaged wheelie bin */}
         {/* </Link> */}
         {/* </Button> */}
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/report" className={classes.link}>
-              Report uncollected refuse
-          </Link>
-        </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/view/schedule" className={classes.link}>
+        <Link to="/report" className={classes.link}>
+          <Button variant="contained" size="large" className={classes.button}>
+            Report uncollected refuse
+          </Button>
+        </Link>
+        <Link to="/view/schedule" className={classes.link}>
+          <Button variant="contained" size="large" className={classes.button}>
               View my refuse collection schedule
-          </Link>
-        </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/view/sites" className={classes.link}>
-              Find my nearest dumping site
-          </Link>
-        </Button>
+          </Button>
+        </Link>
+        <Link to="/view/schedule" className={classes.link}>
+          <Button variant="contained" size="large" className={classes.button}>
+            Find my nearest dumping site
+          </Button>
+        </Link>
         <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" rel="noopener noreferrer" className={classes.bylaws}>
           <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws
