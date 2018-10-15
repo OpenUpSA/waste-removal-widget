@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   cardActions: {
@@ -51,20 +52,26 @@ const styles = theme => ({
   },
 });
 
-class SelectAction extends Component {
-  render() {
-    const { classes } = this.props;
+const SelectAction = (props) => {
+  const { classes } = props;
 
-    return (
-      <CardActions className={classes.cardActions}>
-        <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" rel="noopener noreferrer" className={classes.buttonLink}>
-          <Button variant="contained" className={classes.buttonRight}>
-            Provide feedback on this tool
-          </Button>
-        </a>
-      </CardActions>
-    );
-  }
-}
+  return (
+    <CardActions className={classes.cardActions}>
+      <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" rel="noopener noreferrer" className={classes.buttonLink}>
+        <Button variant="contained" className={classes.buttonRight}>
+          Provide feedback on this tool
+        </Button>
+      </a>
+    </CardActions>
+  );
+};
+
+SelectAction.defaultProps = {
+  classes: null,
+};
+
+SelectAction.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+};
 
 export default withStyles(styles)(SelectAction);

@@ -65,7 +65,7 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     if (this.state.area === '') {
       return (
@@ -77,7 +77,7 @@ class BasicLocation extends Component {
               </Link>
             </Button>
             <Typography className={classes.text}>
-                Select your area:
+              Select your area:
             </Typography>
           </div>
           <form autoComplete="off" className={classes.form}>
@@ -86,11 +86,11 @@ class BasicLocation extends Component {
                 className={classes.select}
                 value={this.state.area}
                 onChange={this.handleChange}
+                name="area"
                 displayEmpty
                 input={(
                   <OutlinedInput
                     labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
-                    name="area"
                     id="outlined-area"
                   />
                 )}
