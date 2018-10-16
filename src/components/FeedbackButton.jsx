@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   cardActions: {
@@ -52,29 +52,40 @@ const styles = theme => ({
   },
 });
 
-class SelectAction extends Component {
-  render() {
-    const { classes } = this.props;
+const FeedbackButton = (props) => {
+  const { classes } = props;
 
-    return (
-      <CardActions className={classes.cardActions}>
-        {/* <Router> */}
-        {/* <Route exact path='/view/schedule' */}
-        {/* render={()=> */}
-        {/* <Button variant='contained' className={classes.buttonDownload}> */}
-        {/* Download this collection schedule */}
-        {/* </Button> */}
-        {/* }> */}
-        {/* </Route> */}
-        {/* </Router> */}
-        <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" className={classes.buttonLink}>
-          <Button variant="contained" className={classes.buttonRight}>
-            Provide feedback on this tool
-          </Button>
-        </a>
-      </CardActions>
-    );
-  }
-}
+  return (
+    <CardActions className={classes.cardActions}>
+      {/* <Router> */}
+      {/* <Route exact path='/view/schedule' */}
+      {/* render={()=> */}
+      {/* <Button variant='contained' className={classes.buttonDownload}> */}
+      {/* Download this collection schedule */}
+      {/* </Button> */}
+      {/* }> */}
+      {/* </Route> */}
+      {/* </Router> */}
+      <a
+        href="https://goo.gl/forms/hqMugxj4ngNGigGp2"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.buttonLink}
+      >
+        <Button variant="contained" className={classes.buttonRight}>
+          Provide feedback on this tool
+        </Button>
+      </a>
+    </CardActions>
+  );
+};
 
-export default withStyles(styles)(SelectAction);
+FeedbackButton.defaultProps = {
+  classes: null,
+};
+
+FeedbackButton.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+};
+
+export default withStyles(styles)(FeedbackButton);
