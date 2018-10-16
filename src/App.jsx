@@ -23,6 +23,19 @@ const VIEWS_LIST = {
   areaSites: DumpingSites,
 };
 
+const AREA_LIST = [
+  { value: 'Bredasdorp (Area 1)', text: 'Bredasdorp (Area 1)' },
+  { value: 'Bredasdorp (Area 2)', text: 'Bredasdorp (Area 2)' },
+  { value: 'Klipdale', text: 'Klipdale' },
+  { value: 'L’Agulhas', text: 'L’Agulhas' },
+  { value: 'Napier', text: 'Napier' },
+  { value: 'Protem', text: 'Protem' },
+  { value: 'Struisbaai', text: 'Struisbaai' },
+  { value: 'Struisbaai Noord', text: 'Struisbaai Noord' },
+  { value: 'Suiderstrand', text: 'Suiderstrand' },
+  { value: 'Waenhuiskrans (Arniston)', text: 'Waenhuiskrans (Arniston)' },
+  { value: 'Zwelitsha', text: 'Zwelitsha' },
+];
 
 const styles = theme => ({
   card: {
@@ -88,7 +101,7 @@ const App = (props) => {
         subheader={`${municipality} Municipality`}
       />
       <CardContent className={classes.cardContent}>
-        <DetermineView viewsList={VIEWS_LIST} default="home" />
+        <DetermineView viewsList={VIEWS_LIST} areaList={AREA_LIST} default="home" />
       </CardContent>
       <FeedbackButton />
     </Card>
