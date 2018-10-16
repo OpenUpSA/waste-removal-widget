@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -69,7 +70,12 @@ const SelectAction = (props) => {
               Find my nearest dumping site
           </Link>
         </Button>
-        <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" className={classes.bylaws}>
+        <a
+          href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.bylaws}
+        >
           <Button variant="contained" size="large" className={classes.button}>
               View my local refuse by-laws
           </Button>
@@ -77,6 +83,14 @@ const SelectAction = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+SelectAction.defaultProps = {
+  classes: null,
+};
+
+SelectAction.propTypes = {
+  classes: PropTypes.instanceOf(Object),
 };
 
 export default withStyles(styles)(SelectAction);
