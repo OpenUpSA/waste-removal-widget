@@ -69,10 +69,10 @@ class BasicLocation extends Component {
       props: event.target.value,
     }, () => {
       if (this.state.view === 'schedule') {
-        this.props.changeView('areaSchedules');
+        this.props.changeView('areaSchedules', [this.state.props]);
       }
       if (this.state.view === 'sites') {
-        this.props.changeView('areaSites');
+        this.props.changeView('areaSites', [this.state.props]);
       }
     });
   };

@@ -165,7 +165,8 @@ class WasteSchedule extends Component {
   };
 
   render() {
-    const { classes, area, changeView } = this.props;
+    const { classes, area, changeView, view, props } = this.props;
+    console.log(this.props)
     // Get dates for collections
     const Monday = new Date();
     Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));
