@@ -1,21 +1,5 @@
 import React, { Component } from 'react';
 
-import SelectAction from './SelectAction';
-import ReportContact from './ReportContact';
-import BasicLocation from './BasicLocation';
-import WasteSchedule from './WasteSchedule';
-import DumpingSites from './DumpingSites';
-
-
-const viewsList = {
-  'home': SelectAction,
-  'report': ReportContact,
-  'schedule': BasicLocation,
-  'sites': BasicLocation,
-  'areaSchedules': WasteSchedule,
-  'areaSites': DumpingSites,
-}
-
 
 class DetermineView extends Component {
   constructor(...props) {
@@ -32,10 +16,11 @@ class DetermineView extends Component {
   }
 
   changeView(view, props) {
-    this.setState({ view })
+    this.setState({ view, props })
   }
   
   render() {
+    const { viewsList } = this.props;
     const { view, props } = this.state;
     const { changeView } = this.events;
     const ViewComponent = viewsList[view];

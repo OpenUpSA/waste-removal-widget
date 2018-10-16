@@ -6,6 +6,21 @@ import CardContent from "@material-ui/core/CardContent/CardContent";
 
 import FeedbackButton from './components/FeedbackButton';
 import DetermineView from './components/DetermineView';
+import SelectAction from './components/SelectAction';
+import ReportContact from './components/ReportContact';
+import BasicLocation from './components/BasicLocation';
+import WasteSchedule from './components/WasteSchedule';
+import DumpingSites from './components/DumpingSites';
+
+
+const viewsList = {
+  'home': SelectAction,
+  'report': ReportContact,
+  'schedule': BasicLocation,
+  'sites': BasicLocation,
+  'areaSchedules': WasteSchedule,
+  'areaSites': DumpingSites,
+}
 
 
 const styles = theme => ({
@@ -73,7 +88,7 @@ class App extends Component {
           subheader={`${municipality} Municipality`}
           />
         <CardContent className={classes.cardContent}>
-          <DetermineView />
+          <DetermineView {...{ viewsList }} />
         </CardContent>
         <FeedbackButton/>
       </Card>
