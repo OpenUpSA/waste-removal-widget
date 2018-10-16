@@ -55,10 +55,11 @@ const SelectAction = (props) => {
           Report uncollected refuse
         </Button>
 
-        {/* <Button
+        <Button
           variant="contained"
           size="large"
           className={classes.button}
+          onClick={() => changeView('schedule')}
         >
           View my refuse collection schedule
         </Button>
@@ -66,9 +67,10 @@ const SelectAction = (props) => {
           variant="contained"
           size="large"
           className={classes.button}
+          onClick={() => changeView('sites')}
         >
           Find my nearest dumping site
-        </Button> */}
+        </Button>
 
         <a
           href={BY_LAWS_URL}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -66,15 +65,17 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, changeView } = this.props;
     const { area } = this.state;
     return (
       <React.Fragment>
         <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to="/" className={classes.link}>
-              <ArrowBack />
-            </Link>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={() => changeView('areaSchedules')}
+          >
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
               Select your area:
@@ -121,6 +122,7 @@ BasicLocation.defaultProps = {
 
 BasicLocation.propTypes = {
   classes: PropTypes.instanceOf(Object),
+  changeView: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(BasicLocation);

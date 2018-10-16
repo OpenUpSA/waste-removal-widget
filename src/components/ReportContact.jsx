@@ -20,6 +20,7 @@ const styles = {
     height: 46,
     backgroundColor: '#46A440',
     marginRight: 16,
+    color: 'white',
   },
 
   link: {
