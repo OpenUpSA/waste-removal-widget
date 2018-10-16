@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import SelectAction from './components/SelectAction';
-import ReportContact from './components/ReportContact';
-import BasicLocation from './components/BasicLocation';
-import WasteSchedule from './components/WasteSchedule';
-import DumpingSites from './components/DumpingSites';
-import FeedbackButton from './components/FeedbackButton';
-
 import { withStyles } from '@material-ui/core/styles';
-
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from "@material-ui/core/CardContent/CardContent";
+
+import FeedbackButton from './components/FeedbackButton';
+import DetermineView from './components/DetermineView';
+
 
 const styles = theme => ({
   card: {
@@ -79,16 +74,7 @@ class App extends Component {
           subheader={`${municipality} Municipality`}
           />
         <CardContent className={classes.cardContent}>
-            <Router>
-              <Switch>
-                <Route exact path='/' component={SelectAction} />
-                <Route exact path='/report' component={ReportContact} />
-                <Route exact path='/view/schedule' component={BasicLocation} />
-                <Route exact path='/view/sites' component={BasicLocation} />
-                <Route exact path='/view/schedule/:area' component={WasteSchedule} />
-                <Route exact path='/view/sites/:area' component={DumpingSites} />
-              </Switch>
-            </Router>
+          <DetermineView />
         </CardContent>
         <FeedbackButton/>
       </Card>
