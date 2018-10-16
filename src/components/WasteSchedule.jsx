@@ -76,6 +76,7 @@ const styles = theme => ({
     width: 50,
     minWidth: 50,
     height: 50,
+    margin: 0,
   },
 
   title: {
@@ -115,6 +116,14 @@ const styles = theme => ({
     margin: 0,
   },
 
+  dialogTitle: {
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
+    margin: 'auto',
+  },
+
   dialogContent: {
     padding: 24,
     textAlign: 'center',
@@ -125,20 +134,38 @@ const styles = theme => ({
 
 class WasteSchedule extends Component {
   state = {
-    open: false,
+    openHousehold: false,
+    openBusiness: false,
+    openRecycling: false,
   };
 
   // Dialog
-  handleClickOpen = () => {
-    this.setState({ open: true });
+  handleClickOpenHousehold = () => {
+    this.setState({ openHousehold: true });
   };
 
-  handleClickClose = () => {
-    this.setState({ open: false });
+  handleClickCloseHousehold = () => {
+    this.setState({ openHousehold: false });
+  };
+
+  handleClickOpenBusiness = () => {
+    this.setState({ openBusiness: true });
+  };
+
+  handleClickCloseBusiness = () => {
+    this.setState({ openBusiness: false });
+  };
+
+  handleClickOpenRecycling = () => {
+    this.setState({ openRecycling: true });
+  };
+
+  handleClickCloseRecycling = () => {
+    this.setState({ openRecycling: false });
   };
 
   render() {
-    const {classes, area, changeView} = this.props;
+    const { classes, area, changeView } = this.props;
     // Get dates for collections
     const Monday = new Date();
     Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));
@@ -227,12 +254,15 @@ class WasteSchedule extends Component {
               }}
               action={(
                 <React.Fragment>
-                  <Button className={classes.cardHeaderButton} onClick={this.handleClickOpen}>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenHousehold}
+                  >
                     <InfoOutlinedIcon />
                   </Button>
                   <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
+                    open={this.state.openHousehold}
+                    onClose={this.handleClickCloseHousehold}
                     classes={{
                       paper: classes.dialog,
                     }}
@@ -240,8 +270,11 @@ class WasteSchedule extends Component {
                     aria-describedby="alert-dialog-description"
                   >
                     <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.title}>Household refuse</span>
-                      <Button onClick={this.handleClickClose} className={classes.action}>
+                      <span className={classes.dialogTitle}>Household refuse</span>
+                      <Button
+                        onClick={this.handleClickCloseHousehold}
+                        className={classes.cardHeaderButton}
+                      >
                         <Clear />
                       </Button>
                     </DialogActions>
@@ -279,9 +312,40 @@ class WasteSchedule extends Component {
                 action: classes.action,
               }}
               action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon/>
-                </Button>
+                <React.Fragment>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenBusiness}
+                  >
+                    <InfoOutlinedIcon />
+                  </Button>
+                  <Dialog
+                    open={this.state.openBusiness}
+                    onClose={this.handleClickCloseBusiness}
+                    classes={{
+                      paper: classes.dialog,
+                    }}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogActions className={classes.dialogHeader}>
+                      <span className={classes.dialogTitle}>Business refuse</span>
+                      <Button
+                        onClick={this.handleClickCloseBusiness}
+                        className={classes.cardHeaderButton}
+                      >
+                        <Clear />
+                      </Button>
+                    </DialogActions>
+                    <DialogContent className={classes.dialogContent}>
+                      <DialogContentText id="alert-dialog-description">
+                        Sweet lemon drops gummi bears.
+                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
+                        cake. Pudding marshmallow tiramisu pie.
+                      </DialogContentText>
+                    </DialogContent>
+                  </Dialog>
+                </React.Fragment>
               )}
               title="Business refuse"
             />
@@ -306,9 +370,40 @@ class WasteSchedule extends Component {
                 action: classes.action,
               }}
               action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon/>
-                </Button>
+                <React.Fragment>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenRecycling}
+                  >
+                    <InfoOutlinedIcon />
+                  </Button>
+                  <Dialog
+                    open={this.state.openRecycling}
+                    onClose={this.handleClickCloseRecycling}
+                    classes={{
+                      paper: classes.dialog,
+                    }}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogActions className={classes.dialogHeader}>
+                      <span className={classes.dialogTitle}>Recycling</span>
+                      <Button
+                        onClick={this.handleClickCloseRecycling}
+                        className={classes.cardHeaderButton}
+                      >
+                        <Clear />
+                      </Button>
+                    </DialogActions>
+                    <DialogContent className={classes.dialogContent}>
+                      <DialogContentText id="alert-dialog-description">
+                        Sweet lemon drops gummi bears.
+                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
+                        cake. Pudding marshmallow tiramisu pie.
+                      </DialogContentText>
+                    </DialogContent>
+                  </Dialog>
+                </React.Fragment>
               )}
               title="Recycling"
             />
