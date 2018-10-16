@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-
 import { withStyles } from '@material-ui/core/styles';
-
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+
+
+const BY_LAWS_URL = 'https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/';
+
 
 const styles = theme => ({
   text: {
@@ -37,47 +38,46 @@ const styles = theme => ({
 });
 
 const SelectAction = (props) => {
-  const { classes } = props;
+  const { classes, changeView } = props;
 
   return (
     <React.Fragment>
       <Typography className={classes.text}>
-          Select an action:
+        Select an action:
       </Typography>
       <div>
-        {/* <Button variant="contained" size="large" className={classes.button}> */}
-        {/* <Link to='/report' className={classes.link}> */}
-        {/* Report a stolen wheelie bin */}
-        {/* </Link> */}
-        {/* </Button> */}
-        {/* <Button variant="contained" size="large" className={classes.button}> */}
-        {/* <Link to='/report' className={classes.link}> */}
-        {/* Report a damaged wheelie bin */}
-        {/* </Link> */}
-        {/* </Button> */}
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/report" className={classes.link}>
-              Report uncollected refuse
-          </Link>
+        <Button
+          variant="contained"
+          size="large"
+          className={classes.button}
+          onClick={() => changeView('report')}
+        >
+          Report uncollected refuse
         </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/view/schedule" className={classes.link}>
-              View my refuse collection schedule
-          </Link>
+
+        {/* <Button
+          variant="contained"
+          size="large"
+          className={classes.button}
+        >
+          View my refuse collection schedule
         </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-          <Link to="/view/sites" className={classes.link}>
-              Find my nearest dumping site
-          </Link>
-        </Button>
+        <Button
+          variant="contained"
+          size="large"
+          className={classes.button}
+        >
+          Find my nearest dumping site
+        </Button> */}
+
         <a
-          href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/"
+          href={BY_LAWS_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={classes.bylaws}
         >
           <Button variant="contained" size="large" className={classes.button}>
-              View my local refuse by-laws
+            View my local refuse by-laws
           </Button>
         </a>
       </div>
@@ -91,6 +91,7 @@ SelectAction.defaultProps = {
 
 SelectAction.propTypes = {
   classes: PropTypes.instanceOf(Object),
+  changeView: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(SelectAction);
