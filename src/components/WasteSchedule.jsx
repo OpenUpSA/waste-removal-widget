@@ -77,13 +77,13 @@ const styles = theme => ({
     minWidth: 50,
     height: 50,
     margin: 0,
+    marginLeft: '-50px',
   },
 
   title: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
-    marginRight: '-50px',
   },
 
   action: {
@@ -165,8 +165,9 @@ class WasteSchedule extends Component {
   };
 
   render() {
-    const { classes, area, changeView, view, props } = this.props;
-    console.log(this.props)
+    const { classes, changeView } = this.props;
+    const area = this.props.props.toString();
+    // TODO: This can be more elegant
     // Get dates for collections
     const Monday = new Date();
     Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));

@@ -68,6 +68,7 @@ class BasicLocation extends Component {
     this.setState({
       props: event.target.value,
     }, () => {
+      // const { state } = this.state;
       if (this.state.view === 'schedule') {
         this.props.changeView('areaSchedules', [this.state.props]);
       }
@@ -79,7 +80,7 @@ class BasicLocation extends Component {
 
   render() {
     const { classes, changeView } = this.props;
-    const { value } = this.state;
+    const value = this.state;
 
     return (
       <React.Fragment>
@@ -99,7 +100,7 @@ class BasicLocation extends Component {
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               className={classes.select}
-              value={this.state.props}
+              value={value.props}
               onChange={this.handleChange}
               displayEmpty
               input={(
