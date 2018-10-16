@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button/Button';
 import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   container: {
@@ -101,173 +102,179 @@ const styles = theme => ({
 });
 
 
-class WasteSchedule extends Component {
-  render() {
-    const { classes } = this.props;
-    const area = this.props.location.state.area;
+const WasteSchedule = (props) => {
+  const { classes, area } = props;
+  // Get dates for collections
+  const Monday = new Date();
+  Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));
 
-    // Get dates for collections
-    const Monday = new Date();
-    Monday.setDate(Monday.getDate() + (1 + 7 - Monday.getDay()) % 7);
+  const Tuesday = new Date();
+  Tuesday.setDate(Tuesday.getDate() + ((2 + 7 - Tuesday.getDay()) % 7));
 
-    const Tuesday = new Date();
-    Tuesday.setDate(Tuesday.getDate() + (2 + 7 - Tuesday.getDay()) % 7);
+  const Wednesday = new Date();
+  Wednesday.setDate(Wednesday.getDate() + ((3 + 7 - Wednesday.getDay()) % 7));
 
-    const Wednesday = new Date();
-    Wednesday.setDate(Wednesday.getDate() + (3 + 7 - Wednesday.getDay()) % 7);
+  const Thursday = new Date();
+  Thursday.setDate(Thursday.getDate() + ((4 + 7 - Thursday.getDay()) % 7));
 
-    const Thursday = new Date();
-    Thursday.setDate(Thursday.getDate() + (4 + 7 - Thursday.getDay()) % 7);
+  const Friday = new Date();
+  Friday.setDate(Friday.getDate() + ((5 + 7 - Friday.getDay()) % 7));
 
-    const Friday = new Date();
-    Friday.setDate(Friday.getDate() + (5 + 7 - Friday.getDay()) % 7);
+  // Set day of week per area - Household refuse and Recycling
+  let householdDay;
 
-    // Set day of week per area - Household refuse and Recycling
-    let householdDay;
-
-    if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
-      householdDay = 'Monday';
-    }
-
-    if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
-      householdDay = 'Tuesday';
-    }
-
-    if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
-      householdDay = 'Wednesday';
-    }
-
-    if (area === 'Napier') {
-      householdDay = 'Thursday';
-    }
-
-    // Set date based on day of week
-    let collectionDate;
-    let businessDate;
-
-    if (householdDay === 'Monday') {
-      collectionDate = Monday;
-    }
-
-    if (householdDay === 'Tuesday') {
-      collectionDate = Tuesday;
-    }
-
-    if (householdDay === 'Wednesday') {
-      collectionDate = Wednesday;
-    }
-
-    if (householdDay === 'Thursday') {
-      collectionDate = Thursday;
-    }
-
-    // Set next Business collection date
-    if (Monday < Wednesday) {
-      businessDate = Monday;
-    } else if (Monday > Wednesday) {
-      businessDate = Wednesday;
-    }
-
-    return (
-      <React.Fragment>
-        <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to="/" className={classes.link}>
-              <ArrowBack />
-            </Link>
-          </Button>
-          <Typography className={classes.text}>
-            { area }
-            {' '}
-Waste collection schedule
-          </Typography>
-        </div>
-        <div className={classes.cardContainer}>
-          <Card className={classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
-              classes={{
-                title: classes.title,
-                action: classes.action,
-              }}
-              action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon />
-                </Button>
-)}
-              title="Household refuse"
-            />
-            <CardContent>
-              <Typography className={classes.cardContentText}>
-                { householdDay }
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
-                Next collection:
-                {' '}
-                { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
-              classes={{
-                title: classes.title,
-                action: classes.action,
-              }}
-              action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon />
-                </Button>
-)}
-              title="Business refuse"
-            />
-            <CardContent>
-              <Typography className={classes.cardContentText}>
-                Mondays & Wednesdays
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
-                Next collection:
-                {' '}
-                { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
-              classes={{
-                title: classes.title,
-                action: classes.action,
-              }}
-              action={(
-                <Button className={classes.cardHeaderButton}>
-                  <InfoOutlinedIcon />
-                </Button>
-)}
-              title="Recycling"
-            />
-            <CardContent>
-              <Typography className={classes.cardContentText}>
-                { householdDay }
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
-                Next collection:
-                {' '}
-                { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-              </Typography>
-            </CardActions>
-          </Card>
-        </div>
-      </React.Fragment>
-    );
+  if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
+    householdDay = 'Monday';
   }
-}
+
+  if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
+    householdDay = 'Tuesday';
+  }
+
+  if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
+    householdDay = 'Wednesday';
+  }
+
+  if (area === 'Napier') {
+    householdDay = 'Thursday';
+  }
+
+  // Set date based on day of week
+  let collectionDate;
+  let businessDate;
+
+  if (householdDay === 'Monday') {
+    collectionDate = Monday;
+  }
+
+  if (householdDay === 'Tuesday') {
+    collectionDate = Tuesday;
+  }
+
+  if (householdDay === 'Wednesday') {
+    collectionDate = Wednesday;
+  }
+
+  if (householdDay === 'Thursday') {
+    collectionDate = Thursday;
+  }
+
+  // Set next Business collection date
+  if (Monday < Wednesday) {
+    businessDate = Monday;
+  } else if (Monday > Wednesday) {
+    businessDate = Wednesday;
+  }
+
+  return (
+    <React.Fragment>
+      <div className={classes.container}>
+        <Button variant="contained" className={classes.button}>
+          <Link to="/" className={classes.link}>
+            <ArrowBack />
+          </Link>
+        </Button>
+        <Typography className={classes.text}>
+          { area }
+          {' '}
+          Waste collection schedule
+        </Typography>
+      </div>
+      <div className={classes.cardContainer}>
+        <Card className={classes.card}>
+          <CardHeader
+            className={classes.cardHeader}
+            classes={{
+              title: classes.title,
+              action: classes.action,
+            }}
+            action={(
+              <Button className={classes.cardHeaderButton}>
+                <InfoOutlinedIcon />
+              </Button>
+            )}
+            title="Household refuse"
+          />
+          <CardContent>
+            <Typography className={classes.cardContentText}>
+              { householdDay }
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Typography className={classes.cardActionsText}>
+              Next collection:
+              {' '}
+              { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+            </Typography>
+          </CardActions>
+        </Card>
+        <Card className={classes.card}>
+          <CardHeader
+            className={classes.cardHeader}
+            classes={{
+              title: classes.title,
+              action: classes.action,
+            }}
+            action={(
+              <Button className={classes.cardHeaderButton}>
+                <InfoOutlinedIcon />
+              </Button>
+            )}
+            title="Business refuse"
+          />
+          <CardContent>
+            <Typography className={classes.cardContentText}>
+              Mondays & Wednesdays
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Typography className={classes.cardActionsText}>
+              Next collection:
+              {' '}
+              { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+            </Typography>
+          </CardActions>
+        </Card>
+        <Card className={classes.card}>
+          <CardHeader
+            className={classes.cardHeader}
+            classes={{
+              title: classes.title,
+              action: classes.action,
+            }}
+            action={(
+              <Button className={classes.cardHeaderButton}>
+                <InfoOutlinedIcon />
+              </Button>
+            )}
+            title="Recycling"
+          />
+          <CardContent>
+            <Typography className={classes.cardContentText}>
+              { householdDay }
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Typography className={classes.cardActionsText}>
+              Next collection:
+              {' '}
+              { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
+            </Typography>
+          </CardActions>
+        </Card>
+      </div>
+    </React.Fragment>
+  );
+};
+
+WasteSchedule.defaultProps = {
+  classes: null,
+  area: null,
+};
+
+WasteSchedule.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+  area: PropTypes.string,
+};
 
 export default withStyles(styles)(WasteSchedule);
