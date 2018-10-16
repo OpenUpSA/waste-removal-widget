@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import { withStyles } from '@material-ui/core/styles';
 
 import CardActions from '@material-ui/core/CardActions';
@@ -58,15 +56,6 @@ class SelectAction extends Component {
 
     return (
       <CardActions className={classes.cardActions}>
-        {/*<Router>*/}
-          {/*<Route exact path='/view/schedule'*/}
-                 {/*render={()=>*/}
-                   {/*<Button variant='contained' className={classes.buttonDownload}>*/}
-                    {/*Download this collection schedule*/}
-                   {/*</Button>*/}
-                 {/*}>*/}
-          {/*</Route>*/}
-        {/*</Router>*/}
         <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" className={classes.buttonLink}>
           <Button variant="contained" className={classes.buttonRight}>
             Provide feedback on this tool
