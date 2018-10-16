@@ -56,7 +56,12 @@ class SelectAction extends Component {
 
     return (
       <CardActions className={classes.cardActions}>
-        <a href="https://goo.gl/forms/hqMugxj4ngNGigGp2" target="_blank" className={classes.buttonLink}>
+        <a 
+          href="https://goo.gl/forms/hqMugxj4ngNGigGp2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.buttonLink}
+        >
           <Button variant="contained" className={classes.buttonRight}>
             Provide feedback on this tool
           </Button>
