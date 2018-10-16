@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import { withStyles } from '@material-ui/core/styles';
-
 import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+
 
 const styles = {
 
@@ -50,15 +48,17 @@ const styles = {
 };
 
 const ReportContact = (props) => {
-  const { classes } = props;
+  const { classes, changeView } = props;
 
   return (
     <React.Fragment>
       <div className={classes.container}>
-        <Button variant="contained" className={classes.button}>
-          <Link to="/" className={classes.link}>
-            <ArrowBack />
-          </Link>
+        <Button
+          variant="contained"
+          className={classes.button}
+          onClick={() => changeView('home')}
+        >
+          <ArrowBack />
         </Button>
         <Typography className={classes.text}>
           Contact person:
@@ -87,6 +87,7 @@ ReportContact.defaultProps = {
 
 ReportContact.propTypes = {
   classes: PropTypes.instanceOf(Object),
+  changeView: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ReportContact);
