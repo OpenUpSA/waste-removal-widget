@@ -300,7 +300,7 @@ class WasteSchedule extends Component {
               <Typography className={classes.cardActionsText}>
                 Next collection:
                 {' '}
-                {collectionDate.toLocaleDateString('en-ZA', {day: 'numeric', month: 'short', year: 'numeric'})}
+                {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
               </Typography>
             </CardActions>
           </Card>
@@ -358,7 +358,7 @@ class WasteSchedule extends Component {
               <Typography className={classes.cardActionsText}>
                 Next collection:
                 {' '}
-                {businessDate.toLocaleDateString('en-ZA', {day: 'numeric', month: 'short', year: 'numeric'})}
+                {businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
               </Typography>
             </CardActions>
           </Card>
@@ -416,7 +416,7 @@ class WasteSchedule extends Component {
               <Typography className={classes.cardActionsText}>
                 Next collection:
                 {' '}
-                {collectionDate.toLocaleDateString('en-ZA', {day: 'numeric', month: 'short', year: 'numeric'})}
+                {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
               </Typography>
             </CardActions>
           </Card>

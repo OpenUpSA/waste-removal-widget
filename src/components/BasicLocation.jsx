@@ -73,7 +73,7 @@ class BasicLocation extends Component {
           <Button
             variant="contained"
             className={classes.button}
-            onClick={() => changeView('areaSchedules')}
+            onClick={() => changeView('areaSites')}
           >
             <ArrowBack />
           </Button>
