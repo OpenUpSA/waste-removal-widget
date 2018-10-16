@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
 
@@ -103,10 +104,10 @@ const styles = theme => ({
 });
 
 class FormAddress extends Component {
-  state = {
-    area: '',
-    address: '',
-  };
+  // state = {
+  //   area: '',
+  //   address: '',
+  // };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -114,6 +115,7 @@ class FormAddress extends Component {
 
   render() {
     const { classes } = this.props;
+    const { state } = this.state;
 
     return (
       <React.Fragment>
@@ -131,7 +133,7 @@ class FormAddress extends Component {
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               className={classes.select}
-              value={this.state.area}
+              value={state.area}
               onChange={this.handleChange}
               displayEmpty
               input={(
@@ -163,7 +165,7 @@ class FormAddress extends Component {
             margin="normal"
             variant="outlined"
             name="address"
-            value={this.state.value}
+            value={state.value}
             onChange={this.handleChange}
           />
           <FormHelperText className={classes.helperText}>
@@ -176,7 +178,7 @@ class FormAddress extends Component {
               disabled: classes.disabled,
             }}
             className={classes.textFieldButton}
-            disabled={!this.state.area || !this.state.address}
+            disabled={!state.area || !state.address}
           >
             Create form
           </Button>
@@ -185,5 +187,13 @@ class FormAddress extends Component {
     );
   }
 }
+
+FormAddress.defaultProps = {
+  classes: null,
+};
+
+FormAddress.propTypes = {
+  classes: PropTypes.instanceOf(Object),
+};
 
 export default withStyles(styles)(FormAddress);
