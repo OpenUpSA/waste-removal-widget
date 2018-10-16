@@ -74,13 +74,13 @@ const styles = theme => ({
     width: 50,
     height: 50,
     margin: 0,
+    marginLeft: '-50px',
   },
 
   title: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
-    marginRight: '-50px',
   },
 
   action: {
@@ -145,7 +145,8 @@ class DumpingSites extends Component {
   };
 
   render() {
-    const { classes, area, changeView } = this.props;
+    const { classes, changeView } = this.props;
+    const area = this.props.props.toString();
 
     return (
       <React.Fragment>
