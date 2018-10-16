@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-
 import { withStyles } from '@material-ui/core/styles';
-
 import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
 
+const styles = theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -45,20 +42,21 @@ const styles = theme => ({
       color: '#CACACA'
     }
   }
-
 });
 
 class ReportContact extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, changeView } = this.props;
 
     return (
       <React.Fragment>
         <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to='/' className={classes.link}>
-              <ArrowBack />
-            </Link>
+          <Button 
+            variant="contained" 
+            className={classes.button}
+            onClick={() => changeView('home')}
+          >
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
             Contact person:
