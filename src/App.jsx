@@ -6,11 +6,14 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent/CardContent';
 import SelectAction from './components/SelectAction';
-import ReportContact from './components/ReportContact';
-import BasicLocation from './components/BasicLocation';
-import WasteSchedule from './components/WasteSchedule';
-import DumpingSites from './components/DumpingSites';
+// import ReportContact from './components/ReportContact';
+// import BasicLocation from './components/BasicLocation';
+// import WasteSchedule from './components/WasteSchedule';
+// import DumpingSites from './components/DumpingSites';
 import FeedbackButton from './components/FeedbackButton';
+// import Button from "@material-ui/core/Button/Button";
+// import {ArrowBack} from "@material-ui/icons";
+// import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = theme => ({
   card: {
@@ -62,7 +65,6 @@ const styles = theme => ({
 
 const App = (props) => {
   const { classes, municipality } = props;
-
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -77,10 +79,6 @@ const App = (props) => {
       />
       <CardContent className={classes.cardContent}>
         <SelectAction />
-        <ReportContact />
-        <BasicLocation />
-        <WasteSchedule />
-        <DumpingSites />
       </CardContent>
       <FeedbackButton />
     </Card>

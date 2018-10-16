@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import { ArrowBack } from '@material-ui/icons';
 
 const styles = theme => ({
   text: {
@@ -26,51 +27,109 @@ const styles = theme => ({
       width: 'auto',
     },
   },
-  link: {
-    textDecoration: 'none',
-    color: 'black',
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  backButton: {
+    minWidth: 46,
+    width: 46,
+    height: 46,
+    backgroundColor: '#46A440',
+    color: 'white',
+    marginRight: 16,
   },
   bylaws: {
     textDecoration: 'none',
   },
 });
 
-const SelectAction = (props) => {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <Typography className={classes.text}>
-          Select an action:
-      </Typography>
-      <div>
-        {/* <Button variant="contained" size="large" className={classes.button}> */}
-        {/* <Link to='/report' className={classes.link}> */}
-        {/* Report a stolen wheelie bin */}
-        {/* </Link> */}
-        {/* </Button> */}
-        {/* <Button variant="contained" size="large" className={classes.button}> */}
-        {/* <Link to='/report' className={classes.link}> */}
-        {/* Report a damaged wheelie bin */}
-        {/* </Link> */}
-        {/* </Button> */}
-        <Button variant="contained" size="large" className={classes.button}>
-          Report uncollected refuse
-        </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-            View my refuse collection schedule
-        </Button>
-        <Button variant="contained" size="large" className={classes.button}>
-          Find my nearest dumping site
-        </Button>
-        <a href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/" target="_blank" rel="noopener noreferrer" className={classes.bylaws}>
-          <Button variant="contained" size="large" className={classes.button}>
-              View my local refuse by-laws
+class SelectAction extends Component {
+  state = {
+    view: '',
+    heading: 'Select an action:',
+  };
+
+  handleClick = (event) => {
+    this.setState({
+      view: event.target.value,
+      heading: event.target.heading,
+    });
+  };
+
+  backClick = () => {
+    this.setState({
+      view: '',
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { stateContent } = this.state;
+
+    return (
+      <React.Fragment>
+        <div className={classes.container}>
+          {stateContent.view.length > 0 && (
+            <Button variant="contained" className={classes.backButton} onClick={this.backClick}><ArrowBack /></Button>
+          )
+          }
+          <Typography className={classes.text}>
+            {stateContent.heading}
+          </Typography>
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.button}
+            name="view"
+            value="ReportContact"
+            heading="This is a test"
+            onClick={this.handleClick}
+          >
+            Report uncollected refuse
           </Button>
-        </a>
-      </div>
-    </React.Fragment>
-  );
-};
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.button}
+            name="view"
+            value="WasteSchedule"
+            onClick={this.handleClick}
+          >
+            View my refuse collection schedule
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.button}
+            name="view"
+            value="DumpingSites"
+            onClick={this.handleClick}
+          >
+            Find my nearest dumping site
+          </Button>
+          <a
+            href="https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.bylaws}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.button}
+            >
+              View my local refuse by-laws
+            </Button>
+          </a>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 SelectAction.defaultProps = {
   classes: null,

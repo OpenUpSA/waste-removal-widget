@@ -102,7 +102,7 @@ const styles = theme => ({
 
 
 const WasteSchedule = (props) => {
-  const { classes } = props;
+  const { classes, area } = props;
   // const { area } = props.location.state.area;
 
   // Get dates for collections
@@ -122,23 +122,23 @@ const WasteSchedule = (props) => {
   Friday.setDate(Friday.getDate() + ((5 + 7 - Friday.getDay()) % 7));
 
   // Set day of week per area - Household refuse and Recycling
-  const householdDay = 'Monday';
+  let householdDay = 'Monday';
 
-  // if (area === 'Bredasdorp (Area 1)'||'Struisbaai'||'L\'Agulhas'||'Waenhuiskrans (Arniston)') {
-  //   householdDay = 'Monday';
-  // }
-  //
-  // if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
-  //   householdDay = 'Tuesday';
-  // }
-  //
-  // if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
-  //   householdDay = 'Wednesday';
-  // }
-  //
-  // if (area === 'Napier') {
-  //   householdDay = 'Thursday';
-  // }
+  if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
+    householdDay = 'Monday';
+  }
+
+  if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
+    householdDay = 'Tuesday';
+  }
+
+  if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
+    householdDay = 'Wednesday';
+  }
+
+  if (area === 'Napier') {
+    householdDay = 'Thursday';
+  }
 
   // Set date based on day of week
   let collectionDate;
@@ -174,7 +174,7 @@ const WasteSchedule = (props) => {
           <ArrowBack />
         </Button>
         <Typography className={classes.text}>
-          Struisbaai
+          {area}
           {' '}
           Waste collection schedule
         </Typography>
@@ -268,10 +268,12 @@ const WasteSchedule = (props) => {
 
 WasteSchedule.defaultProps = {
   classes: null,
+  area: null,
 };
 
 WasteSchedule.propTypes = {
   classes: PropTypes.instanceOf(Object),
+  area: PropTypes.string,
 };
 
 export default withStyles(styles)(WasteSchedule);
