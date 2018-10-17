@@ -18,12 +18,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-const styles = theme => ({
+const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
   },
-
   button: {
     minWidth: 46,
     width: 46,
@@ -32,44 +31,40 @@ const styles = theme => ({
     color: 'white',
     marginRight: 16,
   },
-
   link: {
     textDecoration: 'none',
     color: 'white',
   },
-
   text: {
     color: 'white',
     fontSize: '1.7rem',
   },
-
   cardContainer: {
     display: 'flex',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
   },
-
+  cardContainerSm: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
   card: {
     marginTop: 16,
     width: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: 16,
-      width: 336,
-      '&:last-child': {
-        marginRight: 0,
-      },
+  },
+  cardSm: {
+    marginTop: 16,
+    marginRight: 16,
+    width: 336,
+    '&:last-child': {
+      marginRight: 0,
     },
   },
-
   cardHeader: {
     backgroundColor: '#004B4F',
     height: 50,
     padding: 0,
   },
-
   cardHeaderButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.32)',
     borderRadius: '0 4px 0 0',
@@ -79,43 +74,35 @@ const styles = theme => ({
     margin: 0,
     marginLeft: '-50px',
   },
-
   title: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
   },
-
   action: {
     margin: 0,
   },
-
   cardContentText: {
     color: '#004B4F',
     textAlign: 'center',
   },
-
   cardActions: {
     backgroundColor: 'rgba(0, 0, 0, 0.08)',
   },
-
   cardActionsText: {
     color: '#004B4F',
     textAlign: 'center',
     width: '100%',
   },
-
   dialog: {
     maxWidth: 360,
   },
-
   dialogHeader: {
     backgroundColor: '#004B4F',
     height: 50,
     padding: 0,
     margin: 0,
   },
-
   dialogTitle: {
     fontSize: 16,
     color: 'white',
@@ -123,13 +110,12 @@ const styles = theme => ({
     fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
     margin: 'auto',
   },
-
   dialogContent: {
     padding: 24,
     textAlign: 'center',
     color: 'black',
   },
-});
+};
 
 
 class WasteSchedule extends Component {
@@ -165,7 +151,7 @@ class WasteSchedule extends Component {
   };
 
   render() {
-    const { classes, changeView, props } = this.props;
+    const { classes, changeView, props, width } = this.props;
     const area = props;
     // TODO: This can be more elegant
     // Get dates for collections
@@ -246,8 +232,8 @@ class WasteSchedule extends Component {
             Waste collection schedule
           </Typography>
         </div>
-        <div className={classes.cardContainer}>
-          <Card className={classes.card}>
+        <div className={width > 600 ? classes.cardContainerSm : classes.cardContainer}>
+          <Card className={width > 600 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -309,7 +295,7 @@ class WasteSchedule extends Component {
               </Typography>
             </CardActions>
           </Card>
-          <Card className={classes.card}>
+          <Card className={width > 600 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -367,7 +353,7 @@ class WasteSchedule extends Component {
               </Typography>
             </CardActions>
           </Card>
-          <Card className={classes.card}>
+          <Card className={width > 600 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{

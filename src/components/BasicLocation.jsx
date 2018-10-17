@@ -70,10 +70,10 @@ class BasicLocation extends Component {
     }, () => {
       // const { state } = this.state;
       if (this.state.view === 'schedule') {
-        this.props.changeView('areaSchedules', this.state.props);
+        this.props.changeView('areaSchedules', [this.state.props]);
       }
       if (this.state.view === 'sites') {
-        this.props.changeView('areaSites', this.state.props);
+        this.props.changeView('areaSites', [this.state.props]);
       }
     });
   };

@@ -7,7 +7,7 @@ class DetermineView extends Component {
 
     this.state = {
       view: 'home',
-      props: [],
+      props: {},
     };
 
     this.events = {
@@ -20,12 +20,12 @@ class DetermineView extends Component {
   }
 
   render() {
-    const { viewsList } = this.props;
+    const { viewsList, width } = this.props;
     const { view, props } = this.state;
-    const { changeView } = this.events;
+    const { changeView, updateWidth } = this.events;
     const ViewComponent = viewsList[view];
     const passedProps = {
-      ...props, changeView, view, props,
+      ...props, changeView, updateWidth, view, props, width,
     };
     return <ViewComponent {...passedProps} />;
   }
