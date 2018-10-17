@@ -426,6 +426,7 @@ WasteSchedule.propTypes = {
   classes: PropTypes.instanceOf(Object),
   changeView: PropTypes.func.isRequired,
   props: PropTypes.string,
+  width: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(WasteSchedule);

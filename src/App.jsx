@@ -112,7 +112,7 @@ const Markup = (props) => {
       <CardContent className={width > 600 ? classes.cardContentSm : classes.cardContent}>
         <DetermineView viewsList={VIEWS_LIST} areaList={AREA_LIST} default="home" {...{ width }} />
       </CardContent>
-      <FeedbackButton />
+      <FeedbackButton {...{ width }} />
     </Card>
   );
 };
