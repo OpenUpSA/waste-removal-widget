@@ -282,9 +282,12 @@ class WasteSchedule extends Component {
                     </DialogActions>
                     <DialogContent className={classes.dialogContent}>
                       <DialogContentText id="alert-dialog-description">
-                        Sweet lemon drops gummi bears.
-                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
-                        cake. Pudding marshmallow tiramisu pie.
+                        Organic food waste as well as garden refuse will be collected if all of
+                        the bags fit in your bin. No bags will be taken from the sidewalk.
+                        Do not add dangerous household waste (paint, bleach, oil) to your
+                        household refuse.
+                        Building rubble needs to be taken to a dumping sites or
+                        the Bredasdorp Landfill.
                       </DialogContentText>
                     </DialogContent>
                   </Dialog>
@@ -341,9 +344,9 @@ class WasteSchedule extends Component {
                     </DialogActions>
                     <DialogContent className={classes.dialogContent}>
                       <DialogContentText id="alert-dialog-description">
-                        Sweet lemon drops gummi bears.
-                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
-                        cake. Pudding marshmallow tiramisu pie.
+                        Business Waste is collected on
+                        <br />
+                        Mondays & Wednesdays
                       </DialogContentText>
                     </DialogContent>
                   </Dialog>
@@ -399,9 +402,9 @@ class WasteSchedule extends Component {
                     </DialogActions>
                     <DialogContent className={classes.dialogContent}>
                       <DialogContentText id="alert-dialog-description">
-                        Sweet lemon drops gummi bears.
-                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
-                        cake. Pudding marshmallow tiramisu pie.
+                        Recyclable materials should be placed in a clear bag and will
+                        be collected on the same day as household refuse.
+                        Paper, tin, glass and plastic can be placed in the recycling bag.
                       </DialogContentText>
                     </DialogContent>
                   </Dialog>
