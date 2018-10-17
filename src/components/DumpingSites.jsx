@@ -211,8 +211,8 @@ class DumpingSites extends Component {
             nearest dumping sites
           </Typography>
         </div>
-        <div className={width > 600 ? classes.cardContainerSm : classes.cardContainer}>
-          <Card className={width > 600 ? classes.cardSm : classes.card}>
+        <div className={width > 800 ? classes.cardContainerSm : classes.cardContainer}>
+          <Card className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -276,7 +276,7 @@ class DumpingSites extends Component {
               </Typography>
             </CardActions>
           </Card>
-          <Card className={width > 600 ? classes.cardSm : classes.card}>
+          <Card className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
