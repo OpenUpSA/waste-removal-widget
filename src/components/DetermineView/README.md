@@ -18,6 +18,9 @@ Accepts an object with string keys and React component values. You will use the 
 ### areaList
 Accepts an array of objects. Will be used to dynamically render `<MenuItem />` in `select`.
 
+### width
+Accepts a number value that indicates the size of the root div, usefull when resizing based on the size of the embed area and not the viewport itself (similar to [element queries](https://github.com/marcj/css-element-queries).
+
 ### default
 Accepts a string that designates what the default view should be when the component initialises.
 
