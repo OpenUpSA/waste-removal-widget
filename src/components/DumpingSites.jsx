@@ -156,7 +156,7 @@ class DumpingSites extends Component {
 
   render() {
     const { classes, changeView, props } = this.props;
-    const area = props.toString();
+    const area = props;
     // const { state } = this.state;
     // const dumpState = state.OpenDumpSite;
     // const fillState = state.OpenLandFill;
@@ -343,7 +343,7 @@ DumpingSites.defaultProps = {
 DumpingSites.propTypes = {
   classes: PropTypes.instanceOf(Object),
   changeView: PropTypes.func.isRequired,
-  props: PropTypes.instanceOf(Array),
+  props: PropTypes.string,
 };
 
 export default withStyles(styles)(DumpingSites);

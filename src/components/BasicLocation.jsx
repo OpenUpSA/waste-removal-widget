@@ -70,17 +70,17 @@ class BasicLocation extends Component {
     }, () => {
       // const { state } = this.state;
       if (this.state.view === 'schedule') {
-        this.props.changeView('areaSchedules', [this.state.props]);
+        this.props.changeView('areaSchedules', this.state.props);
       }
       if (this.state.view === 'sites') {
-        this.props.changeView('areaSites', [this.state.props]);
+        this.props.changeView('areaSites', this.state.props);
       }
     });
   };
 
   render() {
-    const { classes, changeView } = this.props;
-    const value = this.state;
+    const { classes, changeView, props } = this.props;
+    // const value = this.state;
 
     return (
       <React.Fragment>
@@ -100,7 +100,7 @@ class BasicLocation extends Component {
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               className={classes.select}
-              value={value.props}
+              value={props}
               onChange={this.handleChange}
               displayEmpty
               input={(
@@ -134,14 +134,13 @@ class BasicLocation extends Component {
 
 BasicLocation.defaultProps = {
   classes: null,
-  view: '',
   props: '',
 };
 
 BasicLocation.propTypes = {
   classes: PropTypes.instanceOf(Object),
   changeView: PropTypes.func.isRequired,
-  view: PropTypes.string,
+  view: PropTypes.string.isRequired,
   props: PropTypes.string,
 };
 
