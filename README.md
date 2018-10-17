@@ -18,3 +18,8 @@ Built with [Create React App](https://github.com/facebook/create-react-app) and 
 
 **[Create React App](https://github.com/facebook/create-react-app) is extended in the following manner**:
   - [react-container-query](https://www.npmjs.com/package/react-container-query)
+  
+### Reminder
+
+Some of the typography variants will be deprecated in the next major release and will have to be updated accordingly.
+[See migration documentation](https://material-ui.com/style/typography/#migration-to-typography-v2)

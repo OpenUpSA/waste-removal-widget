@@ -17,7 +17,7 @@ import DialogActions from '@material-ui/core/DialogActions/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText/DialogContentText';
 
-const styles = theme => ({
+const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -45,20 +45,24 @@ const styles = theme => ({
   cardContainer: {
     display: 'flex',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
-    },
+  },
+
+  cardContainerSm: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 
   card: {
     marginTop: 16,
     width: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: 16,
-      width: '50%',
-      '&:last-child': {
-        marginRight: 0,
-      },
+  },
+
+  cardSm: {
+    marginTop: 16,
+    marginRight: 16,
+    width: '50%',
+    '&:last-child': {
+      marginRight: 0,
     },
   },
 
@@ -128,8 +132,7 @@ const styles = theme => ({
     color: 'black',
   },
 
-});
-
+};
 
 class DumpingSites extends Component {
   state = {
@@ -155,8 +158,10 @@ class DumpingSites extends Component {
   };
 
   render() {
-    const { classes, changeView, props } = this.props;
-    const area = props;
+    const {
+      classes, changeView, props, width,
+    } = this.props;
+    const area = props.toString();
     // const { state } = this.state;
     // const dumpState = state.OpenDumpSite;
     // const fillState = state.OpenLandFill;
@@ -206,8 +211,8 @@ class DumpingSites extends Component {
             nearest dumping sites
           </Typography>
         </div>
-        <div className={classes.cardContainer}>
-          <Card className={classes.card}>
+        <div className={width > 800 ? classes.cardContainerSm : classes.cardContainer}>
+          <Card className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -271,7 +276,7 @@ class DumpingSites extends Component {
               </Typography>
             </CardActions>
           </Card>
-          <Card className={classes.card}>
+          <Card className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -343,7 +348,8 @@ DumpingSites.defaultProps = {
 DumpingSites.propTypes = {
   classes: PropTypes.instanceOf(Object),
   changeView: PropTypes.func.isRequired,
-  props: PropTypes.string,
+  props: PropTypes.instanceOf(Array),
+  width: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(DumpingSites);
