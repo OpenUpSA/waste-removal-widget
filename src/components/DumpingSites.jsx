@@ -103,7 +103,8 @@ const styles = theme => ({
   },
 
   dialog: {
-    maxWidth: 360,
+    minWidth: 360,
+    width: 360,
   },
 
   dialogHeader: {
@@ -132,21 +133,59 @@ const styles = theme => ({
 
 class DumpingSites extends Component {
   state = {
-    openHousehold: false,
+    OpenDumpSite: false,
+    OpenLandFill: false,
   };
 
   // Dialog
-  handleClickOpenHousehold = () => {
-    this.setState({ openHousehold: true });
+  handleClickOpenDumpsite = () => {
+    this.setState({ OpenDumpSite: true });
   };
 
-  handleClickCloseHousehold = () => {
-    this.setState({ openHousehold: false });
+  handleClickCloseDumpsite = () => {
+    this.setState({ OpenDumpSite: false });
+  };
+
+  handleClickOpenLandFill = () => {
+    this.setState({ OpenLandFill: true });
+  };
+
+  handleClickCloseLandFill = () => {
+    this.setState({ OpenLandFill: false });
   };
 
   render() {
     const { classes, changeView } = this.props;
     const area = this.props.props.toString();
+
+    // Set nearest dumping site
+    let dumpsite;
+    let address;
+
+    if (area === 'Napier' || 'Klipdale' || 'Protem' || 'Zwelitsha' || 'Bredasdorp (Area 1)' || 'Bredasdorp (Area 2)') {
+      dumpsite = 'Napier';
+      address = 'Station Road, Napier';
+    }
+    if (area === 'Struisbaai' || 'Struisbaai Noord' || 'L\'Agulhas' || 'Suiderstrand') {
+      dumpsite = 'Struisbaai';
+      address = 'Main Road, Struisbaai';
+    }
+    if (area === 'Waenhuiskrans (Arniston)') {
+      dumpsite = 'Waenhuiskrans (Arniston)';
+      address = 'Main Road, Waenhuiskrans';
+    }
+
+    // Set times
+    const today = new Date();
+    let times;
+
+    if (today.getDay === 6) {
+      times = 'Open today from 09:00 - 17:00';
+    } else if (today.getDay === 0) {
+      times = 'Closed today';
+    } else {
+      times = 'Open today from 08:00 - 18:00';
+    }
 
     return (
       <React.Fragment>
@@ -166,7 +205,6 @@ class DumpingSites extends Component {
         </div>
         <div className={classes.cardContainer}>
           <Card className={classes.card}>
-            {/* Title to be updated dynamically */}
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -177,13 +215,13 @@ class DumpingSites extends Component {
                 <React.Fragment>
                   <Button
                     className={classes.cardHeaderButton}
-                    onClick={this.handleClickOpenHousehold}
+                    onClick={this.handleClickOpenDumpsite}
                   >
                     <InfoOutlinedIcon />
                   </Button>
                   <Dialog
-                    open={this.state.openHousehold}
-                    onClose={this.handleClickCloseHousehold}
+                    open={this.state.OpenDumpSite}
+                    onClose={this.handleClickCloseDumpsite}
                     classes={{
                       paper: classes.dialog,
                     }}
@@ -191,9 +229,13 @@ class DumpingSites extends Component {
                     aria-describedby="alert-dialog-description"
                   >
                     <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Struisbaai Dump</span>
+                      <span className={classes.dialogTitle}>
+                        {dumpsite}
+                        {' '}
+                        Dump
+                      </span>
                       <Button
-                        onClick={this.handleClickCloseHousehold}
+                        onClick={this.handleClickCloseDumpsite}
                         className={classes.cardHeaderButton}
                       >
                         <Clear />
@@ -201,31 +243,32 @@ class DumpingSites extends Component {
                     </DialogActions>
                     <DialogContent className={classes.dialogContent}>
                       <DialogContentText id="alert-dialog-description">
-                        Sweet lemon drops gummi bears.
-                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
-                        cake. Pudding marshmallow tiramisu pie.
+                        {address}
+                        <br />
+                        Monday - Friday 08:00-18:00
+                        <br />
+                        Saturday 09:00-17:00
                       </DialogContentText>
                     </DialogContent>
                   </Dialog>
                 </React.Fragment>
               )}
-              title="Main Road, Struisbaai"
+              title={address}
             />
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/* Content to be loaded dynamically */}
-                Struisbaai Dump
+                {dumpsite}
+                {' '}
+                Dump
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/* Date to be loaded dynamically */}
-                Open today from 08h00 - 18h00
+                {times}
               </Typography>
             </CardActions>
           </Card>
           <Card className={classes.card}>
-            {/* Title to be updated dynamically */}
             <CardHeader
               className={classes.cardHeader}
               classes={{
@@ -236,13 +279,13 @@ class DumpingSites extends Component {
                 <React.Fragment>
                   <Button
                     className={classes.cardHeaderButton}
-                    onClick={this.handleClickOpenHousehold}
+                    onClick={this.handleClickOpenLandFill}
                   >
                     <InfoOutlinedIcon />
                   </Button>
                   <Dialog
-                    open={this.state.openHousehold}
-                    onClose={this.handleClickCloseHousehold}
+                    open={this.state.OpenLandFill}
+                    onClose={this.handleClickCloseLandFill}
                     classes={{
                       paper: classes.dialog,
                     }}
@@ -252,7 +295,7 @@ class DumpingSites extends Component {
                     <DialogActions className={classes.dialogHeader}>
                       <span className={classes.dialogTitle}>Bredasdorp Waste Facility</span>
                       <Button
-                        onClick={this.handleClickCloseHousehold}
+                        onClick={this.handleClickCloseLandFill}
                         className={classes.cardHeaderButton}
                       >
                         <Clear />
@@ -260,26 +303,26 @@ class DumpingSites extends Component {
                     </DialogActions>
                     <DialogContent className={classes.dialogContent}>
                       <DialogContentText id="alert-dialog-description">
-                        Sweet lemon drops gummi bears.
-                        Chocolate lollipop cheesecake cake candy canes wafer chocolate
-                        cake. Pudding marshmallow tiramisu pie.
+                        Swellendam Road, Bredasdorp
+                        <br />
+                        Monday - Friday 08:00-18:00
+                        <br />
+                        Saturday 09:00-17:00
                       </DialogContentText>
                     </DialogContent>
                   </Dialog>
                 </React.Fragment>
               )}
-              title="Limeworks Road, Bredasdorp"
+              title="Swellendam Road, Bredasdorp"
             />
             <CardContent>
               <Typography className={classes.cardContentText}>
-                {/* Content to be loaded dynamically */}
                 Bredasdorp Waste Facility
               </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
-                {/* Date to be loaded dynamically */}
-                Closed today
+                {times}
               </Typography>
             </CardActions>
           </Card>
@@ -291,12 +334,10 @@ class DumpingSites extends Component {
 
 DumpingSites.defaultProps = {
   classes: null,
-  area: null,
 };
 
 DumpingSites.propTypes = {
   classes: PropTypes.instanceOf(Object),
-  area: PropTypes.string,
   changeView: PropTypes.func.isRequired,
 };
 
