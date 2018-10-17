@@ -37,6 +37,7 @@ const AREA_LIST = [
   { value: 'Zwelitsha', text: 'Zwelitsha' },
 ];
 
+
 const styles = theme => ({
   card: {
     maxWidth: 1140,

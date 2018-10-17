@@ -18,7 +18,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-const styles = theme => ({
+const styles = query => ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -46,7 +46,7 @@ const styles = theme => ({
   cardContainer: {
     display: 'flex',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
+    [query.medium]: {
       flexDirection: 'row',
       flexWrap: 'wrap',
     },
@@ -55,7 +55,7 @@ const styles = theme => ({
   card: {
     marginTop: 16,
     width: 'auto',
-    [theme.breakpoints.up('sm')]: {
+    [query.medium]: {
       marginRight: 16,
       width: 336,
       '&:last-child': {
