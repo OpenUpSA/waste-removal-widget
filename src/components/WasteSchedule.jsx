@@ -165,8 +165,8 @@ class WasteSchedule extends Component {
   };
 
   render() {
-    const { classes, changeView } = this.props;
-    const area = this.props.props.toString();
+    const { classes, changeView, props } = this.props;
+    const area = props.toString();
     // TODO: This can be more elegant
     // Get dates for collections
     const Monday = new Date();
@@ -430,13 +430,13 @@ class WasteSchedule extends Component {
 
 WasteSchedule.defaultProps = {
   classes: null,
-  area: null,
+  props: null,
 };
 
 WasteSchedule.propTypes = {
   classes: PropTypes.instanceOf(Object),
-  area: PropTypes.string,
   changeView: PropTypes.func.isRequired,
+  props: PropTypes.instanceOf(Array),
 };
 
 export default withStyles(styles)(WasteSchedule);
