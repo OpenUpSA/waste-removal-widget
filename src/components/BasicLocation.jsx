@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -57,24 +56,41 @@ const styles = {
 };
 
 class BasicLocation extends Component {
-  state = {
-    area: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: props.view,
+      props: props.props,
+    };
+  }
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      props: event.target.value,
+    }, () => {
+      // const { state } = this.state;
+      if (this.state.view === 'schedule') {
+        this.props.changeView('areaSchedules', this.state.props);
+      }
+      if (this.state.view === 'sites') {
+        this.props.changeView('areaSites', this.state.props);
+      }
+    });
   };
 
   render() {
-    const { classes } = this.props;
-    const { area } = this.state;
+    const { classes, changeView, props } = this.props;
+    // const value = this.state;
+
     return (
       <React.Fragment>
         <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to="/" className={classes.link}>
-              <ArrowBack />
-            </Link>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={() => changeView('home')}
+          >
+            <ArrowBack />
           </Button>
           <Typography className={classes.text}>
               Select your area:
@@ -84,7 +100,7 @@ class BasicLocation extends Component {
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               className={classes.select}
-              value={area.area}
+              value={props}
               onChange={this.handleChange}
               displayEmpty
               input={(
@@ -95,6 +111,7 @@ class BasicLocation extends Component {
                 />
               )}
             >
+              { /* TODO: Render MenuItem dynamically */ }
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>
               <MenuItem value="Bredasdorp (Area 2)">Bredasdrop (Area 2)</MenuItem>
@@ -117,10 +134,14 @@ class BasicLocation extends Component {
 
 BasicLocation.defaultProps = {
   classes: null,
+  props: '',
 };
 
 BasicLocation.propTypes = {
   classes: PropTypes.instanceOf(Object),
+  changeView: PropTypes.func.isRequired,
+  view: PropTypes.string.isRequired,
+  props: PropTypes.string,
 };
 
 export default withStyles(styles)(BasicLocation);

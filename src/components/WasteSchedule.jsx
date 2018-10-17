@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -9,10 +9,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 
 import Button from '@material-ui/core/Button/Button';
-import { ArrowBack } from '@material-ui/icons';
+import { ArrowBack, Clear } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import PropTypes from 'prop-types';
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 const styles = theme => ({
   container: {
@@ -72,13 +76,14 @@ const styles = theme => ({
     width: 50,
     minWidth: 50,
     height: 50,
+    margin: 0,
+    marginLeft: '-50px',
   },
 
   title: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
-    marginRight: '-50px',
   },
 
   action: {
@@ -99,182 +104,342 @@ const styles = theme => ({
     textAlign: 'center',
     width: '100%',
   },
+
+  dialog: {
+    maxWidth: 360,
+  },
+
+  dialogHeader: {
+    backgroundColor: '#004B4F',
+    height: 50,
+    padding: 0,
+    margin: 0,
+  },
+
+  dialogTitle: {
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
+    margin: 'auto',
+  },
+
+  dialogContent: {
+    padding: 24,
+    textAlign: 'center',
+    color: 'black',
+  },
 });
 
 
-const WasteSchedule = (props) => {
-  const { classes, area } = props;
-  // Get dates for collections
-  const Monday = new Date();
-  Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));
+class WasteSchedule extends Component {
+  state = {
+    openHousehold: false,
+    openBusiness: false,
+    openRecycling: false,
+  };
 
-  const Tuesday = new Date();
-  Tuesday.setDate(Tuesday.getDate() + ((2 + 7 - Tuesday.getDay()) % 7));
+  // Dialog
+  handleClickOpenHousehold = () => {
+    this.setState({ openHousehold: true });
+  };
 
-  const Wednesday = new Date();
-  Wednesday.setDate(Wednesday.getDate() + ((3 + 7 - Wednesday.getDay()) % 7));
+  handleClickCloseHousehold = () => {
+    this.setState({ openHousehold: false });
+  };
 
-  const Thursday = new Date();
-  Thursday.setDate(Thursday.getDate() + ((4 + 7 - Thursday.getDay()) % 7));
+  handleClickOpenBusiness = () => {
+    this.setState({ openBusiness: true });
+  };
 
-  const Friday = new Date();
-  Friday.setDate(Friday.getDate() + ((5 + 7 - Friday.getDay()) % 7));
+  handleClickCloseBusiness = () => {
+    this.setState({ openBusiness: false });
+  };
 
-  // Set day of week per area - Household refuse and Recycling
-  let householdDay;
+  handleClickOpenRecycling = () => {
+    this.setState({ openRecycling: true });
+  };
 
-  if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
-    householdDay = 'Monday';
-  }
+  handleClickCloseRecycling = () => {
+    this.setState({ openRecycling: false });
+  };
 
-  if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
-    householdDay = 'Tuesday';
-  }
+  render() {
+    const { classes, changeView, props } = this.props;
+    const area = props;
+    // TODO: This can be more elegant
+    // Get dates for collections
+    const Monday = new Date();
+    Monday.setDate(Monday.getDate() + ((1 + 7 - Monday.getDay()) % 7));
 
-  if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
-    householdDay = 'Wednesday';
-  }
+    const Tuesday = new Date();
+    Tuesday.setDate(Tuesday.getDate() + ((2 + 7 - Tuesday.getDay()) % 7));
 
-  if (area === 'Napier') {
-    householdDay = 'Thursday';
-  }
+    const Wednesday = new Date();
+    Wednesday.setDate(Wednesday.getDate() + ((3 + 7 - Wednesday.getDay()) % 7));
 
-  // Set date based on day of week
-  let collectionDate;
-  let businessDate;
+    const Thursday = new Date();
+    Thursday.setDate(Thursday.getDate() + ((4 + 7 - Thursday.getDay()) % 7));
 
-  if (householdDay === 'Monday') {
-    collectionDate = Monday;
-  }
+    const Friday = new Date();
+    Friday.setDate(Friday.getDate() + ((5 + 7 - Friday.getDay()) % 7));
 
-  if (householdDay === 'Tuesday') {
-    collectionDate = Tuesday;
-  }
+    // Set day of week per area - Household refuse and Recycling
+    let householdDay;
 
-  if (householdDay === 'Wednesday') {
-    collectionDate = Wednesday;
-  }
+    if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
+      householdDay = 'Monday';
+    }
 
-  if (householdDay === 'Thursday') {
-    collectionDate = Thursday;
-  }
+    if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
+      householdDay = 'Tuesday';
+    }
 
-  // Set next Business collection date
-  if (Monday < Wednesday) {
-    businessDate = Monday;
-  } else if (Monday > Wednesday) {
-    businessDate = Wednesday;
-  }
+    if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
+      householdDay = 'Wednesday';
+    }
 
-  return (
-    <React.Fragment>
-      <div className={classes.container}>
-        <Button variant="contained" className={classes.button}>
-          <Link to="/" className={classes.link}>
+    if (area === 'Napier') {
+      householdDay = 'Thursday';
+    }
+
+    // Set date based on day of week
+    let collectionDate;
+    let businessDate;
+
+    if (householdDay === 'Monday') {
+      collectionDate = Monday;
+    }
+
+    if (householdDay === 'Tuesday') {
+      collectionDate = Tuesday;
+    }
+
+    if (householdDay === 'Wednesday') {
+      collectionDate = Wednesday;
+    }
+
+    if (householdDay === 'Thursday') {
+      collectionDate = Thursday;
+    }
+
+    // Set next Business collection date
+    if (Monday < Wednesday) {
+      businessDate = Monday;
+    } else if (Monday > Wednesday) {
+      businessDate = Wednesday;
+    }
+
+    return (
+      <React.Fragment>
+        <div className={classes.container}>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={() => changeView('home')}
+          >
             <ArrowBack />
-          </Link>
-        </Button>
-        <Typography className={classes.text}>
-          { area }
-          {' '}
-          Waste collection schedule
-        </Typography>
-      </div>
-      <div className={classes.cardContainer}>
-        <Card className={classes.card}>
-          <CardHeader
-            className={classes.cardHeader}
-            classes={{
-              title: classes.title,
-              action: classes.action,
-            }}
-            action={(
-              <Button className={classes.cardHeaderButton}>
-                <InfoOutlinedIcon />
-              </Button>
-            )}
-            title="Household refuse"
-          />
-          <CardContent>
-            <Typography className={classes.cardContentText}>
-              { householdDay }
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.cardActions}>
-            <Typography className={classes.cardActionsText}>
-              Next collection:
-              {' '}
-              { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-            </Typography>
-          </CardActions>
-        </Card>
-        <Card className={classes.card}>
-          <CardHeader
-            className={classes.cardHeader}
-            classes={{
-              title: classes.title,
-              action: classes.action,
-            }}
-            action={(
-              <Button className={classes.cardHeaderButton}>
-                <InfoOutlinedIcon />
-              </Button>
-            )}
-            title="Business refuse"
-          />
-          <CardContent>
-            <Typography className={classes.cardContentText}>
-              Mondays & Wednesdays
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.cardActions}>
-            <Typography className={classes.cardActionsText}>
-              Next collection:
-              {' '}
-              { businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-            </Typography>
-          </CardActions>
-        </Card>
-        <Card className={classes.card}>
-          <CardHeader
-            className={classes.cardHeader}
-            classes={{
-              title: classes.title,
-              action: classes.action,
-            }}
-            action={(
-              <Button className={classes.cardHeaderButton}>
-                <InfoOutlinedIcon />
-              </Button>
-            )}
-            title="Recycling"
-          />
-          <CardContent>
-            <Typography className={classes.cardContentText}>
-              { householdDay }
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.cardActions}>
-            <Typography className={classes.cardActionsText}>
-              Next collection:
-              {' '}
-              { collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' }) }
-            </Typography>
-          </CardActions>
-        </Card>
-      </div>
-    </React.Fragment>
-  );
-};
+          </Button>
+          <Typography className={classes.text}>
+            {area}
+            {' '}
+            Waste collection schedule
+          </Typography>
+        </div>
+        <div className={classes.cardContainer}>
+          <Card className={classes.card}>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <React.Fragment>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenHousehold}
+                  >
+                    <InfoOutlinedIcon />
+                  </Button>
+                  <Dialog
+                    open={this.state.openHousehold}
+                    onClose={this.handleClickCloseHousehold}
+                    classes={{
+                      paper: classes.dialog,
+                    }}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogActions className={classes.dialogHeader}>
+                      <span className={classes.dialogTitle}>Household refuse</span>
+                      <Button
+                        onClick={this.handleClickCloseHousehold}
+                        className={classes.cardHeaderButton}
+                      >
+                        <Clear />
+                      </Button>
+                    </DialogActions>
+                    <DialogContent className={classes.dialogContent}>
+                      <DialogContentText id="alert-dialog-description">
+                        Organic food waste as well as garden refuse will be collected if all of
+                        the bags fit in your bin. No bags will be taken from the sidewalk.
+                        Do not add dangerous household waste (paint, bleach, oil) to your
+                        household refuse.
+                        Building rubble needs to be taken to a dumping sites or
+                        the Bredasdorp Landfill.
+                      </DialogContentText>
+                    </DialogContent>
+                  </Dialog>
+                </React.Fragment>
+              )}
+
+              title="Household refuse"
+            />
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                {householdDay}
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                Next collection:
+                {' '}
+                {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </Typography>
+            </CardActions>
+          </Card>
+          <Card className={classes.card}>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <React.Fragment>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenBusiness}
+                  >
+                    <InfoOutlinedIcon />
+                  </Button>
+                  <Dialog
+                    open={this.state.openBusiness}
+                    onClose={this.handleClickCloseBusiness}
+                    classes={{
+                      paper: classes.dialog,
+                    }}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogActions className={classes.dialogHeader}>
+                      <span className={classes.dialogTitle}>Business refuse</span>
+                      <Button
+                        onClick={this.handleClickCloseBusiness}
+                        className={classes.cardHeaderButton}
+                      >
+                        <Clear />
+                      </Button>
+                    </DialogActions>
+                    <DialogContent className={classes.dialogContent}>
+                      <DialogContentText id="alert-dialog-description">
+                        Business Waste is collected on
+                        <br />
+                        Mondays & Wednesdays
+                      </DialogContentText>
+                    </DialogContent>
+                  </Dialog>
+                </React.Fragment>
+              )}
+              title="Business refuse"
+            />
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                Mondays & Wednesdays
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                Next collection:
+                {' '}
+                {businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </Typography>
+            </CardActions>
+          </Card>
+          <Card className={classes.card}>
+            <CardHeader
+              className={classes.cardHeader}
+              classes={{
+                title: classes.title,
+                action: classes.action,
+              }}
+              action={(
+                <React.Fragment>
+                  <Button
+                    className={classes.cardHeaderButton}
+                    onClick={this.handleClickOpenRecycling}
+                  >
+                    <InfoOutlinedIcon />
+                  </Button>
+                  <Dialog
+                    open={this.state.openRecycling}
+                    onClose={this.handleClickCloseRecycling}
+                    classes={{
+                      paper: classes.dialog,
+                    }}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogActions className={classes.dialogHeader}>
+                      <span className={classes.dialogTitle}>Recycling</span>
+                      <Button
+                        onClick={this.handleClickCloseRecycling}
+                        className={classes.cardHeaderButton}
+                      >
+                        <Clear />
+                      </Button>
+                    </DialogActions>
+                    <DialogContent className={classes.dialogContent}>
+                      <DialogContentText id="alert-dialog-description">
+                        Recyclable materials should be placed in a clear bag and will
+                        be collected on the same day as household refuse.
+                        Paper, tin, glass and plastic can be placed in the recycling bag.
+                      </DialogContentText>
+                    </DialogContent>
+                  </Dialog>
+                </React.Fragment>
+              )}
+              title="Recycling"
+            />
+            <CardContent>
+              <Typography className={classes.cardContentText}>
+                {householdDay}
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+              <Typography className={classes.cardActionsText}>
+                Next collection:
+                {' '}
+                {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </Typography>
+            </CardActions>
+          </Card>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 WasteSchedule.defaultProps = {
   classes: null,
-  area: null,
+  props: null,
 };
 
 WasteSchedule.propTypes = {
   classes: PropTypes.instanceOf(Object),
-  area: PropTypes.string,
+  changeView: PropTypes.func.isRequired,
+  props: PropTypes.string,
 };
 
 export default withStyles(styles)(WasteSchedule);

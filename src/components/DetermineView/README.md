@@ -15,6 +15,9 @@ Furthermore, it also passed a specified props object and the `changeView` method
 ### viewsList
 Accepts an object with string keys and React component values. You will use the string key to designate the specific component when you call `changeView`.
 
+### areaList
+Accepts an array of objects. Will be used to dynamically render `<MenuItem />` in `select`.
+
 ### default
 Accepts a string that designates what the default view should be when the component initialises.
 
