@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -13,10 +14,13 @@ import { ArrowBack, Clear } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import {
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText
+} from '@material-ui/core';
 
 const styles = {
   container: {
