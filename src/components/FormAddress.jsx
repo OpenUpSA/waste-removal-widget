@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import { ArrowBack } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import TextField from '@material-ui/core/TextField';
-import PropTypes from 'prop-types';
+
+import {
+  Typography,
+  Button,
+  FormControl,
+  FormHelperText,
+  MenuItem,
+  Select,
+  OutlinedInput,
+  TextField
+} from '@material-ui/core';
 
 const styles = theme => ({
 
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
+  // container: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   marginBottom: 16,
+  // },
 
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    marginRight: 16,
-  },
+  // button: {
+  //   minWidth: 46,
+  //   width: 46,
+  //   height: 46,
+  //   backgroundColor: '#46A440',
+  //   marginRight: 16,
+  // },
 
   link: {
     textDecoration: 'none',
@@ -103,11 +107,34 @@ const styles = theme => ({
 
 });
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+
+const ButtonStyled = styled(Button)`
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    margin-right: 16px;
+  }
+`;
+
+const TextFieldButton = styled(Button)`
+  && {
+    background-color: #46A440;
+    color: white;
+    text-transform: none;
+    height: 48px;
+    width: 100%;
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+`;
 class FormAddress extends Component {
-  // state = {
-  //   area: '',
-  //   address: '',
-  // };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -119,16 +146,16 @@ class FormAddress extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
+        <Container className={classes.container}>
+          <ButtonStyled variant="contained">
             <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
-          </Button>
+          </ButtonStyled>
           <Typography className={classes.text}>
             Enter your address:
           </Typography>
-        </div>
+        </Container>
         <form autoComplete="off" className={classes.form}>
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -170,17 +197,17 @@ class FormAddress extends Component {
           <FormHelperText className={classes.helperText}>
             Your address will remain strictly confidential
           </FormHelperText>
-          <Button
+          <TextFieldButton
             variant="contained"
             classes={{
-              root: classes.root,
-              disabled: classes.disabled,
+              root: 'root',
+              disabled: 'disabled',
             }}
             className={classes.textFieldButton}
             disabled={!state.area || !state.address}
           >
             Create form
-          </Button>
+          </TextFieldButton>
         </form>
       </React.Fragment>
     );
