@@ -132,6 +132,7 @@ class FormAddress extends Component {
         <form autoComplete="off" className={classes.form}>
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
+              className={classes.select}
               value={state.area}
               onChange={this.handleChange}
               displayEmpty

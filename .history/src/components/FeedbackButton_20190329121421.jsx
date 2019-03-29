@@ -39,7 +39,18 @@ const styles = {
     width: '100%',
     padding: 16,
     fontWeight: 600,
-  }
+  },
+  // buttonDownload: {
+  //   textTransform: 'none',
+  //   width: '100%',
+  //   marginBottom: 16,
+  //   padding: 16,
+  //   fontWeight: 600,
+  //   [theme.breakpoints.up('sm')]: {
+  //     width: 'auto',
+  //     marginBottom: 0,
+  //   },
+  // },
 };
 
 const FeedbackButton = (props) => {
@@ -47,6 +58,15 @@ const FeedbackButton = (props) => {
 
   return (
     <CardActions className={width > 600 ? classes.cardActionsSm : classes.cardActions}>
+      {/* <Router> */}
+      {/* <Route exact path='/view/schedule' */}
+      {/* render={()=> */}
+      {/* <Button variant='contained' className={classes.buttonDownload}> */}
+      {/* Download this collection schedule */}
+      {/* </Button> */}
+      {/* }> */}
+      {/* </Route> */}
+      {/* </Router> */}
       <a
         href="https://goo.gl/forms/hqMugxj4ngNGigGp2"
         target="_blank"
