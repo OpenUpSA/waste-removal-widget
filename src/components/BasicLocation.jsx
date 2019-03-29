@@ -15,41 +15,41 @@ import {
 
 
 const Container = styled.div`
-  display: 'flex';
-  alignItems: 'center';
-  marginBottom: 16;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 `;
 
 const ButtonStyled = styled(Button)`
   && {
-    minWidth: 46;
-    width: 46;
-    height: 46;
-    backgroundColor: '#46A440';
-    color: 'white';
-    marginRight: 16;
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    color: white;
+    margin-right: 16px;
   }
 `;
 
 const Text = styled(Typography)`
   && {
-    color: 'white';
-    fontSize: '1.7rem';
+    color: white;
+    font-size: 1.7rem;
   }
 `;
 
 const Form = styled.form`
-  maxWidth: 466;
+  max-width: 466px;
 `;
 
 const FormControlStyled = styled(FormControl)`
   && {
     margin: 0;
-    minWidth: 250;
-    width: '100%';
-    height: 48;
-    backgroundColor: 'white';
-    borderRadius: 4;
+    min-width: 250px;
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
 
     &::placeholder: {
       color: rgba(0, 0, 0, 0.6);
