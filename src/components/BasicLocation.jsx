@@ -80,7 +80,7 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { classes, changeView, props } = this.props;
+    const { changeView, props } = this.props;
 
     return (
       <React.Fragment>
