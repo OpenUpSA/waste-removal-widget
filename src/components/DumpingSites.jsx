@@ -164,7 +164,7 @@ class DumpingSites extends Component {
 
   render() {
     const {
-      classes, changeView, props, width,
+      changeView, props, width,
     } = this.props;
     const area = props.toString();
 
@@ -213,7 +213,7 @@ class DumpingSites extends Component {
           </Text>
         </Container>
         <CardContainer {...{ width }}>
-          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
+          <CardStyled {...{ width }}>
             <CardHeaderStyled
               classes={{
                 title: 'title',
@@ -274,7 +274,7 @@ class DumpingSites extends Component {
               </CardActionsText>
             </CardActionsStyled>
           </CardStyled>
-          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
+          <CardStyled {...{ width }}>
             <CardHeaderStyled
               classes={{
                 title: 'title',
