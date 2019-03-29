@@ -145,6 +145,7 @@ class DumpingSites extends Component {
     OpenLandFill: false,
   };
 
+  // Dialog
   handleClickOpenDumpsite = () => {
     this.setState({ OpenDumpSite: true });
   };
@@ -166,6 +167,9 @@ class DumpingSites extends Component {
       classes, changeView, props, width,
     } = this.props;
     const area = props.toString();
+    // const { state } = this.state;
+    // const dumpState = state.OpenDumpSite;
+    // const fillState = state.OpenLandFill;
 
     // Set nearest dumping site
     let dumpsite;
