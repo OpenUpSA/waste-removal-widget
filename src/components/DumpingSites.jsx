@@ -18,123 +18,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-const styles = {
-  // container: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  // },
-
-  // button: {
-  //   minWidth: 46,
-  //   width: 46,
-  //   height: 46,
-  //   backgroundColor: '#46A440',
-  //   color: 'white',
-  //   marginRight: 16,
-  // },
-
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
-
-  // text: {
-  //   color: 'white',
-  //   fontSize: '1.7rem',
-  // },
-
-  // cardContainer: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  // },
-
-  // cardContainerSm: {
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  // },
-
-  // card: {
-  //   marginTop: 16,
-  //   width: 'auto',
-  // },
-
-  // cardSm: {
-  //   marginTop: 16,
-  //   marginRight: 16,
-  //   width: '50%',
-  //   '&:last-child': {
-  //     marginRight: 0,
-  //   },
-  // },
-
-  // cardHeader: {
-  //   backgroundColor: '#004B4F',
-  //   height: 50,
-  //   padding: 0,
-  // },
-
-  // cardHeaderButton: {
-  //   backgroundColor: 'rgba(255, 255, 255, 0.32)',
-  //   borderRadius: '0 4px 0 0',
-  //   width: 50,
-  //   height: 50,
-  //   margin: 0,
-  //   marginLeft: '-50px',
-  // },
-
-  // title: {
-  //   fontSize: 16,
-  //   color: 'white',
-  //   textAlign: 'center',
-  // },
-
-  // action: {
-  //   margin: 0,
-  // },
-
-  cardContentText: {
-    color: '#004B4F',
-    textAlign: 'center',
-  },
-
-  cardActions: {
-    backgroundColor: 'rgba(0, 0, 0, 0.08)',
-  },
-
-  cardActionsText: {
-    color: '#004B4F',
-    textAlign: 'center',
-    width: '100%',
-  },
-
-  dialog: {
-    minWidth: 360,
-    width: 360,
-  },
-
-  dialogHeader: {
-    backgroundColor: '#004B4F',
-    height: 50,
-    padding: 0,
-    margin: 0,
-  },
-
-  dialogTitle: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
-    margin: 'auto',
-  },
-
-  dialogContent: {
-    padding: 24,
-    textAlign: 'center',
-    color: 'black',
-  },
-
-};
-
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -180,17 +63,17 @@ const CardHeaderStyled = styled(CardHeader)`
     background-color: #004B4F;
     height: 50px;
     padding: 0;
+  }
 
-    .title {
+  & .title {
       font-size: 16px;
       color: white;
       text-align: center;
     }
 
-    .action {
+  & .action {
       margin: 0;
     }
-  }
 `;
 
 const CardHeaderButton = styled(Button)`
@@ -210,13 +93,58 @@ const CardContentText = styled(Typography)`
     text-align: center;
   }
 `;
+
+const CardActionsStyled = styled(CardActions)`
+  && {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+`;
+
+const CardActionsText = styled(Typography)`
+  && {
+    color: #004B4F;
+    text-align: center;
+    width: 100%;
+  }
+`;
+
+const DialogStyled = styled(Dialog)`
+  & .dialog {
+    min-width: 360px;
+    width: 360px;
+  }
+`;
+
+const DialogHeader = styled(DialogActions)`
+  && {
+    background-color: #004B4F;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+  }
+`;
+
+const DialogTitle = styled.span`
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  font-family: Roboto, "Helvetica", sans-serif;
+  margin: auto;
+`;
+
+const DialogContentStyled = styled(DialogContent)`
+  && {
+    padding: 24px;
+    text-align: center;
+    color: black;
+  }
+`;
 class DumpingSites extends Component {
   state = {
     OpenDumpSite: false,
     OpenLandFill: false,
   };
 
-  // Dialog
   handleClickOpenDumpsite = () => {
     this.setState({ OpenDumpSite: true });
   };
@@ -238,9 +166,6 @@ class DumpingSites extends Component {
       classes, changeView, props, width,
     } = this.props;
     const area = props.toString();
-    // const { state } = this.state;
-    // const dumpState = state.OpenDumpSite;
-    // const fillState = state.OpenLandFill;
 
     // Set nearest dumping site
     let dumpsite;
@@ -300,28 +225,28 @@ class DumpingSites extends Component {
                   >
                     <InfoOutlinedIcon />
                   </CardHeaderButton>
-                  <Dialog
+                  <DialogStyled
                     open={this.state.OpenDumpSite}
                     onClose={this.handleClickCloseDumpsite}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'dialog',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>
+                    <DialogHeader>
+                      <DialogTitle>
                         {dumpsite}
                         {' '}
                         Dump
-                      </span>
+                      </DialogTitle>
                       <CardHeaderButton
                         onClick={this.handleClickCloseDumpsite}
                       >
                         <Clear />
                       </CardHeaderButton>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                    </DialogHeader>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         {address}
                         <br />
@@ -329,8 +254,8 @@ class DumpingSites extends Component {
                         <br />
                         Saturday 09:00-17:00
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title={address}
@@ -342,11 +267,11 @@ class DumpingSites extends Component {
                 Dump
               </CardContentText>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsText>
                 {times}
-              </Typography>
-            </CardActions>
+              </CardActionsText>
+            </CardActionsStyled>
           </CardStyled>
           <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeaderStyled
@@ -361,24 +286,24 @@ class DumpingSites extends Component {
                   >
                     <InfoOutlinedIcon />
                   </CardHeaderButton>
-                  <Dialog
+                  <DialogStyled
                     open={this.state.OpenLandFill}
                     onClose={this.handleClickCloseLandFill}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'dialog',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Bredasdorp Waste Facility</span>
+                    <DialogHeader>
+                      <DialogTitle>Bredasdorp Waste Facility</DialogTitle>
                       <CardHeaderButton
                         onClick={this.handleClickCloseLandFill}
                       >
                         <Clear />
                       </CardHeaderButton>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                    </DialogHeader>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         Swellendam Road, Bredasdorp
                         <br />
@@ -386,8 +311,8 @@ class DumpingSites extends Component {
                         <br />
                         Saturday 09:00-17:00
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title="Swellendam Road, Bredasdorp"
@@ -397,17 +322,19 @@ class DumpingSites extends Component {
                 Bredasdorp Waste Facility
               </CardContentText>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsText>
                 {times}
-              </Typography>
-            </CardActions>
+              </CardActionsText>
+            </CardActionsStyled>
           </CardStyled>
         </CardContainer>
       </React.Fragment>
     );
   }
 }
+
+export default DumpingSites;
 
 DumpingSites.defaultProps = {
   classes: null,
@@ -420,5 +347,3 @@ DumpingSites.propTypes = {
   props: PropTypes.instanceOf(Array),
   width: PropTypes.number.isRequired,
 };
-
-export default withStyles(styles)(DumpingSites);
