@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-
 import { ArrowBack } from '@material-ui/icons';
 
 import {
@@ -17,95 +15,6 @@ import {
   OutlinedInput,
   TextField
 } from '@material-ui/core';
-
-const styles = theme => ({
-
-  // container: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   marginBottom: 16,
-  // },
-
-  // button: {
-  //   minWidth: 46,
-  //   width: 46,
-  //   height: 46,
-  //   backgroundColor: '#46A440',
-  //   marginRight: 16,
-  // },
-
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
-
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
-
-  form: {
-    maxWidth: 466,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  formControl: {
-    margin: 0,
-    minWidth: 250,
-    width: '100%',
-    height: 48,
-    backgroundColor: 'white',
-    borderRadius: 4,
-
-    '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)',
-    },
-  },
-
-  textField: {
-    width: '100%',
-    height: 48,
-    backgroundColor: 'white',
-    borderRadius: 4,
-    padding: 0,
-    margin: '8px 8px 4px 0px',
-
-    '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)',
-    },
-  },
-
-  helperText: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    marginTop: 0,
-    marginLeft: 15,
-  },
-
-  textFieldButton: {
-    backgroundColor: '#46A440',
-    color: 'white',
-    textTransform: 'none',
-    height: 48,
-    width: '100%',
-    marginTop: 8,
-    alignSelf: 'flex-end',
-
-    [theme.breakpoints.up('sm')]: {
-      width: 118,
-    },
-  },
-
-  root: {
-    '&$disabled': {
-      backgroundColor: '#CACACA',
-      color: 'rgba(0, 0, 0, 0.38)',
-    },
-  },
-
-  disabled: {},
-
-});
 
 const Container = styled.div`
   display: flex;
@@ -123,6 +32,62 @@ const ButtonStyled = styled(Button)`
   }
 `;
 
+const LinkStyled = styled(Link)`
+  && {
+    text-decoration: none;
+    color: white;
+  }
+`;
+
+const Text = styled(Typography)`
+  && {
+    color: white;
+    font-size: 1.7rem;
+  }
+`;
+
+const Form = styled.form`
+  max-width: 466px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const FormControlStyled = styled(FormControl)`
+  && {
+    margin: 0;
+    min-width: 250px;
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
+
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
+
+const TextFieldStyled = styled(TextField)`
+  && {
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 0;
+    margin: 8px 8px 4px 0px;
+
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
+
+const FormHelperTextStyled = styled(FormHelperText)`
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0;
+  margin-left: 15px;
+`;
+
 const TextFieldButton = styled(Button)`
   && {
     background-color: #46A440;
@@ -132,8 +97,18 @@ const TextFieldButton = styled(Button)`
     width: 100%;
     margin-top: 8px;
     align-self: flex-end;
+
+    @media screen and (min-width: 375px) {
+      width: 118px;
+    }
+  }
+
+  & .disabled {
+    background-color: #CACACA;
+    color: rgba(0, 0, 0, 0.38);
   }
 `;
+
 class FormAddress extends Component {
 
   handleChange = (event) => {
@@ -141,23 +116,22 @@ class FormAddress extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { state } = this.state;
 
     return (
       <React.Fragment>
-        <Container className={classes.container}>
+        <Container>
           <ButtonStyled variant="contained">
-            <Link to="/" className={classes.link}>
+            <LinkStyled to="/">
               <ArrowBack />
-            </Link>
+            </LinkStyled>
           </ButtonStyled>
-          <Typography className={classes.text}>
+          <Text>
             Enter your address:
-          </Typography>
+          </Text>
         </Container>
-        <form autoComplete="off" className={classes.form}>
-          <FormControl variant="outlined" className={classes.formControl}>
+        <Form autoComplete="off">
+          <FormControlStyled variant="outlined">
             <Select
               value={state.area}
               onChange={this.handleChange}
@@ -168,7 +142,7 @@ class FormAddress extends Component {
                   name="area"
                   id="outlined-area"
                 />
-)}
+              )}
             >
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>
@@ -183,10 +157,9 @@ class FormAddress extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControl>
-          <TextField
+          </FormControlStyled>
+          <TextFieldStyled
             id="outlined-address"
-            className={classes.textField}
             placeholder="Enter your street address"
             margin="normal"
             variant="outlined"
@@ -194,25 +167,25 @@ class FormAddress extends Component {
             value={state.value}
             onChange={this.handleChange}
           />
-          <FormHelperText className={classes.helperText}>
+          <FormHelperTextStyled>
             Your address will remain strictly confidential
-          </FormHelperText>
+          </FormHelperTextStyled>
           <TextFieldButton
             variant="contained"
             classes={{
-              root: 'root',
               disabled: 'disabled',
             }}
-            className={classes.textFieldButton}
             disabled={!state.area || !state.address}
           >
             Create form
           </TextFieldButton>
-        </form>
+        </Form>
       </React.Fragment>
     );
   }
 }
+
+export default FormAddress;
 
 FormAddress.defaultProps = {
   classes: null,
@@ -221,5 +194,3 @@ FormAddress.defaultProps = {
 FormAddress.propTypes = {
   classes: PropTypes.instanceOf(Object),
 };
-
-export default withStyles(styles)(FormAddress);
