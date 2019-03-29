@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 const Container = styled.div`
-  display: flex';
+  display: flex;
   align-items: center;
   margin-bottom: 16px;
 `;
