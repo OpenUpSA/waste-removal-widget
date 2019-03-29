@@ -98,7 +98,6 @@ class BasicLocation extends Component {
         <Form autoComplete="off">
           <FormControlStyled variant="outlined">
             <Select
-              className={classes.select}
               value={props}
               onChange={this.handleChange}
               displayEmpty
