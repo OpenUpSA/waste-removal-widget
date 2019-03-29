@@ -1,18 +1,60 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
+import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
 import { ArrowBack } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import PropTypes from 'prop-types';
 
-import {
-  Typography,
-  Button,
-  FormControl,
-  MenuItem,
-  Select,
-  OutlinedInput
-} from '@material-ui/core';
+const styles = {
+  // container: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   marginBottom: 16,
+  // },
 
+  // button: {
+  //   minWidth: 46,
+  //   width: 46,
+  //   height: 46,
+  //   backgroundColor: '#46A440',
+  //   color: 'white',
+  //   marginRight: 16,
+  // },
+
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
+
+  // text: {
+  //   color: 'white',
+  //   fontSize: '1.7rem',
+  // },
+
+  form: {
+    maxWidth: 466,
+  },
+
+  formControl: {
+    margin: 0,
+    minWidth: 250,
+    width: '100%',
+    height: 48,
+    backgroundColor: 'white',
+    borderRadius: 4,
+
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
+  },
+};
 
 const Container = styled.div`
   display: 'flex';
@@ -42,7 +84,7 @@ const Form = styled.form`
   maxWidth: 466;
 `;
 
-const FormControlStyled = styled(FormControl)`
+const FormControlStyled = styled(FormControlStyled)`
   && {
     margin: 0;
     minWidth: 250;
@@ -70,6 +112,7 @@ class BasicLocation extends Component {
     this.setState({
       props: event.target.value,
     }, () => {
+      // const { state } = this.state;
       if (this.state.view === 'schedule') {
         this.props.changeView('areaSchedules', [this.state.props]);
       }
@@ -81,6 +124,7 @@ class BasicLocation extends Component {
 
   render() {
     const { classes, changeView, props } = this.props;
+    // const value = this.state;
 
     return (
       <React.Fragment>
@@ -131,8 +175,6 @@ class BasicLocation extends Component {
   }
 }
 
-export default BasicLocation;
-
 BasicLocation.defaultProps = {
   classes: null,
   props: '',
@@ -144,3 +186,5 @@ BasicLocation.propTypes = {
   view: PropTypes.string.isRequired,
   props: PropTypes.string,
 };
+
+export default withStyles(styles)(BasicLocation);

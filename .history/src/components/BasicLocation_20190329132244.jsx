@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArrowBack } from '@material-ui/icons';
-
-import {
-  Typography,
-  Button,
-  FormControl,
-  MenuItem,
-  Select,
-  OutlinedInput
-} from '@material-ui/core';
-
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: 'flex';

@@ -1,61 +1,59 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+
+import { withStyles } from '@material-ui/core/styles';
 
 import { ArrowBack } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import PropTypes from 'prop-types';
 
-import {
-  Typography,
-  Button,
-  FormControl,
-  MenuItem,
-  Select,
-  OutlinedInput
-} from '@material-ui/core';
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
 
+  button: {
+    minWidth: 46,
+    width: 46,
+    height: 46,
+    backgroundColor: '#46A440',
+    color: 'white',
+    marginRight: 16,
+  },
 
-const Container = styled.div`
-  display: 'flex';
-  alignItems: 'center';
-  marginBottom: 16;
-`;
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 
-const ButtonStyled = styled(Button)`
-  && {
-    minWidth: 46;
-    width: 46;
-    height: 46;
-    backgroundColor: '#46A440';
-    color: 'white';
-    marginRight: 16;
-  }
-`;
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
+  },
 
-const Text = styled(Typography)`
-  && {
-    color: 'white';
-    fontSize: '1.7rem';
-  }
-`;
+  form: {
+    maxWidth: 466,
+  },
 
-const Form = styled.form`
-  maxWidth: 466;
-`;
+  formControl: {
+    margin: 0,
+    minWidth: 250,
+    width: '100%',
+    height: 48,
+    backgroundColor: 'white',
+    borderRadius: 4,
 
-const FormControlStyled = styled(FormControl)`
-  && {
-    margin: 0;
-    minWidth: 250;
-    width: '100%';
-    height: 48;
-    backgroundColor: 'white';
-    borderRadius: 4;
-
-    &::placeholder: {
-      color: rgba(0, 0, 0, 0.6);
-    }
-  }
-`;
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
+  },
+};
 
 class BasicLocation extends Component {
   constructor(props) {
@@ -70,6 +68,7 @@ class BasicLocation extends Component {
     this.setState({
       props: event.target.value,
     }, () => {
+      // const { state } = this.state;
       if (this.state.view === 'schedule') {
         this.props.changeView('areaSchedules', [this.state.props]);
       }
@@ -81,22 +80,24 @@ class BasicLocation extends Component {
 
   render() {
     const { classes, changeView, props } = this.props;
+    // const value = this.state;
 
     return (
       <React.Fragment>
-        <Container>
-          <ButtonStyled
+        <div className={classes.container}>
+          <Button
             variant="contained"
+            className={classes.button}
             onClick={() => changeView('home')}
           >
             <ArrowBack />
-          </ButtonStyled>
-          <Text>
+          </Button>
+          <Typography className={classes.text}>
               Select your area:
-          </Text>
-        </Container>
-        <Form autoComplete="off">
-          <FormControlStyled variant="outlined">
+          </Typography>
+        </div>
+        <form autoComplete="off" className={classes.form}>
+          <FormControl variant="outlined" className={classes.formControl}>
             <Select
               className={classes.select}
               value={props}
@@ -124,14 +125,12 @@ class BasicLocation extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControlStyled>
-        </Form>
+          </FormControl>
+        </form>
       </React.Fragment>
     );
   }
 }
-
-export default BasicLocation;
 
 BasicLocation.defaultProps = {
   classes: null,
@@ -144,3 +143,5 @@ BasicLocation.propTypes = {
   view: PropTypes.string.isRequired,
   props: PropTypes.string,
 };
+
+export default withStyles(styles)(BasicLocation);
