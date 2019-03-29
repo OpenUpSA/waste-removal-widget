@@ -16,40 +16,40 @@ import {
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 16px;
+  alignItems: center;
+  marginBottom: 16px;
 `;
 
 const ButtonStyled = styled(Button)`
   && {
-    min-width: 46px;
+    minWidth: 46px;
     width: 46px;
     height: 46px;
-    background-color: #46A440;
+    backgroundColor: #46A440;
     color: white;
-    margin-right: 16px;
+    marginRight: 16px;
   }
 `;
 
 const Text = styled(Typography)`
   && {
     color: white;
-    font-size: 1.7rem;
+    fontSize: 1.7rem;
   }
 `;
 
 const Form = styled.form`
-  max-width: 466px;
+  maxWidth: 466px;
 `;
 
 const FormControlStyled = styled(FormControl)`
   && {
     margin: 0;
-    min-width: 250px;
+    minWidth: 250px;
     width: 100%;
     height: 48px;
-    background-color: white;
-    border-radius: 4px;
+    backgroundColor: white;
+    borderRadius: 4px;
 
     &::placeholder: {
       color: rgba(0, 0, 0, 0.6);

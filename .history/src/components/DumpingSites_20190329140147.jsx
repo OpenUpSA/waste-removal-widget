@@ -203,13 +203,6 @@ const CardHeaderButton = styled(Button)`
     margin-left: -50px;
   }
 `;
-
-const CardContentText = styled(Typography)`
-  && {
-    color: #004B4F;
-    text-align: center;
-  }
-`;
 class DumpingSites extends Component {
   state = {
     OpenDumpSite: false,
@@ -336,11 +329,11 @@ class DumpingSites extends Component {
               title={address}
             />
             <CardContent>
-              <CardContentText>
+              <Typography className={classes.cardContentText}>
                 {dumpsite}
                 {' '}
                 Dump
-              </CardContentText>
+              </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
@@ -393,9 +386,9 @@ class DumpingSites extends Component {
               title="Swellendam Road, Bredasdorp"
             />
             <CardContent>
-              <CardContentText>
+              <Typography className={classes.cardContentText}>
                 Bredasdorp Waste Facility
-              </CardContentText>
+              </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Typography className={classes.cardActionsText}>
