@@ -1,18 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
+import {
+  Typography,
+  Button
+} from '@material-ui/core';
 
 const BY_LAWS_URL = 'https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/';
 
 
-const styles = {
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
+// const styles = {
+//   text: {
+//     color: 'white',
+//     fontSize: '1.7rem',
+//   },
   button: {
     backgroundColor: 'white',
     textTransform: 'none',
@@ -40,14 +44,19 @@ const styles = {
   },
 };
 
+const Text = styled(Typography)`
+    color: white;
+    font-size: 1.7rem;
+`;
+
 const SelectAction = (props) => {
   const { classes, changeView, width, } = props;
 
   return (
     <React.Fragment>
-      <Typography className={classes.text}>
+      <Text>
         Select an action:
-      </Typography>
+      </Text>
       <div>
         <Button
           variant="contained"
