@@ -18,13 +18,13 @@ const BY_LAWS_URL = 'https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2
 //     fontSize: '1.7rem',
 //   },
   button: {
-    backgroundColor: 'white',
-    textTransform: 'none',
-    marginTop: 16,
-    width: '100%',
-    padding: 16,
-    fontWeight: 600,
-    marginRight: 0,
+    // background-color: 'white',
+    // text-transform: 'none',
+    // margin-top: 16,
+    // width: '100%',
+    // padding: 16,
+    // font-weight: 600,
+    margin-right: 0,
   },
   buttonSm: {
     backgroundColor: 'white',
@@ -49,6 +49,17 @@ const Text = styled(Typography)`
     font-size: 1.7rem;
 `;
 
+const ButtonStyled = styled(Button)`
+  background-color: white;
+  text-transform: none;
+  margin-top: 16px;
+  width: ${({ width }) => (width > 600 ? 'auto' : '100%')};
+  padding: 16px;
+  font-weight: 600;
+  margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
+`;
+
+
 const SelectAction = (props) => {
   const { classes, changeView, width, } = props;
 
@@ -58,46 +69,47 @@ const SelectAction = (props) => {
         Select an action:
       </Text>
       <div>
-        <Button
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('report')}
         >
           Report uncollected refuse
-        </Button>
+        </ButtonStyled>
 
-        <Button
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('schedule')}
         >
           View my refuse collection schedule
-        </Button>
-        <Button
+        </ButtonStyled>
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('sites')}
         >
           Find my nearest dumping site
-        </Button>
-
+        </ButtonStyled>
         <a
           href={BY_LAWS_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={classes.bylaws}
         >
-          <Button variant="contained" size="large" className={width > 600 ? classes.buttonSm : classes.button}>
-            View my local refuse by-laws
-          </Button>
+        <ButtonStyled {...{ width }}
+          variant="contained" 
+          size="large" 
+        >
+          View my local refuse by-laws
+        </ButtonStyled>
         </a>
       </div>
     </React.Fragment>
   );
 };
+
+export default withStyles(styles)(SelectAction);
 
 SelectAction.defaultProps = {
   classes: null,
@@ -108,5 +120,3 @@ SelectAction.propTypes = {
   changeView: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
-
-export default withStyles(styles)(SelectAction);
