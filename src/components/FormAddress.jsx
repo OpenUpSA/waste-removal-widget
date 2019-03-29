@@ -98,7 +98,7 @@ const TextFieldButton = styled(Button)`
     margin-top: 8px;
     align-self: flex-end;
 
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: 600px) {
       width: 118px;
     }
   }
