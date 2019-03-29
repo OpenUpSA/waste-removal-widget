@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 import {
   Typography,
@@ -10,39 +8,6 @@ import {
 } from '@material-ui/core';
 
 const BY_LAWS_URL = 'https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/';
-
-
-// const styles = {
-//   text: {
-//     color: 'white',
-//     fontSize: '1.7rem',
-//   },
-  button: {
-    // background-color: 'white',
-    // text-transform: 'none',
-    // margin-top: 16,
-    // width: '100%',
-    // padding: 16,
-    // font-weight: 600,
-    margin-right: 0,
-  },
-  buttonSm: {
-    backgroundColor: 'white',
-    textTransform: 'none',
-    marginTop: 16,
-    width: 'auto',
-    padding: 16,
-    fontWeight: 600,
-    marginRight: 16,
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'black',
-  },
-  bylaws: {
-    textDecoration: 'none',
-  },
-};
 
 const Text = styled(Typography)`
     color: white;
@@ -59,6 +24,9 @@ const ButtonStyled = styled(Button)`
   margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
 `;
 
+const ByLawsLink = styled.a`
+  text-decoration: none;
+`;
 
 const SelectAction = (props) => {
   const { classes, changeView, width, } = props;
@@ -91,7 +59,7 @@ const SelectAction = (props) => {
         >
           Find my nearest dumping site
         </ButtonStyled>
-        <a
+        <ByLawsLink
           href={BY_LAWS_URL}
           target="_blank"
           rel="noopener noreferrer"
@@ -103,13 +71,13 @@ const SelectAction = (props) => {
         >
           View my local refuse by-laws
         </ButtonStyled>
-        </a>
+        </ByLawsLink>
       </div>
     </React.Fragment>
   );
 };
 
-export default withStyles(styles)(SelectAction);
+export default SelectAction;
 
 SelectAction.defaultProps = {
   classes: null,
