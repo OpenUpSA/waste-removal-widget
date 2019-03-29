@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { CardActions, Button } from '@material-ui/core';
-
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 
 const CardActionsStyled = styled(CardActions)`
   && {
