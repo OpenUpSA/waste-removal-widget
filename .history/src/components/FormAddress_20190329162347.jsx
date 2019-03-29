@@ -20,19 +20,19 @@ import {
 
 const styles = theme => ({
 
-  // container: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   marginBottom: 16,
-  // },
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
 
-  // button: {
-  //   minWidth: 46,
-  //   width: 46,
-  //   height: 46,
-  //   backgroundColor: '#46A440',
-  //   marginRight: 16,
-  // },
+  button: {
+    minWidth: 46,
+    width: 46,
+    height: 46,
+    backgroundColor: '#46A440',
+    marginRight: 16,
+  },
 
   link: {
     textDecoration: 'none',
@@ -112,28 +112,6 @@ const Container = styled.div`
   align-items: center;
   margin-bottom: 16px;
 `;
-
-const ButtonStyled = styled(Button)`
-  && {
-    min-width: 46px;
-    width: 46px;
-    height: 46px;
-    background-color: #46A440;
-    margin-right: 16px;
-  }
-`;
-
-const TextFieldButton = styled(Button)`
-  && {
-    background-color: #46A440;
-    color: white;
-    text-transform: none;
-    height: 48px;
-    width: 100%;
-    margin-top: 8px;
-    align-self: flex-end;
-  }
-`;
 class FormAddress extends Component {
 
   handleChange = (event) => {
@@ -147,11 +125,11 @@ class FormAddress extends Component {
     return (
       <React.Fragment>
         <Container className={classes.container}>
-          <ButtonStyled variant="contained">
+          <Button variant="contained" className={classes.button}>
             <Link to="/" className={classes.link}>
               <ArrowBack />
             </Link>
-          </ButtonStyled>
+          </Button>
           <Typography className={classes.text}>
             Enter your address:
           </Typography>
@@ -197,17 +175,17 @@ class FormAddress extends Component {
           <FormHelperText className={classes.helperText}>
             Your address will remain strictly confidential
           </FormHelperText>
-          <TextFieldButton
+          <Button
             variant="contained"
             classes={{
-              root: 'root',
-              disabled: 'disabled',
+              root: classes.root,
+              disabled: classes.disabled,
             }}
             className={classes.textFieldButton}
             disabled={!state.area || !state.address}
           >
             Create form
-          </TextFieldButton>
+          </Button>
         </form>
       </React.Fragment>
     );

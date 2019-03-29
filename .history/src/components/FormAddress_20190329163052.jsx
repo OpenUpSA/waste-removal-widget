@@ -200,8 +200,8 @@ class FormAddress extends Component {
           <TextFieldButton
             variant="contained"
             classes={{
-              root: 'root',
-              disabled: 'disabled',
+              root: classes.root,
+              disabled: classes.disabled,
             }}
             className={classes.textFieldButton}
             disabled={!state.area || !state.address}
