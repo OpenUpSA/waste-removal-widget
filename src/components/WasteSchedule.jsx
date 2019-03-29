@@ -23,10 +23,10 @@ import {
 } from '@material-ui/core';
 
 const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+  // container: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  // },
   button: {
     minWidth: 46,
     width: 46,
@@ -121,6 +121,10 @@ const styles = {
   },
 };
 
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 class WasteSchedule extends Component {
   state = {
@@ -222,7 +226,7 @@ class WasteSchedule extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
+        <Container>
           <Button
             variant="contained"
             className={classes.button}
@@ -235,7 +239,7 @@ class WasteSchedule extends Component {
             {' '}
             Waste collection schedule
           </Typography>
-        </div>
+        </Container>
         <div className={width > 600 ? classes.cardContainerSm : classes.cardContainer}>
           <Card className={width > 600 ? classes.cardSm : classes.card}>
             <CardHeader
