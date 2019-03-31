@@ -12,32 +12,10 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import PropTypes from 'prop-types';
 
-const styles = {
-  // container: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   marginBottom: 16,
-  // },
-
-  // button: {
-  //   minWidth: 46,
-  //   width: 46,
-  //   height: 46,
-  //   backgroundColor: '#46A440',
-  //   color: 'white',
-  //   marginRight: 16,
-  // },
-
   link: {
     textDecoration: 'none',
     color: 'white',
   },
-
-  // text: {
-  //   color: 'white',
-  //   fontSize: '1.7rem',
-  // },
-
   form: {
     maxWidth: 466,
   },
@@ -183,4 +161,4 @@ BasicLocation.propTypes = {
   props: PropTypes.string,
 };
 
-export default withStyles(styles)(BasicLocation);
+export default BasicLocation;
