@@ -15,12 +15,14 @@ const Container = styled.div`
 `;
 
 const ButtonStyled = styled(Button)`
-  min-width: 46px;
-  width: 46px;
-  height: 46px;
-  background-color: #46A440;
-  margin-px;ight: 16px;
-  color: whitepx;
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    margin-right: 16px;
+    color: white;
+    }
 `;
 
 const Text = styled(Typography)`
@@ -29,14 +31,17 @@ const Text = styled(Typography)`
 `;
 
 const TextSmall = styled(Typography)`
-  color: white;
-  font-size: 1.4rem;
+  && {
+    color: white;
+    font-size: 1.4rem;
+   }
 `;
 
 const Refs = styled.a`
   color: white;
   text-decoration: none;
-   &:hover: 
+
+  &:hover: 
      {
       color: #CACACA;
      }
@@ -85,3 +90,4 @@ ReportContact.propTypes = {
 };
 
 export default ReportContact;
+
