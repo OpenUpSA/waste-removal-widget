@@ -23,7 +23,7 @@ const ContainerStyled = styled.div`
 && {
   display: flex;
   align-items: center;
-},
+}
 `;
 
 const ButtonStyled = styled(Button)`
@@ -38,15 +38,15 @@ const ButtonStyled = styled(Button)`
   link: {
       text-decoration: none;
       color: white;
-    },
-},
+      },
+}
 `;
 
 const Text = styled(Typography)`
 && {
   color: white;
   font-size: 1.7rem;
-},
+}
 `;
 
 const CardHeaderStyled = styled(CardHeader)`
@@ -54,7 +54,7 @@ const CardHeaderStyled = styled(CardHeader)`
   background-color: #004B4F;
   height: 50px;
   padding: 0;
-},
+}
 
 & .title {
   font-size: 16px;
@@ -64,7 +64,7 @@ const CardHeaderStyled = styled(CardHeader)`
 
 & .action {
   margin: 0;
-},
+}
 `;
 
 const CardHeaderButtonStyled = styled(Button)`
@@ -76,7 +76,7 @@ const CardHeaderButtonStyled = styled(Button)`
   height: 50px;
   margin: 0;
   margin-left: -50px;
-},
+}
 `;
 
 const CardContentTextStyled = styled(Typography)`
@@ -89,7 +89,7 @@ const CardContentTextStyled = styled(Typography)`
 const CardActionsStyled = styled(CardActions)`
 && {
   background-color: rgba(0, 0, 0, 0.08);
-},
+}
 `;
 
 const CardActionsTextStyled = styled(Typography)`
@@ -97,13 +97,13 @@ const CardActionsTextStyled = styled(Typography)`
   color: #004B4F;
   text-align: center;
   width: 100%;
-},
+}
 `;
 
 const DialogStyled = styled(Dialog)`
 & .dialog: {
   max-width: 360px;
-},
+}
 `;
 
 const DialogHeaderStyled = styled(DialogActions)`
@@ -112,7 +112,7 @@ const DialogHeaderStyled = styled(DialogActions)`
   height: 50px;
   padding: 0;
   margin: 0;
-},
+}
 `;
 
 const DialogTitleStyled = styled.span`
@@ -122,7 +122,7 @@ const DialogTitleStyled = styled.span`
   text-align: center;
   font-family: "Roboto", "Helvetica","Sans-sserif";
   margin: auto;
-},
+}
 `;
 
 const DialogContentStyled = styled(DialogContent)`
@@ -130,7 +130,7 @@ const DialogContentStyled = styled(DialogContent)`
   padding: 24px;
   text-align: center;
   color: black;
-},
+}
 `;
 
 const CardContainer = styled.div`
@@ -144,9 +144,10 @@ const CardStyled = styled(Card)`
     marginTop: 16px;
     margin-right: ${({ width }) => (width > 600 ? '16px' : 'auto')};  //auto??
     width: ${({ width }) => (width > 600 ? '366' : 'auto')};
+   
     '&:last-child': {
-        margin-right: ${({ width }) => (width > 600 ? '0' : 'auto')};
-      },
+       margin-right: ${({ width }) => (width > 600 ? '0' : 'auto')};
+  }
 `;
 
 class WasteSchedule extends Component {
@@ -440,6 +441,8 @@ class WasteSchedule extends Component {
   }
 }
 
+export default WasteSchedule;
+
 WasteSchedule.defaultProps = {
   classes: null,
   props: null,
@@ -452,4 +455,3 @@ WasteSchedule.propTypes = {
   width: PropTypes.number.isRequired,
 };
 
-export default WasteSchedule;
