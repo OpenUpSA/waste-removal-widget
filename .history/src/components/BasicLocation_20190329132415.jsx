@@ -15,41 +15,41 @@ import {
 
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
+  display: 'flex';
+  alignItems: 'center';
+  marginBottom: 16;
 `;
 
 const ButtonStyled = styled(Button)`
   && {
-    min-width: 46px;
-    width: 46px;
-    height: 46px;
-    background-color: #46A440;
-    color: white;
-    margin-right: 16px;
+    minWidth: 46;
+    width: 46;
+    height: 46;
+    backgroundColor: '#46A440';
+    color: 'white';
+    marginRight: 16;
   }
 `;
 
 const Text = styled(Typography)`
   && {
-    color: white;
-    font-size: 1.7rem;
+    color: 'white';
+    fontSize: '1.7rem';
   }
 `;
 
 const Form = styled.form`
-  max-width: 466px;
+  maxWidth: 466;
 `;
 
 const FormControlStyled = styled(FormControl)`
   && {
     margin: 0;
-    min-width: 250px;
-    width: 100%;
-    height: 48px;
-    background-color: white;
-    border-radius: 4px;
+    minWidth: 250;
+    width: '100%';
+    height: 48;
+    backgroundColor: 'white';
+    borderRadius: 4;
 
     &::placeholder: {
       color: rgba(0, 0, 0, 0.6);
@@ -80,7 +80,7 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { changeView, props } = this.props;
+    const { classes, changeView, props } = this.props;
 
     return (
       <React.Fragment>
@@ -98,6 +98,7 @@ class BasicLocation extends Component {
         <Form autoComplete="off">
           <FormControlStyled variant="outlined">
             <Select
+              className={classes.select}
               value={props}
               onChange={this.handleChange}
               displayEmpty

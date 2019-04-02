@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { CardActions, Button } from '@material-ui/core';
-
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 
 const CardActionsStyled = styled(CardActions)`
   && {
@@ -38,7 +38,7 @@ const FeedbackButton = (props) => {
 
   return (
     <CardActionsStyled {...{ width }}>
-      <Link {...{ width }}
+      <Link {...{ width}}
         href="https://goo.gl/forms/hqMugxj4ngNGigGp2"
         target="_blank"
         rel="noopener noreferrer"

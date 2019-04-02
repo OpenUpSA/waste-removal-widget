@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { CardActions, Button } from '@material-ui/core';
-
-
 const CardActionsStyled = styled(CardActions)`
   && {
     display: flex;

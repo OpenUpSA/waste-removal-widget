@@ -80,7 +80,7 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { changeView, props } = this.props;
+    const { classes, changeView, props } = this.props;
 
     return (
       <React.Fragment>
@@ -98,6 +98,7 @@ class BasicLocation extends Component {
         <Form autoComplete="off">
           <FormControlStyled variant="outlined">
             <Select
+              className={classes.select}
               value={props}
               onChange={this.handleChange}
               displayEmpty

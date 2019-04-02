@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { withStyles } from '@material-ui/core/styles';
+
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+
+import Button from '@material-ui/core/Button/Button';
 import { ArrowBack, Clear } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-} from '@material-ui/core';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 const Container = styled.div`
   display: flex;
@@ -164,7 +163,7 @@ class DumpingSites extends Component {
 
   render() {
     const {
-      changeView, props, width,
+      classes, changeView, props, width,
     } = this.props;
     const area = props.toString();
 
@@ -213,7 +212,7 @@ class DumpingSites extends Component {
           </Text>
         </Container>
         <CardContainer {...{ width }}>
-          <CardStyled {...{ width }}>
+          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeaderStyled
               classes={{
                 title: 'title',
@@ -274,7 +273,7 @@ class DumpingSites extends Component {
               </CardActionsText>
             </CardActionsStyled>
           </CardStyled>
-          <CardStyled {...{ width }}>
+          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeaderStyled
               classes={{
                 title: 'title',

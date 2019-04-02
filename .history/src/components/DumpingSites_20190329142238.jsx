@@ -2,22 +2,138 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { withStyles } from '@material-ui/core/styles';
+
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+
+import Button from '@material-ui/core/Button/Button';
 import { ArrowBack, Clear } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-} from '@material-ui/core';
+const styles = {
+  // container: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  // },
 
+  // button: {
+  //   minWidth: 46,
+  //   width: 46,
+  //   height: 46,
+  //   backgroundColor: '#46A440',
+  //   color: 'white',
+  //   marginRight: 16,
+  // },
+
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
+
+  // text: {
+  //   color: 'white',
+  //   fontSize: '1.7rem',
+  // },
+
+  // cardContainer: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  // },
+
+  // cardContainerSm: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  // },
+
+  // card: {
+  //   marginTop: 16,
+  //   width: 'auto',
+  // },
+
+  // cardSm: {
+  //   marginTop: 16,
+  //   marginRight: 16,
+  //   width: '50%',
+  //   '&:last-child': {
+  //     marginRight: 0,
+  //   },
+  // },
+
+  // cardHeader: {
+  //   backgroundColor: '#004B4F',
+  //   height: 50,
+  //   padding: 0,
+  // },
+
+  // cardHeaderButton: {
+  //   backgroundColor: 'rgba(255, 255, 255, 0.32)',
+  //   borderRadius: '0 4px 0 0',
+  //   width: 50,
+  //   height: 50,
+  //   margin: 0,
+  //   marginLeft: '-50px',
+  // },
+
+  // title: {
+  //   fontSize: 16,
+  //   color: 'white',
+  //   textAlign: 'center',
+  // },
+
+  // action: {
+  //   margin: 0,
+  // },
+
+  // cardContentText: {
+  //   color: '#004B4F',
+  //   textAlign: 'center',
+  // },
+
+  // cardActions: {
+  //   backgroundColor: 'rgba(0, 0, 0, 0.08)',
+  // },
+
+  // cardActionsText: {
+  //   color: '#004B4F',
+  //   textAlign: 'center',
+  //   width: '100%',
+  // },
+
+  // dialog: {
+  //   minWidth: 360,
+  //   width: 360,
+  // },
+
+  // dialogHeader: {
+  //   backgroundColor: '#004B4F',
+  //   height: 50,
+  //   padding: 0,
+  //   margin: 0,
+  // },
+
+  // dialogTitle: {
+  //   fontSize: 16,
+  //   color: 'white',
+  //   textAlign: 'center',
+  //   fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
+  //   margin: 'auto',
+  // },
+
+  dialogContent: {
+    padding: 24,
+    textAlign: 'center',
+    color: 'black',
+  },
+
+};
 
 const Container = styled.div`
   display: flex;
@@ -146,6 +262,7 @@ class DumpingSites extends Component {
     OpenLandFill: false,
   };
 
+  // Dialog
   handleClickOpenDumpsite = () => {
     this.setState({ OpenDumpSite: true });
   };
@@ -164,9 +281,12 @@ class DumpingSites extends Component {
 
   render() {
     const {
-      changeView, props, width,
+      classes, changeView, props, width,
     } = this.props;
     const area = props.toString();
+    // const { state } = this.state;
+    // const dumpState = state.OpenDumpSite;
+    // const fillState = state.OpenLandFill;
 
     // Set nearest dumping site
     let dumpsite;
@@ -213,7 +333,7 @@ class DumpingSites extends Component {
           </Text>
         </Container>
         <CardContainer {...{ width }}>
-          <CardStyled {...{ width }}>
+          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeaderStyled
               classes={{
                 title: 'title',
@@ -274,7 +394,7 @@ class DumpingSites extends Component {
               </CardActionsText>
             </CardActionsStyled>
           </CardStyled>
-          <CardStyled {...{ width }}>
+          <CardStyled {...{ width }} className={width > 800 ? classes.cardSm : classes.card}>
             <CardHeaderStyled
               classes={{
                 title: 'title',
@@ -335,8 +455,6 @@ class DumpingSites extends Component {
   }
 }
 
-export default DumpingSites;
-
 DumpingSites.defaultProps = {
   classes: null,
   props: null,
@@ -348,3 +466,5 @@ DumpingSites.propTypes = {
   props: PropTypes.instanceOf(Array),
   width: PropTypes.number.isRequired,
 };
+
+export default withStyles(styles)(DumpingSites);

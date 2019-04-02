@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { withStyles } from '@material-ui/core/styles';
+
 import { ArrowBack } from '@material-ui/icons';
 
 import {
@@ -16,122 +18,123 @@ import {
   TextField
 } from '@material-ui/core';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-`;
+const styles = theme => ({
 
-const ButtonStyled = styled(Button)`
-  && {
-    min-width: 46px;
-    width: 46px;
-    height: 46px;
-    background-color: #46A440;
-    margin-right: 16px;
-  }
-`;
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
 
-const LinkStyled = styled(Link)`
-  && {
-    text-decoration: none;
-    color: white;
-  }
-`;
+  button: {
+    minWidth: 46,
+    width: 46,
+    height: 46,
+    backgroundColor: '#46A440',
+    marginRight: 16,
+  },
 
-const Text = styled(Typography)`
-  && {
-    color: white;
-    font-size: 1.7rem;
-  }
-`;
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 
-const Form = styled.form`
-  max-width: 466px;
-  display: flex;
-  flex-direction: column;
-`;
+  text: {
+    color: 'white',
+    fontSize: '1.7rem',
+  },
 
-const FormControlStyled = styled(FormControl)`
-  && {
-    margin: 0;
-    min-width: 250px;
-    width: 100%;
-    height: 48px;
-    background-color: white;
-    border-radius: 4px;
+  form: {
+    maxWidth: 466,
+    display: 'flex',
+    flexDirection: 'column',
+  },
 
-    &::placeholder: {
-      color: rgba(0, 0, 0, 0.6);
-    }
-  }
-`;
+  formControl: {
+    margin: 0,
+    minWidth: 250,
+    width: '100%',
+    height: 48,
+    backgroundColor: 'white',
+    borderRadius: 4,
 
-const TextFieldStyled = styled(TextField)`
-  && {
-    width: 100%;
-    height: 48px;
-    background-color: white;
-    border-radius: 4px;
-    padding: 0;
-    margin: 8px 8px 4px 0px;
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
+  },
 
-    &::placeholder: {
-      color: rgba(0, 0, 0, 0.6);
-    }
-  }
-`;
+  textField: {
+    width: '100%',
+    height: 48,
+    backgroundColor: 'white',
+    borderRadius: 4,
+    padding: 0,
+    margin: '8px 8px 4px 0px',
 
-const FormHelperTextStyled = styled(FormHelperText)`
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0;
-  margin-left: 15px;
-`;
+    '&::placeholder': {
+      color: 'rgba(0, 0, 0, 0.6)',
+    },
+  },
 
-const TextFieldButton = styled(Button)`
-  && {
-    background-color: #46A440;
-    color: white;
-    text-transform: none;
-    height: 48px;
-    width: 100%;
-    margin-top: 8px;
-    align-self: flex-end;
+  helperText: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    marginTop: 0,
+    marginLeft: 15,
+  },
 
-    @media screen and (min-width: 375px) {
-      width: 118px;
-    }
-  }
+  textFieldButton: {
+    backgroundColor: '#46A440',
+    color: 'white',
+    textTransform: 'none',
+    height: 48,
+    width: '100%',
+    marginTop: 8,
+    alignSelf: 'flex-end',
 
-  & .disabled {
-    background-color: #CACACA;
-    color: rgba(0, 0, 0, 0.38);
-  }
-`;
+    [theme.breakpoints.up('sm')]: {
+      width: 118,
+    },
+  },
+
+  root: {
+    '&$disabled': {
+      backgroundColor: '#CACACA',
+      color: 'rgba(0, 0, 0, 0.38)',
+    },
+  },
+
+  disabled: {},
+
+});
 
 class FormAddress extends Component {
+  // state = {
+  //   area: '',
+  //   address: '',
+  // };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
+    const { classes } = this.props;
     const { state } = this.state;
 
     return (
       <React.Fragment>
-        <Container>
-          <ButtonStyled variant="contained">
-            <LinkStyled to="/">
+        <div className={classes.container}>
+          <Button variant="contained" className={classes.button}>
+            <Link to="/" className={classes.link}>
               <ArrowBack />
-            </LinkStyled>
-          </ButtonStyled>
-          <Text>
+            </Link>
+          </Button>
+          <Typography className={classes.text}>
             Enter your address:
-          </Text>
-        </Container>
-        <Form autoComplete="off">
-          <FormControlStyled variant="outlined">
+          </Typography>
+        </div>
+        <form autoComplete="off" className={classes.form}>
+          <FormControl variant="outlined" className={classes.formControl}>
             <Select
               value={state.area}
               onChange={this.handleChange}
@@ -142,7 +145,7 @@ class FormAddress extends Component {
                   name="area"
                   id="outlined-area"
                 />
-              )}
+)}
             >
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>
@@ -157,9 +160,10 @@ class FormAddress extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControlStyled>
-          <TextFieldStyled
+          </FormControl>
+          <TextField
             id="outlined-address"
+            className={classes.textField}
             placeholder="Enter your street address"
             margin="normal"
             variant="outlined"
@@ -167,25 +171,25 @@ class FormAddress extends Component {
             value={state.value}
             onChange={this.handleChange}
           />
-          <FormHelperTextStyled>
+          <FormHelperText className={classes.helperText}>
             Your address will remain strictly confidential
-          </FormHelperTextStyled>
-          <TextFieldButton
+          </FormHelperText>
+          <Button
             variant="contained"
             classes={{
-              disabled: 'disabled',
+              root: classes.root,
+              disabled: classes.disabled,
             }}
+            className={classes.textFieldButton}
             disabled={!state.area || !state.address}
           >
             Create form
-          </TextFieldButton>
-        </Form>
+          </Button>
+        </form>
       </React.Fragment>
     );
   }
 }
-
-export default FormAddress;
 
 FormAddress.defaultProps = {
   classes: null,
@@ -194,3 +198,5 @@ FormAddress.defaultProps = {
 FormAddress.propTypes = {
   classes: PropTypes.instanceOf(Object),
 };
+
+export default withStyles(styles)(FormAddress);
