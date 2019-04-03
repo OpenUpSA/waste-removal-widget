@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent/CardContent';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
 import Measure from 'react-measure';
+
 import FeedbackButton from './components/FeedbackButton';
 import DetermineView from './components/DetermineView';
 import SelectAction from './components/SelectAction';
@@ -13,6 +10,12 @@ import ReportContact from './components/ReportContact';
 import BasicLocation from './components/BasicLocation';
 import WasteSchedule from './components/WasteSchedule';
 import DumpingSites from './components/DumpingSites';
+
+import {
+  Card,
+  CardHeader,
+  CardContent
+} from '@material-ui/core';
 
 
 const VIEWS_LIST = {
@@ -38,82 +41,68 @@ const AREA_LIST = [
   { value: 'Zwelitsha', text: 'Zwelitsha' },
 ];
 
-const styles = () => ({
-  card: {
-    maxWidth: 1140,
-  },
+const CardStyled = styled(Card)`
+  && {
+    max-width: 1140px;
+  }
+`;
 
-  cardHeader: {
-    backgroundColor: '#004B4F',
-    padding: '12px 24px 16px 24px',
-  },
+const CardHeaderStyled = styled(CardHeader)`
+  && {
+    background-color: #004B4F;
+    padding: 24px 48px 33px 48px;
+    padding: ${({ width }) => (width > 600 ? '24px 48px 33px 48px' : '12px 24px 16px 24px')};
+  }
 
-  cardHeaderSm: {
-    backgroundColor: '#004B4F',
-    padding: '24px 48px 33px 48px',
-  },
+  & .title {
+    color: white;
+    font-weight: bold;
+    font-size: 2.6rem;
+    font-size: ${({ width }) => (width > 600 ? '2.6rem' : '2rem')};
+  }
 
-  title: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '2rem',
-  },
+  & .subheader {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: ${({ width }) => (width > 600 ? '1.5rem' : '1rem')};
+  }
 
-  titleSm: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '2.6rem',
-  },
+  & .content {
+    display: flex;
+    display: ${({ width }) => (width > 600 ? 'flex' : null)};
+    justify-content: ${({ width }) => (width > 600 ? 'space-between' : null)};
+    align-items: ${({ width }) => (width > 600 ? 'center' : null)};
+    flex-wrap: ${({ width }) => (width > 600 ? 'wrap' : null)};
+  }
+`;
 
-  subheader: {
-    color: 'rgba(255, 255, 255, 0.5)',
-    fontSize: '1rem',
-  },
-
-  subheaderSm: {
-    color: 'rgba(255, 255, 255, 0.5)',
-    fontSize: '1.5rem',
-  },
-
-  content: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-  },
-
-  cardContent: {
-    backgroundColor: '#00696B',
-    padding: '20px 24px 18px 24px',
-  },
-
-  cardContentSm: {
-    backgroundColor: '#00696B',
-    padding: '43px 48px 36px 48px',
-  },
-});
+const CardContentStyled = styled(CardContent)`
+  && {
+    background-color: #00696B;
+    padding: 43px 48px 36px 48px;
+    padding: ${({ width }) => (width > 600 ? '43px 48px 36px 48px' : '20px 24px 18px 24px')};
+  }
+`;
 
 
 const Markup = (props) => {
   const { classes, municipality, width } = props;
 
   return (
-    <Card className={classes.card}>
-      <CardHeader
-        className={width > 600 ? classes.cardHeaderSm : classes.cardHeader}
+    <CardStyled>
+      <CardHeaderStyled {...{ width }}
         classes={{
-          title: width > 600 ? classes.titleSm : classes.title,
-          subheader: width > 600 ? classes.subheaderSm : classes.subheader,
-          content: width > 600 ? classes.content : {},
+          title: 'title',
+          subheader: 'subheader',
+          content: 'content',
         }}
         title="Waste removal assistant"
         subheader={`${municipality} Municipality`}
       />
-      <CardContent className={width > 600 ? classes.cardContentSm : classes.cardContent}>
+      <CardContentStyled {...{ width }} className={width > 600 ? classes.cardContentSm : classes.cardContent}>
         <DetermineView viewsList={VIEWS_LIST} areaList={AREA_LIST} default="home" {...{ width }} />
-      </CardContent>
+      </CardContentStyled>
       <FeedbackButton {...{ width }} />
-    </Card>
+    </CardStyled>
   );
 };
 
@@ -165,4 +154,4 @@ Markup.propTypes = {
   width: PropTypes.number.isRequired,
 };
 
-export default withStyles(styles)(App);
+export default App;
