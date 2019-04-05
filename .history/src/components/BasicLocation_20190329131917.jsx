@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { withStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
+
 import { ArrowBack } from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -9,32 +12,10 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import PropTypes from 'prop-types';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    color: 'white',
-    marginRight: 16,
-  },
-
   link: {
     textDecoration: 'none',
     color: 'white',
   },
-
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
-
   form: {
     maxWidth: 466,
   },
@@ -52,6 +33,45 @@ const styles = {
     },
   },
 };
+
+const Container = styled.div`
+  display: 'flex';
+  alignItems: 'center';
+  marginBottom: 16;
+`;
+
+const ButtonStyled = styled(Button)`
+  && {
+    margin: 0;
+    minWidth: 250;
+    width: '100%';
+    height: 48;
+    backgroundColor: 'white';
+    borderRadius: 4;
+
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
+
+const Text = styled(Typography)`
+  && {
+    color: 'white';
+    fontSize: '1.7rem';
+  }
+`;
+
+const Form = styled.form`
+  maxWidth: 466;
+`;
+
+const FormControlStyled = styled(FormControl)`
+  && {
+    color: 'white';
+    fontSize: '1.7rem';
+  }
+`;
 
 class BasicLocation extends Component {
   constructor(props) {
@@ -82,20 +102,19 @@ class BasicLocation extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button
+        <Container>
+          <ButtonStyled
             variant="contained"
-            className={classes.button}
             onClick={() => changeView('home')}
           >
             <ArrowBack />
-          </Button>
-          <Typography className={classes.text}>
+          </ButtonStyled>
+          <Text>
               Select your area:
-          </Typography>
-        </div>
-        <form autoComplete="off" className={classes.form}>
-          <FormControl variant="outlined" className={classes.formControl}>
+          </Text>
+        </Container>
+        <Form autoComplete="off">
+          <FormControlStyled variant="outlined">
             <Select
               className={classes.select}
               value={props}
@@ -123,8 +142,8 @@ class BasicLocation extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControl>
-        </form>
+          </FormControlStyled>
+        </Form>
       </React.Fragment>
     );
   }
