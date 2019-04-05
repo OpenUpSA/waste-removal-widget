@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { withStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,113 +9,146 @@ import CardActions from '@material-ui/core/CardActions';
 
 import Button from '@material-ui/core/Button/Button';
 import { ArrowBack, Clear } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import {
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText
+} from '@material-ui/core';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    color: 'white',
-    marginRight: 16,
-  },
+const ContainerStyled = styled.div`
+&& {
+  display: flex;
+  align-items: center;
+}
+`;
+
+const ButtonStyled = styled(Button)`
+&& {
+  min-width: 46px;
+  width: 46px;
+  height: 46px;
+  background-color: #46A440;
+  color: white;
+  margin-right: 16px;
+
   link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
-  cardContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardContainerSm: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  card: {
-    marginTop: 16,
-    width: 'auto',
-  },
-  cardSm: {
-    marginTop: 16,
-    marginRight: 16,
-    width: 336,
-    '&:last-child': {
-      marginRight: 0,
-    },
-  },
-  cardHeader: {
-    backgroundColor: '#004B4F',
-    height: 50,
-    padding: 0,
-  },
-  cardHeaderButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.32)',
-    borderRadius: '0 4px 0 0',
-    width: 50,
-    minWidth: 50,
-    height: 50,
-    margin: 0,
-    marginLeft: '-50px',
-  },
-  title: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-  },
-  action: {
-    margin: 0,
-  },
-  cardContentText: {
-    color: '#004B4F',
-    textAlign: 'center',
-  },
-  cardActions: {
-    backgroundColor: 'rgba(0, 0, 0, 0.08)',
-  },
-  cardActionsText: {
-    color: '#004B4F',
-    textAlign: 'center',
-    width: '100%',
-  },
-  dialog: {
-    maxWidth: 360,
-  },
-  dialogHeader: {
-    backgroundColor: '#004B4F',
-    height: 50,
-    padding: 0,
-    margin: 0,
-  },
-  dialogTitle: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
-    margin: 'auto',
-  },
-  dialogContent: {
-    padding: 24,
-    textAlign: 'center',
-    color: 'black',
-  },
-};
+      text-decoration: none;
+      color: white;
+      },
+}
+`;
 
+const Text = styled(Typography)`
+&& {
+  color: white;
+  font-size: 1.7rem;
+}
+`;
+
+const CardHeaderStyled = styled(CardHeader)`
+&& {
+  background-color: #004B4F;
+  height: 50px;
+  padding: 0;
+}
+
+& .title {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+},
+
+& .action {
+  margin: 0;
+}
+`;
+
+const CardHeaderButtonStyled = styled(Button)`
+&& {
+  background-color: rgba(255, 255, 255, 0.32);
+  borderRadius: 0 4px 0 0;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  margin: 0;
+  margin-left: -50px;
+}
+`;
+
+const CardContentTextStyled = styled(Typography)`
+&& {
+  color: #004B4F;
+  text-align: center;
+},
+`;
+
+const CardActionsStyled = styled(CardActions)`
+&& {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+`;
+
+const CardActionsTextStyled = styled(Typography)`
+&& {
+  color: #004B4F;
+  text-align: center;
+  width: 100%;
+}
+`;
+
+const DialogStyled = styled(Dialog)`
+& .dialog: {
+  max-width: 360px;
+}
+`;
+
+const DialogHeaderStyled = styled(DialogActions)`
+&& {
+  background-color: #004B4F;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+}
+`;
+
+const DialogTitleStyled = styled.span`
+&& {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  font-family: "Roboto", "Helvetica","Sans-sserif";
+  margin: auto;
+}
+`;
+
+const DialogContentStyled = styled(DialogContent)`
+&& {
+  padding: 24px;
+  text-align: center;
+  color: black;
+}
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: ${({ width }) => (width > 600 ? 'row' : 'column')};
+  flex-wrap: wrap: ${({ width }) => (width > 600 ? 'wrap' : 'nowrap')};
+`;
+
+const CardStyled = styled(Card)`
+&& {
+    marginTop: 16px;
+    margin-right: ${({ width }) => (width > 600 ? '16px' : 'auto')};  //auto??
+    width: ${({ width }) => (width > 600 ? '366' : 'auto')};
+   
+    '&:last-child': {
+       margin-right: ${({ width }) => (width > 600 ? '0' : 'auto')};
+  }
+`;
 
 class WasteSchedule extends Component {
   state = {
@@ -218,55 +250,51 @@ class WasteSchedule extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button
-            variant="contained"
-            className={classes.button}
+        <ContainerStyled>
+          <ButtonStyled
+            variant="contained"      
             onClick={() => changeView('home')}
           >
             <ArrowBack />
-          </Button>
-          <Typography className={classes.text}>
+          </ButtonStyled>
+          < Text>
             {area}
             {' '}
             Waste collection schedule
-          </Typography>
-        </div>
-        <div className={width > 600 ? classes.cardContainerSm : classes.cardContainer}>
-          <Card className={width > 600 ? classes.cardSm : classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
+          </Text>
+        </ContainerStyled>
+        <CardContainer {...{ width }}>
+            <CardStyled {...{ width }}>
+            <CardHeaderStyled
               classes={{
-                title: classes.title,
-                action: classes.action,
+                title: 'title',
+                action: 'action',
               }}
               action={(
                 <React.Fragment>
-                  <Button
-                    className={classes.cardHeaderButton}
+                  <CardHeaderButtonStyled
                     onClick={this.handleClickOpenHousehold}
                   >
                     <InfoOutlinedIcon />
-                  </Button>
-                  <Dialog
+                  </CardHeaderButtonStyled>
+                  <DialogStyled
                     open={this.state.openHousehold}
                     onClose={this.handleClickCloseHousehold}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'dialog',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Household refuse</span>
-                      <Button
+                    <DialogHeaderStyled>
+                      <DialogTitleStyled>Household refuse</DialogTitleStyled>
+                      <CardHeaderButtonStyled
                         onClick={this.handleClickCloseHousehold}
-                        className={classes.cardHeaderButton}
                       >
                         <Clear />
-                      </Button>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                      </CardHeaderButtonStyled>
+                    </DialogHeaderStyled>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         Organic food waste as well as garden refuse will be collected if all of
                         the bags fit in your bin. No bags will be taken from the sidewalk.
@@ -275,147 +303,145 @@ class WasteSchedule extends Component {
                         Building rubble needs to be taken to a dumping sites or
                         the Bredasdorp Landfill.
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
 
               title="Household refuse"
             />
             <CardContent>
-              <Typography className={classes.cardContentText}>
+              <CardContentTextStyled>
                 {householdDay}
-              </Typography>
+              </CardContentTextStyled>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsTextStyled>
                 Next collection:
                 {' '}
                 {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={width > 600 ? classes.cardSm : classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
+              </CardActionsTextStyled>
+            </CardActionsStyled>
+          </CardStyled>
+          <CardStyled {...{ width }}>
+            <CardHeaderStyled
               classes={{
-                title: classes.title,
-                action: classes.action,
+                title: 'title',
+                action: 'action',
               }}
               action={(
                 <React.Fragment>
-                  <Button
-                    className={classes.cardHeaderButton}
+                  <CardHeaderButtonStyled
                     onClick={this.handleClickOpenBusiness}
                   >
                     <InfoOutlinedIcon />
-                  </Button>
-                  <Dialog
+                  </CardHeaderButtonStyled>
+                  <DialogStyled
                     open={this.state.openBusiness}
                     onClose={this.handleClickCloseBusiness}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'title',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Business refuse</span>
-                      <Button
+                    <DialogHeaderStyled>
+                      <DialogTitleStyled>Business refuse</DialogTitleStyled>
+                      <CardHeaderButtonStyled
                         onClick={this.handleClickCloseBusiness}
                         className={classes.cardHeaderButton}
                       >
                         <Clear />
-                      </Button>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                      </CardHeaderButtonStyled>
+                    </DialogHeaderStyled>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         Business Waste is collected on
                         <br />
                         Mondays & Wednesdays
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title="Business refuse"
             />
             <CardContent>
-              <Typography className={classes.cardContentText}>
+              <CardContentTextStyled>
                 Mondays & Wednesdays
-              </Typography>
+              </CardContentTextStyled>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsTextStyled>
                 Next collection:
                 {' '}
                 {businessDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={width > 600 ? classes.cardSm : classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
+              </CardActionsTextStyled>
+            </CardActionsStyled>
+          </CardStyled>
+          <CardStyled {...{ width }}>
+            <CardHeaderStyled
               classes={{
-                title: classes.title,
-                action: classes.action,
+                title: 'title',
+                action: 'action',
               }}
               action={(
                 <React.Fragment>
-                  <Button
-                    className={classes.cardHeaderButton}
+                  <CardHeaderButtonStyled
                     onClick={this.handleClickOpenRecycling}
                   >
                     <InfoOutlinedIcon />
-                  </Button>
-                  <Dialog
+                  </CardHeaderButtonStyled>
+                  <DialogStyled
                     open={this.state.openRecycling}
                     onClose={this.handleClickCloseRecycling}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'title',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Recycling</span>
-                      <Button
+                    <DialogHeaderStyled>
+                      <DialogTitleStyled>Recycling</DialogTitleStyled>
+                      <CardHeaderButtonStyled
                         onClick={this.handleClickCloseRecycling}
                         className={classes.cardHeaderButton}
                       >
                         <Clear />
-                      </Button>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                      </CardHeaderButtonStyled>
+                    </DialogHeaderStyled>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         Recyclable materials should be placed in a clear bag and will
                         be collected on the same day as household refuse.
                         Paper, tin, glass and plastic can be placed in the recycling bag.
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title="Recycling"
             />
             <CardContent>
-              <Typography className={classes.cardContentText}>
+              <CardContentTextStyled>
                 {householdDay}
-              </Typography>
+              </CardContentTextStyled>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsTextStyled>
                 Next collection:
                 {' '}
                 {collectionDate.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </Typography>
-            </CardActions>
-          </Card>
-        </div>
+              </CardActionsTextStyled>
+            </CardActionsStyled>
+          </CardStyled>
+        </CardContainer>
       </React.Fragment>
     );
   }
 }
+
+export default WasteSchedule;
 
 WasteSchedule.defaultProps = {
   classes: null,
@@ -428,5 +454,3 @@ WasteSchedule.propTypes = {
   props: PropTypes.string,
   width: PropTypes.number.isRequired,
 };
-
-export default withStyles(styles)(WasteSchedule);
