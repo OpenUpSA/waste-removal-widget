@@ -72,8 +72,8 @@ const ReportContact = (props) => {
           walterl@capeaghulas.gov.za
           <br />
         </a>
-        <a href="tel: +272842556011" className={classes.ref}>
-          028 425 56011
+        <a href="tel: +27284255500" className={classes.ref}>
+          028 425 5500
           <br />
         </a>
         Dirkie Uys Street, Bredasdorp, 7280
