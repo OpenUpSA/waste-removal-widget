@@ -9,37 +9,46 @@ import {
 } from '@material-ui/core';
 
 const Container = styled.div`
-  display: flex';
+  display: flex;
   align-items: center;
   margin-bottom: 16px;
 `;
 
 const ButtonStyled = styled(Button)`
-  min-width: 46px;
-  width: 46px;
-  height: 46px;
-  background-color: #46A440;
-  margin-px;ight: 16px;
-  color: whitepx;
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    margin-right: 16px;
+    color: white;
+  }
 `;
 
 const Text = styled(Typography)`
-  color: white;
-  font-size: 1.7rem;
+  && {
+    color: white;
+    font-size: 1.7rem;
+  }
 `;
 
 const TextSmall = styled(Typography)`
-  color: white;
-  font-size: 1.4rem;
+  && {
+    color: white;
+    font-size: 1.4rem;
+   }
 `;
 
 const Refs = styled.a`
-  color: white;
-  text-decoration: none;
-   &:hover: 
+  && {
+    color: white;
+    text-decoration: none;
+
+  &:hover: 
      {
       color: #CACACA;
      }
+  }
 `;
 
 const ReportContact = (props) => {
@@ -75,6 +84,8 @@ const ReportContact = (props) => {
   );
 };
 
+export default ReportContact;
+
 ReportContact.defaultProps = {
   classes: null,
 };
@@ -83,5 +94,3 @@ ReportContact.propTypes = {
   classes: PropTypes.instanceOf(Object),
   changeView: PropTypes.func.isRequired,
 };
-
-export default ReportContact;
