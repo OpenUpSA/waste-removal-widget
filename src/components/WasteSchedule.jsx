@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-
 import Button from '@material-ui/core/Button/Button';
 import { ArrowBack, Clear } from '@material-ui/icons';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import {
   Typography,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
   Dialog,
   DialogActions,
   DialogContent,
