@@ -1,59 +1,61 @@
 import React, { Component } from 'react';
-
-import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { ArrowBack } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import PropTypes from 'prop-types';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
+import {
+  Typography,
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  OutlinedInput
+} from '@material-ui/core';
 
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    color: 'white',
-    marginRight: 16,
-  },
 
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`;
 
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
+const ButtonStyled = styled(Button)`
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    color: white;
+    margin-right: 16px;
+  }
+`;
 
-  form: {
-    maxWidth: 466,
-  },
+const Text = styled(Typography)`
+  && {
+    color: white;
+    font-size: 1.7rem;
+  }
+`;
 
-  formControl: {
-    margin: 0,
-    minWidth: 250,
-    width: '100%',
-    height: 48,
-    backgroundColor: 'white',
-    borderRadius: 4,
+const Form = styled.form`
+  max-width: 466px;
+`;
 
-    '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)',
-    },
-  },
-};
+const FormControlStyled = styled(FormControl)`
+  && {
+    margin: 0;
+    min-width: 250px;
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
+
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
 
 class BasicLocation extends Component {
   constructor(props) {
@@ -68,7 +70,6 @@ class BasicLocation extends Component {
     this.setState({
       props: event.target.value,
     }, () => {
-      // const { state } = this.state;
       if (this.state.view === 'schedule') {
         this.props.changeView('areaSchedules', [this.state.props]);
       }
@@ -79,27 +80,24 @@ class BasicLocation extends Component {
   };
 
   render() {
-    const { classes, changeView, props } = this.props;
-    // const value = this.state;
+    const { changeView, props } = this.props;
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button
+        <Container>
+          <ButtonStyled
             variant="contained"
-            className={classes.button}
             onClick={() => changeView('home')}
           >
             <ArrowBack />
-          </Button>
-          <Typography className={classes.text}>
+          </ButtonStyled>
+          <Text>
               Select your area:
-          </Typography>
-        </div>
-        <form autoComplete="off" className={classes.form}>
-          <FormControl variant="outlined" className={classes.formControl}>
+          </Text>
+        </Container>
+        <Form autoComplete="off">
+          <FormControlStyled variant="outlined">
             <Select
-              className={classes.select}
               value={props}
               onChange={this.handleChange}
               displayEmpty
@@ -125,12 +123,14 @@ class BasicLocation extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControl>
-        </form>
+          </FormControlStyled>
+        </Form>
       </React.Fragment>
     );
   }
 }
+
+export default BasicLocation;
 
 BasicLocation.defaultProps = {
   classes: null,
@@ -143,5 +143,3 @@ BasicLocation.propTypes = {
   view: PropTypes.string.isRequired,
   props: PropTypes.string,
 };
-
-export default withStyles(styles)(BasicLocation);

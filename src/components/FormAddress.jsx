@@ -1,138 +1,138 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-import { withStyles } from '@material-ui/core/styles';
-
-import { ArrowBack } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 
-const styles = theme => ({
+import { ArrowBack } from '@material-ui/icons';
 
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
+import {
+  Typography,
+  Button,
+  FormControl,
+  FormHelperText,
+  MenuItem,
+  Select,
+  OutlinedInput,
+  TextField
+} from '@material-ui/core';
 
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    marginRight: 16,
-  },
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`;
 
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
+const ButtonStyled = styled(Button)`
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    margin-right: 16px;
+  }
+`;
 
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
+const LinkStyled = styled(Link)`
+  && {
+    text-decoration: none;
+    color: white;
+  }
+`;
 
-  form: {
-    maxWidth: 466,
-    display: 'flex',
-    flexDirection: 'column',
-  },
+const Text = styled(Typography)`
+  && {
+    color: white;
+    font-size: 1.7rem;
+  }
+`;
 
-  formControl: {
-    margin: 0,
-    minWidth: 250,
-    width: '100%',
-    height: 48,
-    backgroundColor: 'white',
-    borderRadius: 4,
+const Form = styled.form`
+  max-width: 466px;
+  display: flex;
+  flex-direction: column;
+`;
 
-    '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)',
-    },
-  },
+const FormControlStyled = styled(FormControl)`
+  && {
+    margin: 0;
+    min-width: 250px;
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
 
-  textField: {
-    width: '100%',
-    height: 48,
-    backgroundColor: 'white',
-    borderRadius: 4,
-    padding: 0,
-    margin: '8px 8px 4px 0px',
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
 
-    '&::placeholder': {
-      color: 'rgba(0, 0, 0, 0.6)',
-    },
-  },
+const TextFieldStyled = styled(TextField)`
+  && {
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 0;
+    margin: 8px 8px 4px 0px;
 
-  helperText: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    marginTop: 0,
-    marginLeft: 15,
-  },
+    &::placeholder: {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
 
-  textFieldButton: {
-    backgroundColor: '#46A440',
-    color: 'white',
-    textTransform: 'none',
-    height: 48,
-    width: '100%',
-    marginTop: 8,
-    alignSelf: 'flex-end',
+const FormHelperTextStyled = styled(FormHelperText)`
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0;
+  margin-left: 15px;
+`;
 
-    [theme.breakpoints.up('sm')]: {
-      width: 118,
-    },
-  },
+const TextFieldButton = styled(Button)`
+  && {
+    background-color: #46A440;
+    color: white;
+    text-transform: none;
+    height: 48px;
+    width: 100%;
+    margin-top: 8px;
+    align-self: flex-end;
 
-  root: {
-    '&$disabled': {
-      backgroundColor: '#CACACA',
-      color: 'rgba(0, 0, 0, 0.38)',
-    },
-  },
+    @media screen and (min-width: 600px) {
+      width: 118px;
+    }
+  }
 
-  disabled: {},
-
-});
+  & .disabled {
+    background-color: #CACACA;
+    color: rgba(0, 0, 0, 0.38);
+  }
+`;
 
 class FormAddress extends Component {
-  // state = {
-  //   area: '',
-  //   address: '',
-  // };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
-    const { classes } = this.props;
     const { state } = this.state;
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button variant="contained" className={classes.button}>
-            <Link to="/" className={classes.link}>
+        <Container>
+          <ButtonStyled variant="contained">
+            <LinkStyled to="/">
               <ArrowBack />
-            </Link>
-          </Button>
-          <Typography className={classes.text}>
+            </LinkStyled>
+          </ButtonStyled>
+          <Text>
             Enter your address:
-          </Typography>
-        </div>
-        <form autoComplete="off" className={classes.form}>
-          <FormControl variant="outlined" className={classes.formControl}>
+          </Text>
+        </Container>
+        <Form autoComplete="off">
+          <FormControlStyled variant="outlined">
             <Select
-              className={classes.select}
               value={state.area}
               onChange={this.handleChange}
               displayEmpty
@@ -142,7 +142,7 @@ class FormAddress extends Component {
                   name="area"
                   id="outlined-area"
                 />
-)}
+              )}
             >
               <MenuItem value="" disabled>Select your area from the list</MenuItem>
               <MenuItem value="Bredasdorp (Area 1)">Bredasdorp (Area 1)</MenuItem>
@@ -157,10 +157,9 @@ class FormAddress extends Component {
               <MenuItem value="Waenhuiskrans (Arniston)">Waenhuiskrans (Arniston)</MenuItem>
               <MenuItem value="Zwelitsha">Zwelitsha</MenuItem>
             </Select>
-          </FormControl>
-          <TextField
+          </FormControlStyled>
+          <TextFieldStyled
             id="outlined-address"
-            className={classes.textField}
             placeholder="Enter your street address"
             margin="normal"
             variant="outlined"
@@ -168,25 +167,25 @@ class FormAddress extends Component {
             value={state.value}
             onChange={this.handleChange}
           />
-          <FormHelperText className={classes.helperText}>
+          <FormHelperTextStyled>
             Your address will remain strictly confidential
-          </FormHelperText>
-          <Button
+          </FormHelperTextStyled>
+          <TextFieldButton
             variant="contained"
             classes={{
-              root: classes.root,
-              disabled: classes.disabled,
+              disabled: 'disabled',
             }}
-            className={classes.textFieldButton}
             disabled={!state.area || !state.address}
           >
             Create form
-          </Button>
-        </form>
+          </TextFieldButton>
+        </Form>
       </React.Fragment>
     );
   }
 }
+
+export default FormAddress;
 
 FormAddress.defaultProps = {
   classes: null,
@@ -195,5 +194,3 @@ FormAddress.defaultProps = {
 FormAddress.propTypes = {
   classes: PropTypes.instanceOf(Object),
 };
-
-export default withStyles(styles)(FormAddress);

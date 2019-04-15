@@ -1,146 +1,151 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { withStyles } from '@material-ui/core/styles';
-
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-
-import Button from '@material-ui/core/Button/Button';
 import { ArrowBack, Clear } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import Dialog from '@material-ui/core/Dialog/Dialog';
-import DialogActions from '@material-ui/core/DialogActions/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText/DialogContentText';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Button,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+} from '@material-ui/core';
 
-  button: {
-    minWidth: 46,
-    width: 46,
-    height: 46,
-    backgroundColor: '#46A440',
-    color: 'white',
-    marginRight: 16,
-  },
 
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
+const ButtonStyled = styled(Button)`
+  && {
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    color: white;
+    margin-right: 16px;
+  }
+`;
 
-  cardContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+const Text = styled(Typography)`
+  && {
+    color: white;
+    font-size: 1.7rem;
+  }
+`;
 
-  cardContainerSm: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: ${({ width }) => (width > 800 ? 'row' : 'column')};
+`;
 
-  card: {
-    marginTop: 16,
-    width: 'auto',
-  },
+const CardStyled = styled(Card)`
+  && {
+    margin-top: 16px;
+    margin-right: ${({ width }) => (width > 800 ? '16px' : null)};
+    width: ${({ width }) => (width > 800 ? '50%' : 'auto')};
 
-  cardSm: {
-    marginTop: 16,
-    marginRight: 16,
-    width: '50%',
     '&:last-child': {
-      marginRight: 0,
-    },
-  },
+      margin-right: ${({ width }) => (width > 800 ? 0 : null)};
+    }
+  }
+`;
 
-  cardHeader: {
-    backgroundColor: '#004B4F',
-    height: 50,
-    padding: 0,
-  },
+const CardHeaderStyled = styled(CardHeader)`
+  && {
+    background-color: #004B4F;
+    height: 50px;
+    padding: 0;
+  }
 
-  cardHeaderButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.32)',
-    borderRadius: '0 4px 0 0',
-    width: 50,
-    height: 50,
-    margin: 0,
-    marginLeft: '-50px',
-  },
+  & .title {
+      font-size: 16px;
+      color: white;
+      text-align: center;
+    }
 
-  title: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-  },
+  & .action {
+      margin: 0;
+    }
+`;
 
-  action: {
-    margin: 0,
-  },
+const CardHeaderButton = styled(Button)`
+  && {
+    background-color: rgba(255, 255, 255, 0.32);
+    border-radius: 0 4px 0 0;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    margin-left: -50px;
+  }
+`;
 
-  cardContentText: {
-    color: '#004B4F',
-    textAlign: 'center',
-  },
+const CardContentText = styled(Typography)`
+  && {
+    color: #004B4F;
+    text-align: center;
+  }
+`;
 
-  cardActions: {
-    backgroundColor: 'rgba(0, 0, 0, 0.08)',
-  },
+const CardActionsStyled = styled(CardActions)`
+  && {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+`;
 
-  cardActionsText: {
-    color: '#004B4F',
-    textAlign: 'center',
-    width: '100%',
-  },
+const CardActionsText = styled(Typography)`
+  && {
+    color: #004B4F;
+    text-align: center;
+    width: 100%;
+  }
+`;
 
-  dialog: {
-    minWidth: 360,
-    width: 360,
-  },
+const DialogStyled = styled(Dialog)`
+  & .dialog {
+    min-width: 360px;
+    width: 360px;
+  }
+`;
 
-  dialogHeader: {
-    backgroundColor: '#004B4F',
-    height: 50,
-    padding: 0,
-    margin: 0,
-  },
+const DialogHeader = styled(DialogActions)`
+  && {
+    background-color: #004B4F;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+  }
+`;
 
-  dialogTitle: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: '"Roboto", "Helvetica","Sans-sserif"',
-    margin: 'auto',
-  },
+const DialogTitle = styled.span`
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  font-family: Roboto, "Helvetica", sans-serif;
+  margin: auto;
+`;
 
-  dialogContent: {
-    padding: 24,
-    textAlign: 'center',
-    color: 'black',
-  },
-
-};
-
+const DialogContentStyled = styled(DialogContent)`
+  && {
+    padding: 24px;
+    text-align: center;
+    color: black;
+  }
+`;
 class DumpingSites extends Component {
   state = {
     OpenDumpSite: false,
     OpenLandFill: false,
   };
 
-  // Dialog
   handleClickOpenDumpsite = () => {
     this.setState({ OpenDumpSite: true });
   };
@@ -159,12 +164,9 @@ class DumpingSites extends Component {
 
   render() {
     const {
-      classes, changeView, props, width,
+      changeView, props, width,
     } = this.props;
     const area = props.toString();
-    // const { state } = this.state;
-    // const dumpState = state.OpenDumpSite;
-    // const fillState = state.OpenLandFill;
 
     // Set nearest dumping site
     let dumpsite;
@@ -197,59 +199,55 @@ class DumpingSites extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.container}>
-          <Button
+        <Container>
+          <ButtonStyled
             variant="contained"
-            className={classes.button}
             onClick={() => changeView('home')}
           >
             <ArrowBack />
-          </Button>
-          <Typography className={classes.text}>
+          </ButtonStyled>
+          <Text>
             {area}
             {' '}
             nearest dumping sites
-          </Typography>
-        </div>
-        <div className={width > 800 ? classes.cardContainerSm : classes.cardContainer}>
-          <Card className={width > 800 ? classes.cardSm : classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
+          </Text>
+        </Container>
+        <CardContainer {...{ width }}>
+          <CardStyled {...{ width }}>
+            <CardHeaderStyled
               classes={{
-                title: classes.title,
-                action: classes.action,
+                title: 'title',
+                action: 'action',
               }}
               action={(
                 <React.Fragment>
-                  <Button
-                    className={classes.cardHeaderButton}
+                  <CardHeaderButton
                     onClick={this.handleClickOpenDumpsite}
                   >
                     <InfoOutlinedIcon />
-                  </Button>
-                  <Dialog
+                  </CardHeaderButton>
+                  <DialogStyled
                     open={this.state.OpenDumpSite}
                     onClose={this.handleClickCloseDumpsite}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'dialog',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>
+                    <DialogHeader>
+                      <DialogTitle>
                         {dumpsite}
                         {' '}
                         Dump
-                      </span>
-                      <Button
+                      </DialogTitle>
+                      <CardHeaderButton
                         onClick={this.handleClickCloseDumpsite}
-                        className={classes.cardHeaderButton}
                       >
                         <Clear />
-                      </Button>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                      </CardHeaderButton>
+                    </DialogHeader>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         {address}
                         <br />
@@ -257,59 +255,56 @@ class DumpingSites extends Component {
                         <br />
                         Saturday 09:00-17:00
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title={address}
             />
             <CardContent>
-              <Typography className={classes.cardContentText}>
+              <CardContentText>
                 {dumpsite}
                 {' '}
                 Dump
-              </Typography>
+              </CardContentText>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsText>
                 {times}
-              </Typography>
-            </CardActions>
-          </Card>
-          <Card className={width > 800 ? classes.cardSm : classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
+              </CardActionsText>
+            </CardActionsStyled>
+          </CardStyled>
+          <CardStyled {...{ width }}>
+            <CardHeaderStyled
               classes={{
-                title: classes.title,
-                action: classes.action,
+                title: 'title',
+                action: 'action',
               }}
               action={(
                 <React.Fragment>
-                  <Button
-                    className={classes.cardHeaderButton}
+                  <CardHeaderButton
                     onClick={this.handleClickOpenLandFill}
                   >
                     <InfoOutlinedIcon />
-                  </Button>
-                  <Dialog
+                  </CardHeaderButton>
+                  <DialogStyled
                     open={this.state.OpenLandFill}
                     onClose={this.handleClickCloseLandFill}
                     classes={{
-                      paper: classes.dialog,
+                      paper: 'dialog',
                     }}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                   >
-                    <DialogActions className={classes.dialogHeader}>
-                      <span className={classes.dialogTitle}>Bredasdorp Waste Facility</span>
-                      <Button
+                    <DialogHeader>
+                      <DialogTitle>Bredasdorp Waste Facility</DialogTitle>
+                      <CardHeaderButton
                         onClick={this.handleClickCloseLandFill}
-                        className={classes.cardHeaderButton}
                       >
                         <Clear />
-                      </Button>
-                    </DialogActions>
-                    <DialogContent className={classes.dialogContent}>
+                      </CardHeaderButton>
+                    </DialogHeader>
+                    <DialogContentStyled>
                       <DialogContentText id="alert-dialog-description">
                         Swellendam Road, Bredasdorp
                         <br />
@@ -317,28 +312,30 @@ class DumpingSites extends Component {
                         <br />
                         Saturday 09:00-17:00
                       </DialogContentText>
-                    </DialogContent>
-                  </Dialog>
+                    </DialogContentStyled>
+                  </DialogStyled>
                 </React.Fragment>
               )}
               title="Swellendam Road, Bredasdorp"
             />
             <CardContent>
-              <Typography className={classes.cardContentText}>
+              <CardContentText>
                 Bredasdorp Waste Facility
-              </Typography>
+              </CardContentText>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Typography className={classes.cardActionsText}>
+            <CardActionsStyled>
+              <CardActionsText>
                 {times}
-              </Typography>
-            </CardActions>
-          </Card>
-        </div>
+              </CardActionsText>
+            </CardActionsStyled>
+          </CardStyled>
+        </CardContainer>
       </React.Fragment>
     );
   }
 }
+
+export default DumpingSites;
 
 DumpingSites.defaultProps = {
   classes: null,
@@ -351,5 +348,3 @@ DumpingSites.propTypes = {
   props: PropTypes.instanceOf(Array),
   width: PropTypes.number.isRequired,
 };
-
-export default withStyles(styles)(DumpingSites);
