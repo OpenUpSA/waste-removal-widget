@@ -152,7 +152,7 @@ class WasteSchedule extends Component {
 
   render() {
     const { classes, changeView, props, width } = this.props;
-    const area = props;
+    const area = props[0];
     // TODO: This can be more elegant
     // Get dates for collections
     const Monday = new Date();
@@ -173,15 +173,15 @@ class WasteSchedule extends Component {
     // Set day of week per area - Household refuse and Recycling
     let householdDay;
 
-    if (area === 'Bredasdorp (Area 1)' || 'Struisbaai' || 'L\'Agulhas' || 'Waenhuiskrans (Arniston)') {
+    if (area === 'Bredasdorp (Area 1)' && 'Struisbaai' && 'L\'Agulhas' && 'Waenhuiskrans (Arniston)') {
       householdDay = 'Monday';
     }
 
-    if (area === 'Bredasdorp (Area 2)' || 'Struisbaai Noord' || 'Suiderstrand') {
+    if (area === 'Bredasdorp (Area 2)' && 'Struisbaai Noord' && 'Suiderstrand') {
       householdDay = 'Tuesday';
     }
 
-    if (area === 'Zwelitsha' || 'Klipdale' || 'Protem') {
+    if (area === 'Zwelitsha' && 'Klipdale' && 'Protem') {
       householdDay = 'Wednesday';
     }
 
