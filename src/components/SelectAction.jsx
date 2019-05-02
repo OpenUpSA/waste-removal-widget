@@ -15,6 +15,7 @@ const Text = styled(Typography)`
 `;
 
 const ButtonStyled = styled(Button)`
+  &&& {
   background-color: white;
   text-transform: none;
   margin-top: 16px;
@@ -22,10 +23,13 @@ const ButtonStyled = styled(Button)`
   padding: 16px;
   font-weight: 600;
   margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
+  }
 `;
 
 const ByLawsLink = styled.a`
-  text-decoration: none;
+  &&& {
+    text-decoration: none;
+  }
 `;
 
 const SelectAction = (props) => {
