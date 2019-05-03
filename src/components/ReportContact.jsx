@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 const Container = styled.div`
-  display: flex';
+  display: flex;
   align-items: center;
   margin-bottom: 16px;
 `;
@@ -19,8 +19,8 @@ const ButtonStyled = styled(Button)`
   width: 46px;
   height: 46px;
   background-color: #46A440;
-  margin-px;ight: 16px;
-  color: whitepx;
+  margin-right: 16px;
+  color: white;
 `;
 
 const Text = styled(Typography)`
