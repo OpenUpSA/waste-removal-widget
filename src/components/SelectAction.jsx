@@ -29,7 +29,7 @@ const ByLawsLink = styled.a`
 `;
 
 const SelectAction = (props) => {
-  const { classes, changeView, width, } = props;
+  const { changeView, width, } = props;
 
   return (
     <React.Fragment>
@@ -63,7 +63,6 @@ const SelectAction = (props) => {
           href={BY_LAWS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className={classes.bylaws}
         >
         <ButtonStyled {...{ width }}
           variant="contained" 
