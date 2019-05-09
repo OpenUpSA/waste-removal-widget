@@ -85,7 +85,7 @@ const CardContentStyled = styled(CardContent)`
 
 
 const Markup = (props) => {
-  const { classes, municipality, width } = props;
+  const { municipality, width } = props;
 
   return (
     <CardStyled>
@@ -98,7 +98,7 @@ const Markup = (props) => {
         title="Waste removal assistant"
         subheader={`${municipality} Municipality`}
       />
-      <CardContentStyled {...{ width }} className={width > 600 ? classes.cardContentSm : classes.cardContent}>
+      <CardContentStyled {...{ width }}>
         <DetermineView viewsList={VIEWS_LIST} areaList={AREA_LIST} default="home" {...{ width }} />
       </CardContentStyled>
       <FeedbackButton {...{ width }} />
@@ -129,7 +129,7 @@ class App extends Component {
     const { width } = this.state;
 
     return (
-      <Measure onResize={({ entry }) => updateWidth(entry.width)}>
+      <Measure onResize={({ entry }) => !!entry && !!entry.width && updateWidth(entry.width)}>
         {
           ({ measureRef }) => (
             <div ref={measureRef}>
