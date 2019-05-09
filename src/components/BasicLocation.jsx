@@ -144,4 +144,4 @@ BasicLocation.propTypes = {
   props: PropTypes.string,
 };
 
-export default withStyles(styles)(BasicLocation);
+export default BasicLocation;

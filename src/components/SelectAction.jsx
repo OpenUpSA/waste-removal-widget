@@ -1,94 +1,88 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
+import {
+  Typography,
+  Button
+} from '@material-ui/core';
 
 const BY_LAWS_URL = 'https://capeagulhas.openbylaws.org.za/za-wc033/act/by-law/2005/refuse-removal/eng/';
 
+const Text = styled(Typography)`
+    && {
+    color: white;
+    font-size: 1.7rem;
+    }
+`;
 
-const styles = {
-  text: {
-    color: 'white',
-    fontSize: '1.7rem',
-  },
-  button: {
-    backgroundColor: 'white',
-    textTransform: 'none',
-    marginTop: 16,
-    width: '100%',
-    padding: 16,
-    fontWeight: 600,
-    marginRight: 0,
-  },
-  buttonSm: {
-    backgroundColor: 'white',
-    textTransform: 'none',
-    marginTop: 16,
-    width: 'auto',
-    padding: 16,
-    fontWeight: 600,
-    marginRight: 16,
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'black',
-  },
-  bylaws: {
-    textDecoration: 'none',
-  },
-};
+const ButtonStyled = styled(Button)`
+  &&& {
+  background-color: white;
+  text-transform: none;
+  margin-top: 16px;
+  width: ${({ width }) => (width > 600 ? 'auto' : '100%')};
+  padding: 16px;
+  font-weight: 600;
+  margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
+  }
+`;
+
+const ByLawsLink = styled.a`
+  &&& {
+    text-decoration: none;
+  }
+`;
 
 const SelectAction = (props) => {
-  const { classes, changeView, width, } = props;
+  const { changeView, width, } = props;
 
   return (
     <React.Fragment>
-      <Typography className={classes.text}>
+      <Text>
         Select an action:
-      </Typography>
+      </Text>
       <div>
-        <Button
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('report')}
         >
           Report uncollected refuse
-        </Button>
+        </ButtonStyled>
 
-        <Button
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('schedule')}
         >
           View my refuse collection schedule
-        </Button>
-        <Button
+        </ButtonStyled>
+        <ButtonStyled {...{ width }}
           variant="contained"
           size="large"
-          className={width > 600 ? classes.buttonSm : classes.button}
           onClick={() => changeView('sites')}
         >
           Find my nearest dumping site
-        </Button>
-
-        <a
+        </ButtonStyled>
+        <ByLawsLink
           href={BY_LAWS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className={classes.bylaws}
         >
-          <Button variant="contained" size="large" className={width > 600 ? classes.buttonSm : classes.button}>
-            View my local refuse by-laws
-          </Button>
-        </a>
+        <ButtonStyled {...{ width }}
+          variant="contained" 
+          size="large" 
+        >
+          View my local refuse by-laws
+        </ButtonStyled>
+        </ByLawsLink>
       </div>
     </React.Fragment>
   );
 };
+
+export default SelectAction;
 
 SelectAction.defaultProps = {
   classes: null,
@@ -99,5 +93,3 @@ SelectAction.propTypes = {
   changeView: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
-
-export default withStyles(styles)(SelectAction);
