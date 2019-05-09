@@ -17,19 +17,19 @@ const Text = styled(Typography)`
 `;
 
 const ButtonStyled = styled(Button)`
-  && {
-    background-color: white;
-    text-transform: none;
-    margin-top: 16px;
-    width: ${({ width }) => (width > 600 ? 'auto' : '100%')};
-    padding: 16px;
-    font-weight: 600;
-    margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
+  &&& {
+  background-color: white;
+  text-transform: none;
+  margin-top: 16px;
+  width: ${({ width }) => (width > 600 ? 'auto' : '100%')};
+  padding: 16px;
+  font-weight: 600;
+  margin-right: ${({ width }) => (width > 600 ? '16px' : 0 )};
   }
 `;
 
 const ByLawsLink = styled.a`
-  && {
+  &&& {
     text-decoration: none;
   }
 `;
