@@ -18,7 +18,6 @@ const Container = styled.div`
 const ButtonStyled = styled(Button)`
   && {
     min-width: 46px;
-    width: 46px;
     height: 46px;
     background-color: #46A440;
     margin-right: 16px;
