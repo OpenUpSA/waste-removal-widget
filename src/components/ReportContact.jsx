@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { 
   Typography,
   Button,
-} from '@material-ui/core';
+} 
+from '@material-ui/core';
 
 const Container = styled.div`
   display: flex;
@@ -16,26 +17,26 @@ const Container = styled.div`
 
 const ButtonStyled = styled(Button)`
   && {
-  min-width: 46px;
-  width: 46px;
-  height: 46px;
-  background-color: #46A440;
-  margin-right: 16px;
-  color: white;
+    min-width: 46px;
+    width: 46px;
+    height: 46px;
+    background-color: #46A440;
+    margin-right: 16px;
+    color: white;
   }
 `;
 
 const Text = styled(Typography)`
   && {
-  color: white;
-  font-size: 1.7rem;
+    color: white;
+    font-size: 1.7rem;
   }
 `;
 
 const TextSmall = styled(Typography)`
   && {
-  color: white;
-  font-size: 1.4rem;
+    color: white;
+    font-size: 1.4rem;
  }
 `;
 
@@ -43,7 +44,7 @@ const Refs = styled.a`
   && {
     color: white;
     text-decoration: none;
-     &:hover 
+      &:hover 
        {
         color: #CACACA;
        }
